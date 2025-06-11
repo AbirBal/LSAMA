@@ -1,0 +1,170 @@
+    
+    /* ----- NAVBAR PRINCIPALE (logos et langue) ----- */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+   .navbar-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 0.5em 2em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Georgia', serif;
+  position: relative;
+  z-index: 1000; 
+  height: 40px;
+}
+
+.navbar-main img.logo-img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.navbar-main ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-main li {
+  margin-left: 1em;
+}
+
+.navbar-lang {
+  position: relative;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.navbar-lang .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 1.5em;
+  right: 0;
+  background-color: #f9f9f9;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  z-index: 999;
+}
+
+.navbar-lang:hover .dropdown-content {
+  display: block;
+}
+.attractive-background {
+  background: linear-gradient(135deg, #006600, #000080, #990000);
+  animation: gradientFlow 10s ease infinite;
+  color: white;
+  padding: 0.5em;
+  box-shadow: 0 0 15px rgba(210, 206, 206, 0.1);
+}
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ----- NAVBAR SECONDAIRE (liens) ----- */
+.navbar-sub {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  padding: 0.8em 2em;
+  box-shadow: 0 2px 6px rgba(182, 163, 163, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  font-family: 'Georgia', serif;
+  height: 100px;
+}
+
+.logo img {
+  height: 50%;
+  width: 50%;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5em;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: black;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Couleurs au survol (inspirées du logo) */
+
+ 
+
+ .link-red:hover, .link-red:active, .link-red:visited {
+  color: #990000;
+  text-decoration:underline;
+   opacity: 0.7;
+
+}
+
+.link-green:hover, .link-green:active, .link-green:visited {
+  opacity: 0.7;
+  text-decoration:underline;
+  color: #006600;
+}
+
+.link-blue:hover, .link-blue:active, .link-blue:visited {
+  opacity: 0.7;
+  text-decoration:underline;
+  color: #000080;
+}
+
+.link-yellow:hover, .link-yellow:active, .link-yellow:visited {
+  opacity: 0.7;
+  text-decoration:underline;
+  color: #daa520;
+}
+
+.link-lightgreen:hover, .link-lightgreen:active, .link-lightgreen:visited {
+  opacity: 0.7;
+  text-decoration:underline;
+  color: #2e8b57;
+}
+
+/* ----- Responsive Mobile ----- */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 1.8em;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    background: white;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 1em;
+    border: 1px solid #ccc;
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+

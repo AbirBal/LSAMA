@@ -1,0 +1,86 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+footer {
+  color: #eee;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: 'Georgia', serif;
+
+}
+main{
+    flex: 1; /* prend tout l'espace restant */
+    padding-bottom: 200px; /* Ajuste selon la hauteur du footer */
+
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+  min-width: 250px;
+}
+
+.footer-section h2 {
+  color: #00a0dc; /* bleu LinkedIn */
+  margin-bottom: 12px;
+  font-size: 18px;
+  border-bottom: 2px solid #00a0dc;
+  padding-bottom: 6px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section a {
+  color: #00a0dc;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #121111;
+  padding-top: 15px;
+  font-size: 13px;
+  color: #aaa;
+}
+.attractive-background {
+  background: linear-gradient(135deg, #006600, #000080, #990000);
+  animation: gradientFlow 10s ease infinite;
+  color: white;
+  padding: 0.5em;
+  box-shadow: 0 0 15px rgba(210, 206, 206, 0.1);
+}
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* Responsive */
+@media (max-width: 600px) {
+  .footer-container {
+    flex-direction: column;
+  }
+  .footer-section {
+    min-width: 100%;
+  }
+}
