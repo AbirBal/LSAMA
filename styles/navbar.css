@@ -3,7 +3,9 @@
 html, body {
   margin: 0;
   padding: 0;
+  font-family: 'Merriweather', serif;
 }
+
    .navbar-main {
   display: flex;
   justify-content: space-between;
@@ -11,10 +13,10 @@ html, body {
   background-color: white;
   padding: 0.5em 2em;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Georgia', serif;
   position: relative;
   z-index: 1000; 
   height: 40px;
+
 }
 
 .navbar-main img.logo-img {
@@ -49,6 +51,7 @@ html, body {
   padding: 0.5em;
   border: 1px solid #ccc;
   z-index: 999;
+
 }
 
 .navbar-lang:hover .dropdown-content {
@@ -78,8 +81,8 @@ html, body {
   position: sticky;
   top: 0;
   z-index: 999;
-  font-family: 'Georgia', serif;
   height: 100px;
+  color: black;
 }
 
 .logo img {
@@ -105,35 +108,43 @@ html, body {
 }
 
 /* Couleurs au survol (inspirées du logo) */
+a:hover {
+  text-decoration: underline;
+}
 
+/* Liens rouges personnalisés */
+a.link-red {
+  color: #cc0000;
+  text-decoration: underline; /* toujours souligné */
+}
  
 
- .link-red:hover, .link-red:active, .link-red:visited {
+ .link-red:hover, .link-red.active {
   color: #990000;
   text-decoration:underline;
    opacity: 0.7;
 
 }
 
-.link-green:hover, .link-green:active, .link-green:visited {
+.link-green:hover, .link-green:active {
   opacity: 0.7;
   text-decoration:underline;
   color: #006600;
 }
 
-.link-blue:hover, .link-blue:active, .link-blue:visited {
+.link-blue:hover, .link-blue:active {
   opacity: 0.7;
   text-decoration:underline;
   color: #000080;
 }
 
-.link-yellow:hover, .link-yellow:active, .link-yellow:visited {
+.link-yellow:hover, .link-yellow:active {
   opacity: 0.7;
   text-decoration:underline;
   color: #daa520;
 }
 
-.link-lightgreen:hover, .link-lightgreen:active, .link-lightgreen:visited {
+.link-lightgreen:hover, .link-lightgreen:active {
   opacity: 0.7;
   text-decoration:underline;
   color: #2e8b57;

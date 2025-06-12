@@ -1,0 +1,95 @@
+body{
+    font-family: 'Merriweather', serif;
+}
+/* Slideshow */
+.slideshow-container {
+  position: relative;
+  max-width: 90%;
+  max-height: 700px;
+  margin: auto;
+  text-align: center;
+}
+.mySlides {
+  display:none; /* Cache toutes les slides par défaut */
+  position:sticky; /* Important pour éviter les décalages verticaux */
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.mySlides img {
+  width: 100%;
+  height: 700px;
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+/* Container */
+.dot-container {
+  margin-top: 0px;
+}
+
+/* Dot de base : vide avec bordure */
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 6px;
+  border: 5px solid transparent; /* Bordure bleue */
+  border-radius: 50%;
+  background:#81fbef;/* dégradé bleu → vert */
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover : renforce la bordure */
+.dot:hover {
+  border-color: linear-gradient(45deg, #1d4ed8, #10b981); /* dégradé bleu → vert */
+}
+
+/* Dot actif : bordure dégradée + ombre */
+.dot.active {
+  border: 5px solid transparent;
+  background: linear-gradient(white, white), 
+    linear-gradient(45deg, #1d4ed8, #10b981); /* dégradé bleu → vert */
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Bouton retour en haut */
+#backToTop {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  z-index: 100;
+  display: none;
+  background-color: white;
+  color:  #11c793; 
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+    font-size: 26px; /* taille du caractère flèche */
+
+}
+#backToTop:hover {
+  background: linear-gradient(45deg, #255cf3, rgb(79, 214, 169)); /* dégradé permanent */
+  color: white;
+}

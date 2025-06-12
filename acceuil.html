@@ -4,21 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles/acceuil.css">  
-  <title>Laboratoire SAMA|Acceuil</title>
+  <link rel="icon" sizes="16x16" type="image/png" href="images\logoLSAMA.jpg">
+  <meta name="description" content="Laboratoire spécialisé dans l’étude des interactions lumière-matière à l’échelle atomique et moléculaire,
+il développe des techniques spectroscopiques avancées appliquées aux domaines de l’énergie, de l’environnement et de la santé.">
+  <title>LSAMA | Laboratoire de Spectroscopie Atomique Moléculaire et Applications</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+
  
 </head>
 <body>
  <div id="navbar-container"></div>
 
   <script>
+    // Charger navbar
     fetch('navbar.html')
-      .then(res => res.text())
+      .then(response => response.text())
       .then(data => {
         document.getElementById('navbar-container').innerHTML = data;
-      });
+
+        // Après insertion, marquer le lien actif
+        const links = document.querySelectorAll('#navbar-container a.link-red');
+        const currentPage = window.location.pathname.split('/').pop();
+
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === currentPage || (href === 'acceuil.html' && currentPage === '')) {
+            link.classList.add('active');
+          }
+        });
+      })
+      .catch(err => console.error('Erreur chargement navbar:', err));
   </script>
+
 <main>
+   <div class="content">
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img src="images\equipes\slide 1.jpg" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="images/equipes/slide 2.jpg" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+         <img src="images/equipes/slide 3.jpg" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="images/equipes/slide 4.jpg" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="images/equipes/slide 5.jpg" style="width:100%">
+      </div>    
+      <div class="mySlides fade">
+        <img src="images/equipes/slide 6.jpg" style="width:100%">
+      </div>
+      <div class="mySlides fade">
+        <img src="images/equipes/slide 7.jpg" style="width:100%">
+      </div>
+    <div style="text-align:center; margin-top: 0px;">
+      <span class="dot active"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span>       
+      <span class="dot"></span>      
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+    </div>
+   </div>
 </main>
+  <button id="backToTop" title="Retour en haut">↑</button>
+
   <div id="footer-container"></div>
 
   <script>
@@ -28,6 +82,7 @@
         document.getElementById('footer-container').innerHTML = data;
       });
   </script>
-  <script src="scriptNavbar.js"></script>
+  <script src="js/scriptNavbar.js"></script>
+  <script src="js/scriptSlide.js"></script>
 </body>
 </html>
