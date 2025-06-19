@@ -69,6 +69,62 @@ body{
   }
 }
 
+    .lab-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 70px;
+      gap: 40px;
+      background-color: #f9f9f9e5;
+      margin-top: 0; 
+    }
+
+    .lab-content {
+      flex: 1  50%;
+      max-width: 600px;
+    }
+
+    .lab-content h2 {
+      font-size: 2.2em;
+      color: #003366;
+      margin-bottom: 20px;
+    }
+
+    .lab-content p {
+      font-size: 1.1em;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    .lab-image {
+      flex: 1  40%;
+      text-align: center;
+    }
+
+    .lab-image img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+    .btn {
+      display: block;
+      width: fit-content;
+      margin: 30px auto 0;
+    font-family: 'Merriweather', serif;
+      background-color: #1a73e8;
+      color: white;
+      padding: 10px 20px;
+      font-size: 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #155ab6;
+    }
 /* Bouton retour en haut */
 #backToTop {
   position: fixed;
@@ -92,4 +148,24 @@ body{
 #backToTop:hover {
   background: linear-gradient(45deg, #255cf3, rgb(79, 214, 169)); /* dégradé permanent */
   color: white;
+}
+@media (max-width: 768px) {
+  .mySlides img {
+    height: 300px;
+  }
+    .lab-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .lab-content, .lab-image {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+
+      .lab-image img {
+        max-width: 90%;
+      }
+    }
 }
