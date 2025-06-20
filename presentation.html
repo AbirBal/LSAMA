@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LSAMA |Présentation du Laboratoire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles\presentation.css">
+</head>
+<body>
+ <div id="navbar-container"></div>
+
+  <script>
+    // Charger navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+
+        // Après insertion, marquer le lien actif
+        const links = document.querySelectorAll('#navbar-container a.link-lightblue');
+        const currentPage = window.location.pathname.split('/').pop();
+
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === currentPage || (href === 'presentation.html' && currentPage === '')) {
+            link.classList.add('active');
+          }
+        });
+      })
+      .catch(err => console.error('Erreur chargement navbar:', err));
+  </script>
+
+<main>
+      <h1>Historique du LSAMA LR01ES09</h1>
+    <section class="timeline">
+    <article class="timeline-item left">
+      <img src="images\LPAM.png" alt="LPAM" />
+      <div>
+        <h4>Années 1970</h4>
+        <p>Création du LPAM à la FST par Taoufik Ben Ména. Ont suivi : Zaïneb Ben Ahmed, Zohra Ben Lakhdar, Nejm-Eddine Jaïdane.</p>
+      </div>
+    </article>
+
+    <article class="timeline-item right">
+      <img src="images\Zohra Ben Lakhdar.jpg" alt="Zohra Ben Lakhdar" />
+      <div>
+        <h4>2001 - 2008</h4>
+        <p><strong>Zohra Ben Lakhdar</strong> (Prix UNESCO 2005) dirige le laboratoire nouvellement fondé.</p>
+      </div>
+    </article>
+
+    <article class="timeline-item left">
+      <img src="images\JaidaneN.png" alt="Nejm-Eddine Jaïdane" />
+      <div>
+        <h4>2008 - 2021</h4>
+        <p><strong>Nejm-Eddine Jaïdane</strong> assure la direction pendant 13 ans.</p>
+      </div>
+    </article>
+
+    <article class="timeline-item right">
+      <img src="images\mourad telmini.jpg" alt="Mourad Telmini" />
+      <div>
+        <h4>Depuis 2021</h4>
+        <p><strong>Mourad Telmini</strong> est l’actuel directeur du laboratoire.</p>
+      </div>
+    </article>
+
+  </section>
+  <section>
+    <h1>Axes de recherche</h1>
+    <p>Le laboratoire s’intéresse à l’étude des systèmes moléculaires, petits et grands, avec des applications variées dans les domaines de la santé, de l’environnement et de l’industrie.</p>
+
+    <h3>1. Petits systèmes moléculaires</h3>
+    <p>Étude en phase gazeuse de molécules comportant moins de cinq atomes à l’aide de méthodes quantiques avancées (MCSCF, RCCSDT, MRCI, etc.). Ces études permettent de prédire la stabilité, la spectroscopie et la dynamique d’espèces instables, notamment dans le milieu interstellaire.</p>
+
+    <h3>2. Grands systèmes moléculaires</h3>
+    <p>Utilisation des méthodes DFT et TD-DFT pour comprendre la réactivité et les mécanismes d’oxydation de molécules complexes, avec des applications dans les secteurs pharmaceutique et cosmétique.</p>
+
+    <h3>3. Études expérimentales de mélanges complexes</h3>
+    <p>Analyse de mélanges tels que les huiles végétales, les huiles essentielles ou les hydrocarbures par des techniques comme la LIBS, la LIF, la spectroscopie EEM et la RPS. L’objectif est de proposer des méthodes simples de contrôle qualité adaptées au terrain.</p>
+  </section>
+
+  <section>
+    <h1>Mots-clés illustrés</h1>
+    <div class="keyword-cards">
+      <div class="card">
+        <img src="images\Spectroscopie moléculaire.png" alt="Spectroscopie">
+        <div class="card-content">Spectroscopie moléculaire</div>
+      </div>
+      <div class="card">
+        <img src="images\Chimie quantique.jpg" alt="Chimie quantique">
+        <div class="card-content">Chimie quantique</div>
+      </div>
+      <div class="card">
+        <img src="images\Plasma.jpg" alt="Plasma">
+        <div class="card-content">Plasma</div>
+      </div>
+      <div class="card">
+        <img src="images\santé&environnement.png" alt="Santé environnement">
+        <div class="card-content">Santé & Environnement</div>
+      </div>
+    </div>
+  </section>
+    <button id="backToTop" title="Retour en haut">↑</button>
+
+  <section>
+    <h1>État des connaissances</h1>
+    <h3>Au niveau national</h3>
+    <p>Le laboratoire est le leader en Tunisie dans le domaine de la spectroscopie atomique et moléculaire et ses applications.</p>
+
+    <h3>Au niveau international</h3>
+    <p>La spectroscopie atomique et moléculaire est en plein essor, notamment avec les technologies quantiques et la manipulation cohérente des atomes, ions et molécules par laser. Des techniques comme la LIBS ou la fluorescence se développent pour des applications en médecine, environnement et agriculture.</p>
+  </section>
+
+  <section>
+    <h1>Où nous trouver ?</h1>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d9032.397068120208!2d10.14084513173585!3d36.83206615161653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfst%20departement%20physique!5e0!3m2!1sfr!2stn!4v1750336510405!5m2!1sfr!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <section>
+    <h1>Galerie Photos</h1>
+    <div class="gallery">
+      <img src="images\galerie 1.jpg" alt="Photo 1">
+      <img src="images\galerie 2.jpg" alt="Photo 2">
+      <img src="images\galerie 3.jpg" alt="Photo 3">
+      <img src="images\galerie 4.jpg" alt="Photo 4">
+    </div>
+  </section>
+</main>
+  <div id="footer-container"></div>
+
+ <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
+  <script src="js/scriptNavbar.js"></script>
+  <script src="js/scroll.js"></script>
+  
+</body>
+</html>

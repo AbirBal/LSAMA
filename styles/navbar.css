@@ -112,39 +112,51 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Liens rouges personnalisés */
-a.link-red {
-  color: #cc0000;
-  text-decoration: underline; /* toujours souligné */
-}
- 
 
- .link-red:hover, .link-red.active {
+ .link-red:hover, 
+ .link-red.active, 
+ .link-red.active {
   color: #990000;
   text-decoration:underline;
    opacity: 0.7;
 
 }
+.link-lightblue:hover,
+.link-lightblue:active,
+.link-lightblue.active {
+  opacity: 0.7;
+  text-decoration: underline;
+  color: #4e93fb;
+}
 
-.link-green:hover, .link-green:active {
+
+.link-green:hover, 
+.link-green:active,
+.link-green.active {
   opacity: 0.7;
   text-decoration:underline;
   color: #006600;
 }
 
-.link-blue:hover, .link-blue:active {
+.link-blue:hover, 
+.link-blue:active,
+.link-blue.active {
   opacity: 0.7;
   text-decoration:underline;
   color: #000080;
 }
 
-.link-yellow:hover, .link-yellow:active {
+.link-yellow:hover,
+ .link-yellow:active,
+ .link-yellow.active {
   opacity: 0.7;
   text-decoration:underline;
   color: #daa520;
 }
 
-.link-lightgreen:hover, .link-lightgreen:active {
+.link-lightgreen:hover, 
+.link-lightgreen:active,
+.link-lightgreen.active {
   opacity: 0.7;
   text-decoration:underline;
   color: #2e8b57;
