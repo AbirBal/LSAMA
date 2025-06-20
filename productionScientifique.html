@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSAMA |Production scirntifique</title>
+    <link rel="icon" sizes="16x16" type="image/png" href="images\logoLSAMA.png">
+     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles\productionScientifique.css">  
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+  <script>
+    // Charger navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+
+        // Après insertion, marquer le lien actif
+        const links = document.querySelectorAll('#navbar-container a.link-yellow');
+        const currentPage = window.location.pathname.split('/').pop();
+
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === currentPage || (href === 'productionScientifique.html' && currentPage === '')) {
+            link.classList.add('active');
+          }
+        });
+      })
+      .catch(err => console.error('Erreur chargement navbar:', err));
+  </script>
+  <main>
+
+  </main>
+   <div id="footer-container"></div>
+
+ <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
+  <script src="js/scriptNavbar.js"></script>
+  <script src="js/scroll.js"></script>
+  
+</body>
+</html>
