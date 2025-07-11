@@ -8,13 +8,28 @@
             <li>
          <div class="navbar-lang dropdown">
             <i class="fas fa-globe"></i> Langue ▾
-            <div class="dropdown-content">
-              <div id="google_translate_element"></div> <!-- Ajout du widget de traduction -->
-            </div>
+         <!--<div class="language-switcher">
+              <select onchange="changeLanguage(this.value)">
+                <option value="fr" selected>Français</option>
+                <option value="en">English</option>
+              </select>
+            </div>-->   
           </div>
-          </li>
-        </ul>
 </div>
+
+
+<script>
+  function changeLanguage(lang) {
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (lang === 'en') {
+      window.location.href = currentPage.replace('.html', '_en.html');
+    } else {
+      window.location.href = currentPage.replace('_en.html', '.html');
+    }
+  }
+</script>
+
 <nav class="navbar-sub">
     <div class="logo">
       <a href="acceuil.html"><img src="images\logoLSAMA.png" alt="Logo LSAMA" /></a>
