@@ -36,7 +36,9 @@
   </script>
 
 <main>
-
+<div  style="width: 1200px; margin-bottom:50px;" class="breadcrumb" >
+    <a href="acceuil-lsama.html">Accueil</a> &gt;  Productions scientifiques de LSAMA 
+  </div>
 <div class="hal-bar">
 <div class="search-hal">
 <h2>Rechercher</h2>
@@ -56,11 +58,15 @@
 </select>
 </div>
 </div>
-<div class="export-bar">
+<div style="width: 1200px; text-align: left !important"class="export-bar">
 <button onclick="exportToPDF()">Exporter en PDF</button>
 <button onclick="exportToExcel()">Exporter Excel</button>
 <button onclick="window.print()">Imprimer</button>
 </div>
+
+<div style="width: 1200px;" id="resultCount" class="result-count"></div>
+<div id="cardsContainer"></div>
+
 <div id="cardsContainer"></div>
 <div class="pagination" id="paginationContainer"></div>
 <script>
@@ -147,7 +153,7 @@ const articles = [
     "type": "Article"
   },
   {
-    "title": "Collisional excitation of c-MgC2 by Helium",
+    "title": "Collisional excitation of c-MgC2 by Helium ",
     "authors": "M. M’hamdi, C. T. Bop,  F. Lique, A. Ben Houria and K. Hammami",
     "year": 2025,
     "source": "Monthly Notices of the Royal Astronomical Society",
@@ -387,7 +393,7 @@ const articles = [
     "source": "The Quantum Evolution: Application of AI and Robotics in the Future of Quantum Technology",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85203112732&doi=10.1201%2f9781032642079-13&partnerID=40&md5=56c58ea24c4a368502c6d43acedb1c3b",
     "doi": "10.1201/9781032642079-13",
-    "type": "Book chapter"
+    "type": "Chapitre de livre"
   },
   {
     "title": "Ozonolysis of 2-Methyl-2-pentenal: New Insights from Master Equation Modeling",
@@ -477,7 +483,7 @@ const articles = [
     "source": "Atmosphere",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85180553164&doi=10.3390%2fatmos14121791&partnerID=40&md5=0c6198e0b74feb69c872c2921f78310f",
     "doi": "10.3390/atmos14121791",
-    "type": "Review"
+    "type": "Revue"
   },
   {
     "title": "Green Synthesis and Characterization of Novel Silver Nanoparticles Using Achillea maritima subsp. maritima Aqueous Extract: Antioxidant and Antidiabetic Potential and Effect on Virulence Mechanisms of Bacterial and Fungal Pathogens",
@@ -1161,7 +1167,7 @@ const articles = [
     "source": "Journal of Physics: Conference Series",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85087871067&doi=10.1088%2f1742-6596%2f1412%2f13%2f132048&partnerID=40&md5=dd09a09093cfe1077cd429d430ae8a7a",
     "doi": "10.1088/1742-6596/1412/13/132048",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Neutral and Multicharged Ions of Small Aluminum Oxides: Structures, Spectroscopy, and Energetics",
@@ -1224,7 +1230,7 @@ const articles = [
     "source": "Advances in Physics: X",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85094591379&doi=10.1080%2f23746149.2020.1831955&partnerID=40&md5=860e060c7121499579c63b1debf1cb29",
     "doi": "10.1080/23746149.2020.1831955",
-    "type": "Review"
+    "type": "Revue"
   },
   {
     "title": "Theoretical Characterization of the Structure and Spectroscopy of HCNO2 Isomers and Applications",
@@ -1260,7 +1266,7 @@ const articles = [
     "source": "Journal of Physics: Conference Series",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85087863812&doi=10.1088%2f1742-6596%2f1412%2f13%2f132051&partnerID=40&md5=79b650e717ca8eea66454709dbe9f78e",
     "doi": "10.1088/1742-6596/1412/13/132051",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Characterization of the simplest sulfenyl thiocyanate: Isomers, spectroscopy and implications of astrophysical and biological relevance",
@@ -1277,8 +1283,8 @@ const articles = [
     "year": 2020,
     "source": "Optics InfoBase Conference Papers",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85102590341&partnerID=40&md5=bdbb5d40ad6f39b46e953223d98115cb",
-    "doi": "nan",
-    "type": "Conference paper"
+    "doi": "",
+    "type": "Communication dans un congrès"
   },
   {
     "title": "IO(X2Π)-Ar cluster:: Ab initio potential energy surface and dynamical computations",
@@ -1395,7 +1401,7 @@ const articles = [
     "source": "Chemical Data Collections",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85073963604&doi=10.1016%2fj.cdc.2019.100289&partnerID=40&md5=9e1273c3f07cd5cd16f558156934ee05",
     "doi": "10.1016/j.cdc.2019.100289",
-    "type": "Data paper"
+    "type": "Article de données"
   },
   {
     "title": "Calculation of electron-impact excitation and ionisation cross sections and reaction rate coefficients for C, N and O atoms",
@@ -1404,7 +1410,7 @@ const articles = [
     "source": "Journal of Physics: Conference Series",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85067835346&doi=10.1088%2f1742-6596%2f1243%2f1%2f012014&partnerID=40&md5=556712381323ffc844e6373468857679",
     "doi": "10.1088/1742-6596/1243/1/012014",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Anisotropy control in photoelectron spectra: A coherent two-pulse interference strategy",
@@ -1461,7 +1467,7 @@ const articles = [
     "type": "Article"
   },
   {
-    "title": "Structures, binding energies, temperature effects, infrared spectroscopy of [Mg(NH                         3                         )                         n = 1−10                         ]                         +                          clusters from DFT and MP2 investigations",
+    "title": "                         Structures, binding energies, temperature effects, infrared spectroscopy of [Mg(NH                         3                         )                         n = 1−10                         ]                         +                          clusters from DFT and MP2 investigations                     ",
     "authors": "Hattab A.; Dhaouadi Z.; Malloum A.; Fifen J.J.; Lahmar S.; Russo N.; Sicilia E.",
     "year": 2019,
     "source": "Journal of Computational Chemistry",
@@ -1488,7 +1494,7 @@ const articles = [
     "type": "Article"
   },
   {
-    "title": "Structures, binding energies and temperature effects in                          [Mg(NH3)n=1-10]2+                          clusters",
+    "title": "                         Structures, binding energies and temperature effects in                          [Mg(NH3)n=1-10]2+                          clusters                     ",
     "authors": "Hattab A.; Dhaouadi Z.; Malloum A.; Fifen J.J.; Lahmar S.; Russo N.; Sicilia E.",
     "year": 2019,
     "source": "Theoretical Chemistry Accounts",
@@ -1578,7 +1584,7 @@ const articles = [
     "type": "Article"
   },
   {
-    "title": "Synthesis, X-ray structural, Hirshfeld surface analysis, FTIR, MEP and NBO analysis using DFT study of a 4-chlorobenzylammonium nitrate (C7ClH9N)+(NO3)–",
+    "title": "Synthesis, X-ray structural, Hirshfeld surface analysis, FTIR, MEP and NBO analysis using DFT study of a 4-chlorobenzylammonium nitrate (C7ClH9N)+(NO3)–                         ",
     "authors": "Hakiri R.; Ameur I.; Abid S.; Derbel N.",
     "year": 2018,
     "source": "Journal of Molecular Structure",
@@ -1665,7 +1671,7 @@ const articles = [
     "source": "ACM International Conference Proceeding Series",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85052503275&doi=10.1145%2f3234698.3234747&partnerID=40&md5=c1fa3cdb215f3abf1df918136fe1016e",
     "doi": "10.1145/3234698.3234747",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Disentangling the complex spectrum of the ethynyl cation",
@@ -1692,7 +1698,7 @@ const articles = [
     "source": "Proceedings of SPIE - The International Society for Optical Engineering",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85056486884&doi=10.1117%2f12.2322164&partnerID=40&md5=9b12d0ba19ff9dd6104c703fb1e4d90a",
     "doi": "10.1117/12.2322164",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Potential energy surface and rate coefficients of protonated cyanogen (HNCCN+) induced by collision with helium (He) at low temperature",
@@ -1836,7 +1842,7 @@ const articles = [
     "source": "Proceedings of SPIE - The International Society for Optical Engineering",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85029499523&doi=10.1117%2f12.2268377&partnerID=40&md5=d295cc74432c090dc544c4bf2105423b",
     "doi": "10.1117/12.2268377",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Does the Residues Chirality Modify the Conformation of a Cyclo-Dipeptide? Vibrational Spectroscopy of Protonated Cyclo-diphenylalanine in the Gas Phase",
@@ -2055,7 +2061,7 @@ const articles = [
     "type": "Article"
   },
   {
-    "title": "Spectroscopic constants of the X1Σ+ and 13Π states of AlO+",
+    "title": "Spectroscopic constants of the X1Σ+ and 13Π states of AlO+                     ",
     "authors": "Sghaier O.; Linguerri R.; Mogren M.M.A.; Francisco J.S.; Hochlaf M.",
     "year": 2016,
     "source": "Astrophysical Journal",
@@ -2088,7 +2094,7 @@ const articles = [
     "source": "Proceedings of SPIE - The International Society for Optical Engineering",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85006905661&doi=10.1117%2f12.2236159&partnerID=40&md5=9a2febc3ca22a295351c0bb4d32920de",
     "doi": "10.1117/12.2236159",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Theoretical Study of the Dimerization of Chlorophyll (a) and Its Hydrates: Implication for Chlorophyll (a) Aggregation",
@@ -2151,7 +2157,7 @@ const articles = [
     "source": "EPJ Web of Conferences",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84922173797&doi=10.1051%2fepjconf%2f20158402003&partnerID=40&md5=714e8517374b035f8177b04ca783be7c",
     "doi": "10.1051/epjconf/20158402003",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Characterization and reactivity of the weakly bound complexes of the [H, N, S]- anionic system with astrophysical and biological implications",
@@ -2169,7 +2175,7 @@ const articles = [
     "source": "EPJ Web of Conferences",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84948756855&doi=10.1051%2fepjconf%2f20158404003&partnerID=40&md5=98230098f27d562dc58f5778d33b8669",
     "doi": "10.1051/epjconf/20158404003",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Electron-ion collisional approach in the study of Rydberg and doubly-excited electronic states of H2 and HeH+",
@@ -2178,7 +2184,7 @@ const articles = [
     "source": "Journal of Physics: Conference Series",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84948800012&doi=10.1088%2f1742-6596%2f635%2f7%2f072017&partnerID=40&md5=0f81a67e6d6c0384ca39a32c986baad9",
     "doi": "10.1088/1742-6596/635/7/072017",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Theoretical Characterization of Dimethyl Carbonate at Low Temperatures",
@@ -2214,7 +2220,7 @@ const articles = [
     "source": "EPJ Web of Conferences",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84941259986&doi=10.1051%2fepjconf%2f20158404004&partnerID=40&md5=9d43b186c85b311571575aa478974156",
     "doi": "10.1051/epjconf/20158404004",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Potential energy surface of the CO2-N2 van der Waals complex",
@@ -2349,7 +2355,7 @@ const articles = [
     "source": "Proceedings of SPIE - The International Society for Optical Engineering",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84963607055&doi=10.1117%2f12.2223072&partnerID=40&md5=8724bab6d10ab866652b1dfaa9cfa785",
     "doi": "10.1117/12.2223072",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Structures and relative stabilities of ammonia clusters at different temperatures: DFT vs. ab initio",
@@ -2853,7 +2859,7 @@ const articles = [
     "source": "Progress in Biomedical Optics and Imaging - Proceedings of SPIE",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84860741189&doi=10.1117%2f12.911410&partnerID=40&md5=c3254d69855de7eb2ef7dc440dffa867",
     "doi": "10.1117/12.911410",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Collision induced rotational excitation of AlF (X 1Σ +) by para-H 2 (j=0)",
@@ -3051,7 +3057,7 @@ const articles = [
     "source": "Progress in Biomedical Optics and Imaging - Proceedings of SPIE",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-77951618078&doi=10.1117%2f12.841800&partnerID=40&md5=cfc2f5a152d57302166ba45b2a6e7d83",
     "doi": "10.1117/12.841800",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "The rotational excitation of HCN and HNC by He: New insights on the HCN/HNC abundance ratio in molecular clouds",
@@ -3087,7 +3093,7 @@ const articles = [
     "source": "AIP Conference Proceedings",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-78649870080&doi=10.1063%2f1.3517548&partnerID=40&md5=0f4f6f45a407fec6f6a1bafadba23778",
     "doi": "10.1063/1.3517548",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Collision-induced rotational excitation of SiH+ by He atom at low temperatures",
@@ -3384,7 +3390,7 @@ const articles = [
     "source": "Journal of Business Ethics",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-38349103451&doi=10.1007%2fs10551-006-9309-9&partnerID=40&md5=580bc2f9d1d05788cabfad8720d1f270",
     "doi": "10.1007/s10551-006-9309-9",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Line shifts in the ν2, 2ν2, and ν4 bands of NH3 perturbed by O2",
@@ -3420,7 +3426,7 @@ const articles = [
     "source": "Proceedings of SPIE - The International Society for Optical Engineering",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84951014828&doi=10.1117%2f12.2207802&partnerID=40&md5=f34f480b1b14c8dfe6bb39c40c3c111c",
     "doi": "10.1117/12.2207802",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "DFT study of proton transfer, cooperativity, and tautomerization in 2-pyridineselenol and 2-pyridinethiol ammonia and water clusters",
@@ -3447,7 +3453,7 @@ const articles = [
     "source": "AIP Conference Proceedings",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-35348884803&doi=10.1063%2f1.2795411&partnerID=40&md5=30e59efdb187d99314e03160b7bc8f92",
     "doi": "10.1063/1.2795411",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Laser spectroscopy of the C2Π- X2Σ+ Transition of CaBr and CaI. structure and dynamics of the C2Π State",
@@ -3456,7 +3462,7 @@ const articles = [
     "source": "AIP Conference Proceedings",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-35348853734&doi=10.1063%2f1.2795410&partnerID=40&md5=446ec429b368af5c04502d9bbefa3ae3",
     "doi": "10.1063/1.2795410",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Vibrational motion in the X̃1 A′ state of LiSH and LiSD",
@@ -3468,13 +3474,13 @@ const articles = [
     "type": "Article"
   },
   {
-    "title": "Ab initio characterization of electronically excited metastable states of S2 -",
+    "title": " Ab initio characterization of electronically excited metastable states of S2 - ",
     "authors": "Edhay B.; Lahmar S.; Lakhdar Z.B.; Hochlaf M.",
     "year": 2007,
     "source": "Progress in Theoretical Chemistry and Physics",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85129209721&doi=10.1007%2f978-1-4020-5460-0_12&partnerID=40&md5=ab73fd2ddb7b1f174f3f2426733e8136",
     "doi": "10.1007/978-1-4020-5460-0_12",
-    "type": "Book chapter"
+    "type": "Chapitre de livre"
   },
   {
     "title": "Vibrational analysis of amino acids and short peptides in Hydrated media. I. L-glycine and L-leucine",
@@ -3492,7 +3498,7 @@ const articles = [
     "source": "AIP Conference Proceedings",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-35348817313&doi=10.1063%2f1.2795414&partnerID=40&md5=492d7dff3609635fa41a0c92430366d1",
     "doi": "10.1063/1.2795414",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Optical devices for cold atoms and bose-einstein condensates",
@@ -3501,7 +3507,7 @@ const articles = [
     "source": "AIP Conference Proceedings",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-35348877874&doi=10.1063%2f1.2795399&partnerID=40&md5=05c1eb5c4ff7c15bab13ce596c47e254",
     "doi": "10.1063/1.2795399",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "On the role of electronic molecular states of high spin multiplicity",
@@ -3510,7 +3516,7 @@ const articles = [
     "source": "Progress in Theoretical Chemistry and Physics",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84908027139&doi=10.1007%2f978-1-4020-5460-0_11&partnerID=40&md5=93c6fe0748e50363393fc462486f3679",
     "doi": "10.1007/978-1-4020-5460-0_11",
-    "type": "Book chapter"
+    "type": "Chapitre de livre"
   },
   {
     "title": "Experimental and theoretical study of line shift and mixing in the ν4 band of NH3 perturbed by N2",
@@ -3519,7 +3525,7 @@ const articles = [
     "source": "Journal of Quantitative Spectroscopy and Radiative Transfer",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-34548180147&doi=10.1016%2fj.jqsrt.2007.02.010&partnerID=40&md5=6f0f323472416bc854c03e05f8de79e3",
     "doi": "10.1016/j.jqsrt.2007.02.010",
-    "type": "Review"
+    "type": "Revue"
   },
   {
     "title": "Diode-laser measurements of O2, N2 and air-pressure broadening and shifting of NH3 in the 10 μm spectral region",
@@ -3591,7 +3597,7 @@ const articles = [
     "source": "Progress in Theoretical Chemistry and Physics",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85129138607&doi=10.1007%2f1-4020-4528-X_18&partnerID=40&md5=9a93ece5048713305accdf4e07f7f121",
     "doi": "10.1007/1-4020-4528-X_18",
-    "type": "Book chapter"
+    "type": "Chapitre de livre"
   },
   {
     "title": "The effect of increasing the excitation level of the sodium atom on the structure of the Na*Arn polyatomic exciplexes",
@@ -3744,7 +3750,7 @@ const articles = [
     "source": "Journal of Business Ethics",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-21644458498&doi=10.1007%2fs10551-005-1402-y&partnerID=40&md5=ef77b1c7582d7ffd6feb88a3340a4148",
     "doi": "10.1007/s10551-005-1402-y",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Community-level application of ISCT when norms collide: Access to HIV medicines in South Africa",
@@ -3753,7 +3759,7 @@ const articles = [
     "source": "Academy of Management Annual Meeting Proceedings",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85207389651&doi=10.5465%2fambpp.2005.18783517&partnerID=40&md5=06515bd9c1d3ab6df9f5cb35defa0733",
     "doi": "10.5465/ambpp.2005.18783517",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Helium- and argon-broadening coefficients of phosphine lines in the ν2 and ν4 bands",
@@ -3834,7 +3840,7 @@ const articles = [
     "source": "Journal of Business Ethics",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-0141782306&doi=10.1023%2fA%3a1014296128397&partnerID=40&md5=168cef0ba138f16b0514fdc8b7bc571f",
     "doi": "10.1023/A:1014296128397",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "Experimental and theoretical study of line mixing in NH3 spectra - I. Scaling analysis of parallel bands perturbed by He",
@@ -3915,7 +3921,7 @@ const articles = [
     "source": "Proceedings of SPIE - The International Society for Optical Engineering",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-58649092866&doi=10.1117%2f12.267749&partnerID=40&md5=e9f86ae4fc6e8ee9adddaf860dba244e",
     "doi": "10.1117/12.267749",
-    "type": "Conference paper"
+    "type": "Communication dans un congrès"
   },
   {
     "title": "The TiO c1Φ-a1 Δ (0-0) band at sub-doppler spectral resolution: Spin-orbit interactions in the c state",
@@ -4014,6 +4020,573 @@ const articles = [
     "source": "Molecular Physics",
     "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84916719914&doi=10.1080%2f00268978000101691&partnerID=40&md5=5eb668721a4bb5e6e051b7c1690edb93",
     "doi": "10.1080/00268978000101691",
+    "type": "Article"
+  },
+  {
+    "title": "Ab Initio Quantum Dynamics as a Scalable Solution to the Exoplanet Opacity Challenge: A Case Study of CO2 in a Hydrogen Atmosphere",
+    "authors": "",
+    "year": 2025,
+    "source": "Astrophysical Journal",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-86000142316&doi=10.3847%2f1538-4357%2fadb02e&partnerID=40&md5=2bd195734784829caaeabcaf5cfc8b31",
+    "doi": "10.3847/1538-4357/adb02e",
+    "type": "Article"
+  },
+  {
+    "title": "Rotational excitation and de-excitation of interstellar chloronium cation in collisions with helium atoms",
+    "authors": "",
+    "year": 2024,
+    "source": "Monthly Notices of the Royal Astronomical Society",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85188585345&doi=10.1093%2fmnras%2fstae620&partnerID=40&md5=9245755eda8bc8b4d2d96a5bc38614f8",
+    "doi": "10.1093/mnras/stae620",
+    "type": "Article"
+  },
+  {
+    "title": "Electronic and vibrational spectroscopy of the low-lying states of potassium mono-sulphide KS, and comparison in the series of MS (M = Li, Na, K, Rb, Cs)",
+    "authors": "",
+    "year": 2019,
+    "source": "Molecular Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85059332554&doi=10.1080%2f00268976.2018.1559957&partnerID=40&md5=56d81edddc2347949af0cfe8836cfb89",
+    "doi": "10.1080/00268976.2018.1559957",
+    "type": "Article"
+  },
+  {
+    "title": "Imidazole derivatives as angiotensin II AT1 receptor blockers: Benchmarks, drug-like calculations and quantitative structure-activity relationships modeling",
+    "authors": "",
+    "year": 2018,
+    "source": "Chemical Physics Letters",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85042287942&doi=10.1016%2fj.cplett.2018.02.048&partnerID=40&md5=47befa7cecfcaa413a97d81d2448df97",
+    "doi": "10.1016/j.cplett.2018.02.048",
+    "type": "Article"
+  },
+  {
+    "title": "Rotationally inelastic scattering of PN by para-H2( j = 0) at low/moderate temperature",
+    "authors": "",
+    "year": 2017,
+    "source": "Monthly Notices of the Royal Astronomical Society",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85052472672&doi=10.1093%2fMNRAS%2fSTX2207&partnerID=40&md5=bc3212283e41c53a8116a0f07ae978f0",
+    "doi": "10.1093/MNRAS/STX2207",
+    "type": "Article"
+  },
+  {
+    "title": "Solvation energies of the proton in ammonia explicitly versus temperature",
+    "authors": "",
+    "year": 2017,
+    "source": "Journal of Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85017094040&doi=10.1063%2f1.4979568&partnerID=40&md5=d3ed908ed8e2194c89d84ab2d5b92665",
+    "doi": "10.1063/1.4979568",
+    "type": "Article"
+  },
+  {
+    "title": "Structures and spectroscopy of medium size protonated ammonia clusters at different temperatures, H+(NH3)10 - 16                     ",
+    "authors": "",
+    "year": 2017,
+    "source": "Journal of Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85011003517&doi=10.1063%2f1.4974179&partnerID=40&md5=3edf96c8de42f6855479e7162a7b8f41",
+    "doi": "10.1063/1.4974179",
+    "type": "Article"
+  },
+  {
+    "title": "Rotational transitions induced by collisions of HD+ ions with low-energy electrons",
+    "authors": "",
+    "year": 2014,
+    "source": "Physical Review A - Atomic, Molecular, and Optical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84904609906&doi=10.1103%2fPhysRevA.90.012706&partnerID=40&md5=8595122eea1301250cc848c67a2b8de2",
+    "doi": "10.1103/PhysRevA.90.012706",
+    "type": "Article"
+  },
+  {
+    "title": "ETOP, the reference conference in education and training in optics and photonics. An overview of the 12th edition",
+    "authors": "",
+    "year": 2014,
+    "source": "Proceedings of SPIE - The International Society for Optical Engineering",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84922802321&doi=10.1117%2f12.2061211&partnerID=40&md5=d6e4ecb7828523c235ccec479688df09",
+    "doi": "10.1117/12.2061211",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Workshop on active learning: Two examples",
+    "authors": "",
+    "year": 2014,
+    "source": "Proceedings of SPIE - The International Society for Optical Engineering",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84923863310&doi=10.1117%2f12.2070726&partnerID=40&md5=73946c325c8c33c45558e9e79b728f8c",
+    "doi": "10.1117/12.2070726",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Active learning in optics and photonics: Fraunhofer diffraction",
+    "authors": "",
+    "year": 2014,
+    "source": "Proceedings of SPIE - The International Society for Optical Engineering",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84923878846&doi=10.1117%2f12.2070776&partnerID=40&md5=f1c53a2e56c8c60305010c2ee5e09f86",
+    "doi": "10.1117/12.2070776",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Solvation energies of the proton in methanol",
+    "authors": "",
+    "year": 2013,
+    "source": "Journal of Chemical Theory and Computation",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84873686445&doi=10.1021%2fct300669v&partnerID=40&md5=b3a08f2a308cd78f3b99098c2fcf74f5",
+    "doi": "10.1021/ct300669v",
+    "type": "Article"
+  },
+  {
+    "title": "Bose-Einstein condensation with a finite number of particles in a power-law trap",
+    "authors": "",
+    "year": 2011,
+    "source": "Physical Review A - Atomic, Molecular, and Optical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-79952090487&doi=10.1103%2fPhysRevA.83.023616&partnerID=40&md5=50a9988f8445eb4849aa7927f012ad92",
+    "doi": "10.1103/PhysRevA.83.023616",
+    "type": "Article"
+  },
+  {
+    "title": "The σv reflection symmetry in variational R-matrix theory: Application to Rydberg and doubly-excited states of 1Σ g+ and 1Σg- symmetries in diatomic hydrogen",
+    "authors": "",
+    "year": 2011,
+    "source": "Journal of Physics: Conference Series",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-80051679370&doi=10.1088%2f1742-6596%2f300%2f1%2f012013&partnerID=40&md5=e3d7112dc55d09edd3c16c81883c3ab9",
+    "doi": "10.1088/1742-6596/300/1/012013",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Quantitative analysis of pathological nails using laser-induced breakdown spectroscopy (LIBS) technique",
+    "authors": "",
+    "year": 2011,
+    "source": "Lasers in Medical Science",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-79952278175&doi=10.1007%2fs10103-010-0821-x&partnerID=40&md5=e98618251ee7667be99778aa00025680",
+    "doi": "10.1007/s10103-010-0821-x",
+    "type": "Article"
+  },
+  {
+    "title": "Rotational excitation of aluminium monofluoride (AlF) by He atom at low temperature",
+    "authors": "",
+    "year": 2011,
+    "source": "Astrophysics and Space Science",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-79551682339&doi=10.1007%2fs10509-010-0495-7&partnerID=40&md5=af0ea09db708a310aabea44631d5903c",
+    "doi": "10.1007/s10509-010-0495-7",
+    "type": "Article"
+  },
+  {
+    "title": "Bose-Einstein condensation in dark power-law laser traps",
+    "authors": "",
+    "year": 2010,
+    "source": "Physical Review A - Atomic, Molecular, and Optical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-77956272756&doi=10.1103%2fPhysRevA.82.023613&partnerID=40&md5=2979eae90bce73de64db2413cd5034c7",
+    "doi": "10.1103/PhysRevA.82.023613",
+    "type": "Article"
+  },
+  {
+    "title": "Electronic states of MgO: Spectroscopy, predissociation, and cold atomic Mg and O production",
+    "authors": "",
+    "year": 2010,
+    "source": "Journal of Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-77958109703&doi=10.1063%2f1.3498900&partnerID=40&md5=fd12ab72ec379c4e524d9e9f9a728f40",
+    "doi": "10.1063/1.3498900",
+    "type": "Article"
+  },
+  {
+    "title": "Active learning in optics and photonics (ALOP): A model for teacher training and professional development",
+    "authors": "",
+    "year": 2010,
+    "source": "Proceedings of SPIE - The International Society for Optical Engineering",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-78649876684&doi=10.1117%2f12.860708&partnerID=40&md5=e291589422ee75c2860051b0b5319696",
+    "doi": "10.1117/12.860708",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Alternative choices of Coulomb channel functions",
+    "authors": "",
+    "year": 2009,
+    "source": "Physical Review A - Atomic, Molecular, and Optical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-66049123101&doi=10.1103%2fPhysRevA.79.042717&partnerID=40&md5=8e034b6f0038f247e8588eaa61f543ad",
+    "doi": "10.1103/PhysRevA.79.042717",
+    "type": "Article"
+  },
+  {
+    "title": "Controlled deflection of cold atomic clouds and of bose-einstein condensates",
+    "authors": "",
+    "year": 2009,
+    "source": "European Physical Journal D",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-67449085009&doi=10.1140%2fepjd%2fe2009-00130-9&partnerID=40&md5=43fb8e43fe8bdd528b33291745fd3a06",
+    "doi": "10.1140/epjd/e2009-00130-9",
+    "type": "Article"
+  },
+  {
+    "title": "Rotational excitation and de-excitation of C2 (X 1∑ g+) by para- H2 (j=0)",
+    "authors": "",
+    "year": 2009,
+    "source": "Journal of Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-66749125284&doi=10.1063%2f1.3137583&partnerID=40&md5=401319500c809ed2c419c4ea52b05040",
+    "doi": "10.1063/1.3137583",
+    "type": "Article"
+  },
+  {
+    "title": "Personal professional development",
+    "authors": "",
+    "year": 2009,
+    "source": "AIP Conference Proceedings",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-67650561830&doi=10.1063%2f1.3137917&partnerID=40&md5=e790653ade0ca7dc16dbe6144b7758ce",
+    "doi": "10.1063/1.3137917",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Using mobile camera for a better exploitation and understanding of interference and diffraction experiments",
+    "authors": "",
+    "year": 2009,
+    "source": "Proceedings of SPIE - The International Society for Optical Engineering",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84951132288&doi=10.1117%2f12.2208079&partnerID=40&md5=fa6eb883707b31d0a2ec2faea3f2613c",
+    "doi": "10.1117/12.2208079",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Using mobile camera for a better exploitation and understanding of interference and diffraction experiments",
+    "authors": "",
+    "year": 2009,
+    "source": "Optics InfoBase Conference Papers",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84897970747&partnerID=40&md5=45e31d12e670b387a96125cb6f472c8a",
+    "doi": "",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "A simple wavelength division multiplexing system for active learning teaching",
+    "authors": "",
+    "year": 2009,
+    "source": "Optics InfoBase Conference Papers",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84898006142&partnerID=40&md5=1e2fe6f3826691751cbf34038912589a",
+    "doi": "",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Rotationally inelastic collisions of methinoposphide (HCP) with para- H2 at low temperature",
+    "authors": "",
+    "year": 2008,
+    "source": "Journal of Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-57149139496&doi=10.1063%2f1.3009268&partnerID=40&md5=bf506c4ca9dae2e6877d719cef704ee2",
+    "doi": "10.1063/1.3009268",
+    "type": "Article"
+  },
+  {
+    "title": "Spectroscopy and metastability of BeO+                     ",
+    "authors": "",
+    "year": 2008,
+    "source": "Journal of Physics B: Atomic, Molecular and Optical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-58149277488&doi=10.1088%2f0953-4075%2f41%2f20%2f205101&partnerID=40&md5=80ac0e40ee76a043fbd066f9ca24b2b3",
+    "doi": "10.1088/0953-4075/41/20/205101",
+    "type": "Article"
+  },
+  {
+    "title": "Theoretical investigation of excited and Rydberg states of imidogen radical NH: Potential energy curves, spectroscopic constants, and dipole moment functions",
+    "authors": "",
+    "year": 2007,
+    "source": "Journal of Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-34547244150&doi=10.1063%2f1.2741260&partnerID=40&md5=742581ce92f83703330a130a974b6a7d",
+    "doi": "10.1063/1.2741260",
+    "type": "Article"
+  },
+  {
+    "title": "Spectroscopy and metastability of the HSS- anion",
+    "authors": "",
+    "year": 2007,
+    "source": "Molecular Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-34347242494&doi=10.1080%2f00268970701196975&partnerID=40&md5=3e5f127b30e268e911f5873a2c429891",
+    "doi": "10.1080/00268970701196975",
+    "type": "Article"
+  },
+  {
+    "title": "Spectroscopy and metastability of the HSS- anion",
+    "authors": "",
+    "year": 2007,
+    "source": "Molecular Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-33947422860&doi=10.1080%2f00268970701196975&partnerID=40&md5=9859be3282aaf4a8b5d6e380e466be25",
+    "doi": "10.1080/00268970701196975",
+    "type": "Article"
+  },
+  {
+    "title": "The first steps for learning optics: Ibn Sahl's, Al-Haytham's and Young's works on refraction as typical examples",
+    "authors": "",
+    "year": 2007,
+    "source": "Proceedings of SPIE - The International Society for Optical Engineering",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84951006041&doi=10.1117%2f12.2207465&partnerID=40&md5=98c4e9af63476e8d7555623ba895a2c7",
+    "doi": "10.1117/12.2207465",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Active learning in physics a way for rational thinking - A way for development",
+    "authors": "",
+    "year": 2007,
+    "source": "Optics InfoBase Conference Papers",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84898827471&partnerID=40&md5=6d35c77fdbc269b7cc35c05390e7bc38",
+    "doi": "",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "The first steps for learning optics: Ibn Sahl's, Al-Haytham's and Young's works on refraction as typical examples",
+    "authors": "",
+    "year": 2007,
+    "source": "Optics InfoBase Conference Papers",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84898790410&partnerID=40&md5=4a7208608d460ea5cf85fb4d56cc599e",
+    "doi": "",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Theoretical study of a cold-atom beam splitter",
+    "authors": "",
+    "year": 2006,
+    "source": "Physical Review A - Atomic, Molecular, and Optical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-33747785248&doi=10.1103%2fPhysRevA.74.023620&partnerID=40&md5=c8be9ab513c816bf9028f9a79f8b4542",
+    "doi": "10.1103/PhysRevA.74.023620",
+    "type": "Article"
+  },
+  {
+    "title": "How and why I built a research laboratory",
+    "authors": "",
+    "year": 2006,
+    "source": "AIP Conference Proceedings",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-33750071430&doi=10.1063%2f1.2128271&partnerID=40&md5=64c2bc0c4c093fd6a41a1b1e3ffe60c7",
+    "doi": "10.1063/1.2128271",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Tunisia and the new technology - Contribution of women",
+    "authors": "",
+    "year": 2006,
+    "source": "AIP Conference Proceedings",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-33750041650&doi=10.1063%2f1.2128316&partnerID=40&md5=c7add53ca4936686629b80198684335d",
+    "doi": "10.1063/1.2128316",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "DFT study of ground state proton transfer in 2-pyridone/2-hydroxypyridine- ammonia clusters",
+    "authors": "",
+    "year": 2005,
+    "source": "Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-14844360040&doi=10.1016%2fj.chemphys.2004.11.022&partnerID=40&md5=1ecc24d1bb0819547637f6ebecc51631",
+    "doi": "10.1016/j.chemphys.2004.11.022",
+    "type": "Article"
+  },
+  {
+    "title": "Following the light: Opening doors to science in Tunisia",
+    "authors": "",
+    "year": 2005,
+    "source": "Science",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-28544443161&doi=10.1126%2fscience.1115181&partnerID=40&md5=57e947e88379a0e6cf673da1c337d80d",
+    "doi": "10.1126/science.1115181",
+    "type": "Revue"
+  },
+  {
+    "title": "Active learning in optics and photonics; experiences in Africa",
+    "authors": "",
+    "year": 2005,
+    "source": "Proceedings of SPIE - The International Society for Optical Engineering",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84951309860&doi=10.1117%2f12.2207699&partnerID=40&md5=cda18d74329e0b2380e42ab2a5fc2dd8",
+    "doi": "10.1117/12.2207699",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Popularisation of optical phenomena: Establishing the first Ibn Al-Haytham workshop on photography",
+    "authors": "",
+    "year": 2005,
+    "source": "Proceedings of SPIE - The International Society for Optical Engineering",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-84951309868&doi=10.1117%2f12.2207764&partnerID=40&md5=2cb71fe196bce756412c655ea3c8210f",
+    "doi": "10.1117/12.2207764",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Variational R-matrix calculations for singly and doubly excited singlet gerade channels in H2",
+    "authors": "",
+    "year": 2004,
+    "source": "Physical Review A - Atomic, Molecular, and Optical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-69649108387&doi=10.1103%2fPhysRevA.70.012713&partnerID=40&md5=8943ba048a9270a615f6726d7e686ea5",
+    "doi": "10.1103/PhysRevA.70.012713",
+    "type": "Article"
+  },
+  {
+    "title": "Structural isomers and tautomerism of chlorophyll a in the ground state studied by semiempirical MNDO-d method",
+    "authors": "",
+    "year": 2004,
+    "source": "Journal of Molecular Structure: THEOCHEM",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-3543046777&doi=10.1016%2fj.theochem.2004.05.023&partnerID=40&md5=75fcc693af4e804e2e09d8551a48deee",
+    "doi": "10.1016/j.theochem.2004.05.023",
+    "type": "Article"
+  },
+  {
+    "title": "New ab initio potential energy surface for the (HOCO+-He) van der Waals complex",
+    "authors": "",
+    "year": 2004,
+    "source": "Journal of Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-3242882074&doi=10.1063%2f1.1756864&partnerID=40&md5=494fc5614599c9957fa0d526fa0b8f8d",
+    "doi": "10.1063/1.1756864",
+    "type": "Article"
+  },
+  {
+    "title": "One-electron pseudopotential calculations of electronic properties of NaArn: Low-energy isomers and absorption spectra",
+    "authors": "",
+    "year": 2004,
+    "source": "International Journal of Quantum Chemistry",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-4344667431&doi=10.1002%2fqua.10844&partnerID=40&md5=1fe63e580858a94bfa2a7d93d916791f",
+    "doi": "10.1002/qua.10844",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Crystal structure of 3,4,5,6-tetrahydrophthalic anhydride at 150 K",
+    "authors": "",
+    "year": 2004,
+    "source": "Helvetica Chimica Acta",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-3142781489&doi=10.1002%2fhlca.200490140&partnerID=40&md5=421c423ae887676b1b3df94a08341d3b",
+    "doi": "10.1002/hlca.200490140",
+    "type": "Article"
+  },
+  {
+    "title": "R-matrix implementation giving well-behaved quantum defect matrices of molecular hydrogen",
+    "authors": "",
+    "year": 2003,
+    "source": "Physical Review A - Atomic, Molecular, and Optical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-1142304433&partnerID=40&md5=c381402fe60fb71b7ab7834ec5431428",
+    "doi": "",
+    "type": "Article"
+  },
+  {
+    "title": "[Formula Presented]-matrix implementation giving well-behaved quantum defect matrices of molecular hydrogen",
+    "authors": "",
+    "year": 2003,
+    "source": "Physical Review A - Atomic, Molecular, and Optical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85037223854&doi=10.1103%2fPhysRevA.68.062704&partnerID=40&md5=b53678bc4ce8cb954cfc8b53d86afdc5",
+    "doi": "10.1103/PhysRevA.68.062704",
+    "type": "Article"
+  },
+  {
+    "title": "Ab initio transition state theory calculation of the rate constant for the hydrogen abstraction reaction H2O2+H→H2+HO2",
+    "authors": "",
+    "year": 2003,
+    "source": "Journal of Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-0037439936&doi=10.1063%2f1.1527920&partnerID=40&md5=2cf07db7bc62f2926fcd535af1f103e6",
+    "doi": "10.1063/1.1527920",
+    "type": "Article"
+  },
+  {
+    "title": "Ab initio study of the hydrogen abstraction reaction H2O 2 + OH → HO2 + H2O",
+    "authors": "",
+    "year": 2003,
+    "source": "Journal of Molecular Structure: THEOCHEM",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-17144464883&doi=10.1016%2fj.theochem.2003.09.007&partnerID=40&md5=4a936bda7c2f87a2d59316974e0845ae",
+    "doi": "10.1016/j.theochem.2003.09.007",
+    "type": "Article"
+  },
+  {
+    "title": "Short-range order in liquid N-methylformamide HCONHCH3, as studied by x-ray scattering and density functional theory calculations",
+    "authors": "",
+    "year": 2003,
+    "source": "Journal of Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-0042882218&doi=10.1063%2f1.1592513&partnerID=40&md5=35ed1f09631caf44f80369b93cf7474f",
+    "doi": "10.1063/1.1592513",
+    "type": "Article"
+  },
+  {
+    "title": "Inelastic collision cross sections of CH(X2Π) with He(1S) on new ab initio surfaces",
+    "authors": "",
+    "year": 2003,
+    "source": "Journal of Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-0037329553&doi=10.1063%2f1.1533010&partnerID=40&md5=b14201fce620fc4c3a9d233b0c3537f4",
+    "doi": "10.1063/1.1533010",
+    "type": "Article"
+  },
+  {
+    "title": "Theoretical study of the kinetics of the hydrogen abstraction reaction H2O2 + O(3P) → OH + HO2",
+    "authors": "",
+    "year": 2003,
+    "source": "Journal of Molecular Structure: THEOCHEM",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-17344374407&doi=10.1016%2fj.theochem.2003.09.005&partnerID=40&md5=7229241f4ba662ec53944f4614538de8",
+    "doi": "10.1016/j.theochem.2003.09.005",
+    "type": "Article"
+  },
+  {
+    "title": "Electronic structure and spectroscopy of the ground and excited states of the HMgO and HMgS radicals",
+    "authors": "",
+    "year": 2003,
+    "source": "Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-1042274896&doi=10.1016%2fj.chemphys.2003.08.010&partnerID=40&md5=95396d895d46a10cedcb38862f0b7b01",
+    "doi": "10.1016/j.chemphys.2003.08.010",
+    "type": "Article"
+  },
+  {
+    "title": "Theoretical study of the MgSH radical",
+    "authors": "",
+    "year": 2003,
+    "source": "Journal of Molecular Structure: THEOCHEM",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-0041375532&doi=10.1016%2fS0166-1280%2803%2900382-8&partnerID=40&md5=dd433eb30f04aa8d06fee0694dcb7bde",
+    "doi": "10.1016/S0166-1280(03)00382-8",
+    "type": "Article"
+  },
+  {
+    "title": "SPATIO-TEMPORAL STUDY OF LASER INDUCED PLASMA ON WATER SURFACE OF IONIC SOLUTIONS",
+    "authors": "",
+    "year": 2002,
+    "source": "Optics InfoBase Conference Papers",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-85136173610&partnerID=40&md5=4bf033029d6f66043029e9fd324ffb90",
+    "doi": "",
+    "type": "Communication dans un congrès"
+  },
+  {
+    "title": "Electronic states of HNO+ and HON+                     ",
+    "authors": "",
+    "year": 2001,
+    "source": "Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-0035894954&doi=10.1016%2fS0301-0104%2801%2900512-2&partnerID=40&md5=81a933cdb9584c77f7238e0c90c9881e",
+    "doi": "10.1016/S0301-0104(01)00512-2",
+    "type": "Article"
+  },
+  {
+    "title": "A study of the reactions CH4 + OH → CH3 + H2O and C2H6 + OH → C2H5 + H2O by ab initio and DFT calculations",
+    "authors": "",
+    "year": 1999,
+    "source": "Journal de Chimie Physique et de Physico-Chimie Biologique",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-0344759174&doi=10.1051%2fjcp%3a1999162&partnerID=40&md5=09f0a134069bfabe9f8d5cc5df0e3fa3",
+    "doi": "10.1051/jcp:1999162",
+    "type": "Article"
+  },
+  {
+    "title": "Modélisation moléculaire et calcul des fréquences de vibration du sousréseau perovskite dans CH3NH3PbCl3",
+    "authors": "",
+    "year": 1999,
+    "source": "Canadian Journal of Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-0242488735&doi=10.1139%2fcjp-77-9-717&partnerID=40&md5=727d018b38cb36ed134bf4316a6f970b",
+    "doi": "10.1139/cjp-77-9-717",
+    "type": "Article"
+  },
+  {
+    "title": "Semiclassical collisional functions in a non ideal plasma",
+    "authors": "",
+    "year": 1997,
+    "source": "Astronomy and Astrophysics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-3142592387&partnerID=40&md5=fe57a593037c93e343a6b3bed0a03cb6",
+    "doi": "",
+    "type": "Article"
+  },
+  {
+    "title": "Theoretical study of the x2b1, a2a1 and 2b2 states of h2se+",
+    "authors": "",
+    "year": 1996,
+    "source": "Journal of Molecular Structure: THEOCHEM",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-30244466264&doi=10.1016%2f0166-1280%2896%2904477-6&partnerID=40&md5=67c1dee7734136091f219c7474ae8632",
+    "doi": "10.1016/0166-1280(96)04477-6",
+    "type": "Article"
+  },
+  {
+    "title": "Theoretical spectroscopic data for the X2B1 and A2A1 states of H2S+",
+    "authors": "",
+    "year": 1995,
+    "source": "Journal of Molecular Structure: THEOCHEM",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-0038085168&doi=10.1016%2f0166-1280%2894%2903969-R&partnerID=40&md5=d7d6e0e8bb806ba20c871818874149ee",
+    "doi": "10.1016/0166-1280(94)03969-R",
+    "type": "Article"
+  },
+  {
+    "title": "Ro-vibronic spectrum of the N2O+ ion in the X 2Π state",
+    "authors": "",
+    "year": 1993,
+    "source": "Chemical Physics",
+    "link": "https://www.scopus.com/inward/record.uri?eid=2-s2.0-21344477042&doi=10.1016%2f0301-0104%2893%2985063-E&partnerID=40&md5=0c480a81e7f0593fd041a0d0d6e03cdb",
+    "doi": "10.1016/0301-0104(93)85063-E",
     "type": "Article"
   }
 ];
@@ -4462,7 +5035,7 @@ function updateYearOptions(selectedType, previousYear) {
 
 function updateTypeOptions(selectedYear, previousType) {
   const typeFilter = document.getElementById('typeFilter');
-  typeFilter.innerHTML = '<option value="">Tous les types</option>';
+  typeFilter.innerHTML = '<option value="">Tous les types de documents</option>';
 
   const keyword = document.getElementById('keywordInput').value.toLowerCase();
 
@@ -4489,34 +5062,55 @@ function updateTypeOptions(selectedYear, previousType) {
   }
 }
 </script>
+
 <script>
 
 function exportToExcel() {
-  let table = "<table><tr><th>Titre</th><th>Auteurs</th><th>Année</th><th>Type</th><th>Source</th><th>DOI</th></tr>";
-  const data = articles.filter(article => {
-    const keyword = document.getElementById('keywordInput').value.toLowerCase();
-    const year = document.getElementById('yearFilter').value;
-    const type = document.getElementById('typeFilter').value;
+  const keyword = document.getElementById('keywordInput').value.toLowerCase();
+  const year = document.getElementById('yearFilter').value;
+  const type = document.getElementById('typeFilter').value;
+
+  const filteredArticles = articles.filter(article => {
     const matchKeyword = article.title.toLowerCase().includes(keyword) || article.authors.toLowerCase().includes(keyword);
     const matchYear = !year || article.year == year;
     const matchType = !type || article.type === type;
     return matchKeyword && matchYear && matchType;
   });
-  data.forEach(article => {
-    table += `<tr>
-                <td>${article.title || ''}</td>
-                <td>${article.authors || ''}</td>
-                <td>${article.year || ''}</td>
-                <td>${article.type || ''}</td>
-                <td>${article.source || ''}</td>
-                <td>${article.doi || ''}</td>
-              </tr>`;
+
+  let table = `<table border="1">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Auteurs</th>
+        <th>Année</th>
+        <th>Type</th>
+        <th>Source</th>
+        <th>DOI</th>
+        <th>Lien</th>
+      </tr>
+    </thead>
+    <tbody>`;
+
+  filteredArticles.forEach(article => {
+    table += `
+      <tr>
+        <td>${article.title || ''}</td>
+        <td>${article.authors || ''}</td>
+        <td>${article.year || ''}</td>
+        <td>${article.type || ''}</td>
+        <td>${article.source || ''}</td>
+        <td>${article.doi || ''}</td>
+        <td><a href="${article.link}" target="_blank">${article.link}</a></td>
+      </tr>`;
   });
-  table += "</table>";
-  const uri = 'data:application/vnd.ms-excel;base64,' + btoa(unescape(encodeURIComponent(table)));
+
+  table += `</tbody></table>`;
+
+  // Création du fichier Excel
+  const blob = new Blob([table], { type: 'application/vnd.ms-excel' });
   const link = document.createElement('a');
-  link.href = uri;
-  link.download = "articles.xls";
+  link.href = URL.createObjectURL(blob);
+  link.download = "productions_scientifiques_LSAMA.xls";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -4604,7 +5198,7 @@ function exportToExcel() {
       }
     });
 
-    doc.save("publications_scientifiques.pdf");
+    doc.save("publications_scientifiques_LSAMA.pdf");
   }
 
   function getFilteredArticles() {
@@ -4620,6 +5214,26 @@ function exportToExcel() {
     });
   }
 
+</script>
+<script>
+  const articlesPerPage = 20;
+  let curentPage = 1;
+  const totalArticles = articles.length;
+  const totalPages = Math.ceil(totalArticles / articlesPerPage);
+
+  function updateResultCount() {
+    const resultCountDiv = document.getElementById('resultCount');
+    resultCountDiv.innerHTML = `<strong>${totalArticles} publications correspondantes</strong> - page ${curentPage} sur ${totalPages}`;
+  }
+
+  function displayPage(page) {
+    currentPage = page;
+    updateResultCount();
+    // TODO: ajouter la logique d’affichage des articles ici
+  }
+
+  // Initialiser au chargement
+  updateResultCount();
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>

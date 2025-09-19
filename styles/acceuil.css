@@ -125,6 +125,45 @@ body{
     .btn:hover {
       background-color: #155ab6;
     }
+
+    .team-cards {
+  display: flex;
+  padding: 60px 70px;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.team-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  flex: 1 1 220px;
+  max-width: 260px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-card img {
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.team-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.team-card p {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 20px;
+}
 /* Bouton retour en haut */
 #backToTop {
   position: fixed;

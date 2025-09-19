@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Production Scientifique|LSAMA</title>
+<link href="images\logoLSAMA.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link href="styles/equipe-de-recherche.css" rel="stylesheet"/>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+  <script>
+    // Charger navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+
+        // Après insertion, marquer le lien actif
+        const links = document.querySelectorAll('#navbar-container a.link-green');
+        const currentPage = window.location.pathname.split('/').pop();
+
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === currentPage || (href === 'presentation.html' && currentPage === '')) {
+            link.classList.add('active');
+          }
+        });
+      })
+      .catch(err => console.error('Erreur chargement navbar:', err));
+  </script>
+<main>
+      <div class="breadcrumb">
+    <a href="acceuil-lsama.html">Accueil</a> &gt;  Les équipes de LSAMA 
+  </div>
+
+  <h1>Les équipes de LSAMA</h1>
+
+  <div class="intro">
+    Laboratoire de Spectroscopie Atomique et Moléculaire & Applications est organisée en
+    <strong>4 équipes</strong> ayant une large autonomie scientifique.
+  </div>
+
+  <div class="team-cards">
+    <div class="team-card">
+      <img src="images\icon\atomes froid.jpg" alt="2PM Icon" />
+      <h3>DMEAF</h3>
+      <p>Dynamique des Molécules Excitées et Atomes Froids</p>
+      <a href="#" class="btn">En savoir plus</a>
+    </div>
+
+    <div class="team-card">
+      <img src="images\icon\Astrophysique et Atmosphérique.jpg" alt="COCP Icon" />
+      <h3>SDMI2A</h3>
+      <p>Structure et Dynamique de Molécules d’Intérêt Astrophysique et Atmosphérique</p>
+      <a href="#" class="btn">En savoir plus</a>
+    </div>
+
+    <div class="team-card">
+      <img src="images\icon\pharmaceutique.png" alt="I2E Icon" />
+      <h3>MIBP</h3>
+      <p>Molécules d’Intérêt Biologique et Pharmaceutiques</p>
+      <a href="#" class="btn">En savoir plus</a>
+    </div>
+
+    <div class="team-card">
+      <img src="images\icon\Expériences LIBS et Fluorescence.png" alt="MPOE Icon" />
+      <h3>ELIBSF</h3>
+      <p>Expériences LIBS et Fluorescence</p>
+      <a href="#" class="btn">En savoir plus</a>
+    </div>
+  </div>
+
+<button id="backToTop" title="Retour en haut">↑</button>
+</main>
+<div id="footer-container"></div>
+<script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+</script>
+<script src="js/scroll.js">
+</script>
+</body>
+</html>
