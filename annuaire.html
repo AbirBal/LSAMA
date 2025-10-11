@@ -21,7 +21,7 @@
         document.getElementById('navbar-container').innerHTML = data;
 
         // Après insertion, marquer le lien actif
-        const links = document.querySelectorAll('#navbar-container a.lightgreen');
+        const links = document.querySelectorAll('#navbar-container a.link-lightgreen');
         const currentPage = window.location.pathname.split('/').pop();
 
         links.forEach(link => {
