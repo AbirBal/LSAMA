@@ -4,7 +4,18 @@
       margin: 0;
       padding: 20px;
     }
-
+.breadcrumb {
+  margin: 20px;
+  font-size: 14px;
+}
+.breadcrumb a {
+  font-size: 1rem;
+  text-decoration: none;
+  color:lightcoral
+}
+.breadcrumb a:hover{
+  text-decoration: none
+}
     h1 {
       text-align: center;
       color: #003366;
