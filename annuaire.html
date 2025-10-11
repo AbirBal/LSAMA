@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Annuaire | LSAMA</title>
+  <link rel="icon" href="images/logoLSAMA.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/annaire.css" />
+</head>
+
+<body>
+ <div id="navbar-container"></div>
+
+  <script>
+    // Charger navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+
+        // Après insertion, marquer le lien actif
+        const links = document.querySelectorAll('#navbar-container a.lightgreen');
+        const currentPage = window.location.pathname.split('/').pop();
+
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === currentPage || (href === 'presentation.html' && currentPage === '')) {
+            link.classList.add('active');
+          }
+        });
+      })
+      .catch(err => console.error('Erreur chargement navbar:', err));
+  </script>
+
+</head>
+<main>
+<h1>Annuaire</h1>
+
+<table id="annuaireTable">
+  <thead>
+    <tr>
+      <th onclick="sortTable(0)">Nom et prénom</th>
+      <th onclick="sortTable(1)">Téléphone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Mourad Telmini</td><td>98417878</td></tr>
+    <tr><td>Fehmi Khadri</td><td>20557752</td></tr>
+    <tr><td>Soumaya Bezzaouia</td><td>98651102</td></tr>
+    <tr><td>Rym Bochendira</td><td>98434616</td></tr>
+    <tr><td>Souad Lahmar</td><td>29251660</td></tr>
+    <tr><td>Ounais Yazidi</td><td>28141130</td></tr>
+    <tr><td>Kamel Hammami</td><td>98612221</td></tr>
+  </tbody>
+</table>
+</main>
+<div id="footer-container"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer-container").innerHTML = data;
+      });
+  </script>
+<script>
+  // Fonction pour trier le tableau par colonne
+  function sortTable(n) {
+    let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("annuaireTable");
+    switching = true;
+    dir = "asc"; 
+
+    while (switching) {
+      switching = false;
+      rows = table.rows;
+      for (i = 1; i < (rows.length - 1); i++) {
+        shouldSwitch = false;
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        if (dir == "asc") {
+          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        switchcount ++;
+      } else {
+        if (switchcount == 0 && dir == "asc") {
+          dir = "desc";
+          switching = true;
+        }
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

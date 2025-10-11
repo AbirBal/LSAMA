@@ -1,0 +1,110 @@
+body {
+  font-family: 'Merriweather', serif;
+  margin: 0;
+  background: #f5f8ff;
+  color: #222;
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px 10px;
+}
+
+header h1 {
+  color: #155ab6;
+  margin-bottom: 10px;
+}
+
+.breadcrumb {
+  margin: 20px;
+  font-size: 14px;
+}
+.breadcrumb a {
+  font-size: 1rem;
+  text-decoration: none;
+  color:lightcoral
+}
+.breadcrumb a:hover{
+  text-decoration: none
+}
+.search-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#searchInput {
+  width: 80%;
+  max-width: 500px;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.news-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 20px 40px 60px;
+}
+
+.news-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+justify-content: center;   /* centre horizontalement */
+  align-items: center; 
+}
+
+.news-card:hover {
+  transform: translateY(-6px);
+}
+
+.news-card img {
+  width: 70%;
+  height: 180px;
+  object-fit: contain;
+  justify-content: center}
+
+.news-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.news-content h3 {
+  color: #155ab6;
+  margin-top: 0;
+}
+
+.news-content .date {
+  color: #666;
+  font-size: 14px;
+  margin: 5px 0 15px;
+}
+
+.summary {
+  flex-grow: 1;
+  font-size: 15px;
+}
+
+.btn {
+  align-self: center;
+  display: inline-block;
+  color: #155ab6;
+  border: 1px solid #155ab6;
+  border-radius: 8px;
+  padding: 8px 18px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: #155ab6;
+  color: #fff;
+}
