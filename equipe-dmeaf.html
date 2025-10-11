@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Equipe de recherche DMEAF|LSAMA</title>
+<link href="images\logoLSAMA.png" rel="icon" sizes="16x16" type="image/png"/>
+ <!-- Icônes Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  /><link href="https://fonts.googleapis.com/css2?family=Merriweather&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link href="styles/equipe-DMEAF.css" rel="stylesheet"/>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+  <script>
+    // Charger navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+
+        // Après insertion, marquer le lien actif
+        const links = document.querySelectorAll('#navbar-container a.link-green');
+        const currentPage = window.location.pathname.split('/').pop();
+
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === currentPage || (href === 'index.html' && currentPage === '')) {
+            link.classList.add('active');
+          }
+        });
+      })
+      .catch(err => console.error('Erreur chargement navbar:', err));
+  </script>
+<main>
+<div class="breadcrumb">
+    <a href="index.html">Accueil</a> &gt;  <a href="equipe-de-recherche-lsama.html"> Les équipes de LSAMA</a> &gt; Équipe DMEAF
+  </div>
+
+  <header>
+    <h1>Équipe DMEAF</h1>
+    <h2>Dynamique des molécules excitées et Atomes froids,<br>porteur Mourad Telmini</h2>
+  </header>
+
+  <section class="container">
+    <div class="content">
+      <div class="description">
+        <h3>DESCRIPTION</h3>
+        <p>
+          Les compétences de l’équipe <strong>« Dynamique des molécules excitées et Atomes froids »</strong> 
+          portent sur l’étude des interactions fondamentales entre les molécules et les champs lumineux, 
+          ainsi que sur le contrôle de leur dynamique dans des environnements ultra-froids.
+          L’équipe s’intéresse notamment aux processus de relaxation, aux collisions à basse énergie, 
+          et au développement de techniques expérimentales et théoriques pour manipuler les atomes et molécules refroidis par laser.
+        </p>
+        <p>
+          Depuis la création du groupe au sein de l’Institut de Physique, 
+          l’équipe DMAF développe des approches innovantes alliant spectroscopie, 
+          modélisation quantique et instrumentation optique avancée pour explorer les états excités 
+          et les réactions dynamiques des systèmes atomiques et moléculaires.
+        </p>
+        <p>
+          Trois grands axes de recherche structurent les activités de l’équipe :
+        </p>
+        <ul>
+          <li>Contrôle quantique des molécules excitées</li>
+          <li>Refroidissement et piégeage d’atomes et molécules</li>
+          <li>Interactions lumière-matière dans les systèmes complexes</li>
+        </ul>
+      </div>
+
+      <div class="keywords">
+        <h3>MOTS-CLÉS</h3>
+        <div class="tags">
+          <span>Molécules excitées</span>
+          <span>Atomes froids</span>
+          <span>Laser</span>
+          <span>Spectroscopie</span>
+          <span>Physique quantique</span>
+          <span>Interaction lumière-matière</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="team-section">
+    <h1>Membres permanents</h1>
+
+    <div class="team-grid">
+      <!-- Mourad Telmini -->
+      <div class="card">
+        <img src="images\equipe de recherches\mourad telmini.jpg" alt="Mourad Telmini">
+        <h2>Mourad Telmini</h2>
+        <p>Professeur</p>
+        <div class="links">
+          <a class="email" href="mailto:mourad.telmini@fst.utm.tn" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+          <a class="researchgate" href="https://www.researchgate.net/profile/Mourad-Telmini" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+          <a class="linkedin" href="https://www.linkedin.com/in/mourad-telmini-77646130/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a class="scholar" href="https://scholar.google.fr/citations?user=stpVYngAAAAJ&hl=fr&oi=sra" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+        </div>
+      </div>
+
+      <!-- Soumaya Bezzaouia -->
+      <div class="card">
+        <img src="images\equipe de recherches\soumaya bezzaouia.png" alt="Soumaya Bezzaouia">
+        <h2>Soumaya Bezzaouia</h2>
+        <p>Maître-assistante</p>
+        <div class="links">
+          <a class="email" href="mailto:soumaya.bezzaouia@fst.utm.tn" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+          <a class="researchgate" href="https://www.researchgate.net/profile/Soumaya-Bezzaouia" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+          <a class="linkedin" href="https://www.linkedin.com/in/soumaya-bezzaouia-2476a4154/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Rym Bouchendira -->
+      <div class="card">
+        <img src="images\equipe de recherches\Bouchendira-Rym.png" alt="Rym Bouchendira">
+        <h2>Rym Bouchendira</h2>
+        <p>Maître-assistante</p>
+        <div class="links">
+          <a class="email" href="mailto:rym.bouchendira@fst.utm.tn" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+          <a class="researchgate" href="https://www.researchgate.net/profile/Bouchendira-Rym" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+          <a class="linkedin" href="https://www.linkedin.com/in/rym-bouchendira-1404a6160/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Houaida Oueslati -->
+      <div class="card">
+        <img src="images\equipe de recherches\houida oueslati.png" alt="Houaida Oueslati">
+        <h2>Houaida Oueslati</h2>
+        <p>Maître-assistante</p>
+        <div class="links">
+          <a class="email" href="mailto:houaida.oueslati@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+          <a class="researchgate" href="https://www.researchgate.net/profile/Houaida-Oueslati" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+          <a class="linkedin" href="https://www.linkedin.com/in/houaida-oueslati-phd-761a7968/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Fatma Argoubi -->
+      <div class="card">
+        <img src="images\equipe de recherches\fatma argoubi.png" alt="Fatma Argoubi">
+        <h2>Fatma Argoubi</h2>
+        <p>Maître-assistante</p>
+        <div class="links">
+          <a class="email" href="mailto:fatma.argoubi@ipeiem.utm.tn" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+          <a class="researchgate" href="https://www.researchgate.net/profile/Fatma-Argoubi" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+          <a class="linkedin" href="https://www.linkedin.com/in/fatma-argoubi-363b821a1/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a class="scholar" href="https://scholar.google.com/citations?hl=en&user=BEJQ3HgAAAAJ" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+        </div>
+      </div>
+
+      <!-- Ibtissem Jendoubi -->
+      <div class="card">
+        <img src="images\equipe de recherches\icon femme.png" alt="Ibtissem Jendoubi">
+        <h2>Ibtissem Jendoubi</h2>
+        <p>Maître-assistante</p>
+        <div class="links">
+          <a class="email" href="mailto:jendoubi_ibtissem@yahoo.fr" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+          <a class="researchgate" href="https://www.researchgate.net/profile/Ibtissem-Jendoubi" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+          <a class="scholar" href="https://scholar.google.com/citations?user=y9cJowIAAAAJ&hl=en&oi=ao" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+<button id="backToTop" title="Retour en haut">↑</button>
+</main>
+<div id="footer-container"></div>
+<script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+</script>
+<script src="js/scroll.js">
+</script>
+</body>
+</html>
+

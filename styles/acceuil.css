@@ -30,7 +30,11 @@ body{
 .dot-container {
   margin-top: 0px;
 }
-
+h1{
+      color: #003366;  
+      padding: 10px 70px;
+      font-size: 1.8rem;
+}
 /* Dot de base : vide avec bordure */
 .dot {
   display: inline-block;
@@ -109,40 +113,44 @@ body{
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
     .btn {
-      display: block;
+      display:grid;
       width: fit-content;
-      margin: 30px auto 0;
-    font-family: 'Merriweather', serif;
-      background-color: #1a73e8;
-      color: white;
+      margin: 30px;
+      font-family: 'Merriweather', serif;
+      color:  #155ab6;
       padding: 10px 20px;
       font-size: 20px;
-      border: none;
+      border: solid #155ab6;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s;
+      text-decoration: none;
     }
     .btn:hover {
       background-color: #155ab6;
+      color:white;
+      text-decoration: none;
     }
-
-    .team-cards {
-  display: flex;
-  padding: 60px 70px;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
+.team-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-content: center;
+  padding: 20px;
 }
 
 .team-card {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* pousse le bouton vers le bas */
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  flex: 1 1 220px;
-  max-width: 260px;
   text-align: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s;
 }
 
 .team-card:hover {
@@ -160,9 +168,11 @@ body{
 }
 
 .team-card p {
-  font-size: 14px;
-  color: #444;
-  margin-bottom: 20px;
+   flex-grow: 1; /* permet au texte de remplir la hauteur */
+  font-family: 'Merriweather', serif;
+  color: #333;
+  font-size: 16px;
+  margin: 15px 0;
 }
 /* Bouton retour en haut */
 #backToTop {

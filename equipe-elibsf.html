@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Équipe ELIBSF | LSAMA</title>
+  <link href="images/logoLSAMA.png" rel="icon" sizes="16x16" type="image/png"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link href="styles\equipe-ELIBSF.css" rel="stylesheet"/>
+</head>
+<body>
+  <div id="navbar-container"></div>
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+        const links = document.querySelectorAll('#navbar-container a.link-green');
+        const currentPage = window.location.pathname.split('/').pop();
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === currentPage || (href === 'presentation.html' && currentPage === '')) {
+            link.classList.add('active');
+          }
+        });
+      })
+      .catch(err => console.error('Erreur chargement navbar:', err));
+  </script>
+
+  <main>
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a> &gt; <a href="equipe-de-recherche-lsama.html"> Les équipes de LSAMA</a> &gt; Équipe ELIBSF
+    </div>
+
+    <header>
+      <h1>Équipe ELIBSF</h1>
+      <h2>Expériences LIBS et Fluorescence,<br>porteur Sami Hamzaoui</h2>
+    </header>
+
+    <section class="container">
+      <div class="content">
+        <div class="description">
+          <h3>DESCRIPTION</h3>
+          <p>
+            L’équipe <strong>« Expériences LIBS et Fluorescence » (ELIBSF)</strong> développe des approches expérimentales et théoriques
+            basées sur la spectroscopie laser pour l’analyse de matériaux, de milieux biologiques et environnementaux.
+            Elle s’appuie sur des techniques avancées de <em>Laser-Induced Breakdown Spectroscopy (LIBS)</em> et de fluorescence laser
+            pour caractériser la composition, la structure et la dynamique de la matière à différentes échelles.
+          </p>
+          <p>
+            Les axes de recherche principaux incluent :
+          </p>
+          <ul>
+            <li>Développement et optimisation des dispositifs LIBS et fluorescence résolue en temps</li>
+            <li>Applications en environnement, agroalimentaire, biomédecine et matériaux</li>
+            <li>Études spectroscopiques des plasmas laser et des émissions atomiques et moléculaires</li>
+            <li>Analyse quantitative et qualitative par méthodes optiques et spectrales</li>
+          </ul>
+        </div>
+
+        <div class="keywords">
+          <h3>MOTS-CLÉS</h3>
+          <div class="tags">
+            <span>LIBS</span>
+            <span>Fluorescence</span>
+            <span>Spectroscopie laser</span>
+            <span>Plasma</span>
+            <span>Analyse de matériaux</span>
+            <span>Instrumentation optique</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section">
+      <h1>Membres permanents</h1>
+      <div class="team-grid">
+
+        <!-- Sami Hamzaoui -->
+        <div class="card">
+          <img src="images\equipe de recherches\Sami Hamzaoui.png" alt="Sami Hamzaoui" onerror="this.src='images/equipe de recherches/icon homme.png'">
+          <h2>Sami Hamzaoui</h2>
+          <p>Professeur — Porteur</p>
+          <div class="links">
+            <a class="email" href="mailto:sami.hamzaoui@istmt.utm.tn" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Hamzaoui-Sami" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/sami-hamzaoui-703b0531/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- Hassen Ghalila -->
+        <div class="card">
+          <img src="images\equipe de recherches\Hassen Ghalila.jpg" alt="Hassen Ghalila" onerror="this.src='images/equipe de recherches/icon homme.png'">
+          <h2>Hassen Ghalila</h2>
+          <p>Professeur</p>
+          <div class="links">
+            <a class="email" href="mailto:hassen.ghalila@fst.utm.tn" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Hassen-Ghalila" target="_blank"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/hassen-ghalila-4a69951a1/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a class="scholar" href="https://scholar.google.com/citations?hl=en&user=PcIhRWwAAAAJ" target="_blank"><i class="fa-solid fa-graduation-cap"></i></a>
+          </div>
+        </div>
+
+        <!-- Mohamed Nakkach -->
+        <div class="card">
+          <img src="images\equipe de recherches\Moahmed Nakkach.jpg" alt="Mohamed Nakkach" onerror="this.src='images/equipe de recherches/icon homme.png'">
+          <h2>Mohamed Nakkach</h2>
+          <p>Maître de Conférences</p>
+          <div class="links">
+            <a class="email" href="mailto:mohamed.nakkach@istmt.utm.tn" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Nakkach-Nakkach" target="_blank"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/nakkach-mohamed-529bb4178/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a class="scholar" href="https://scholar.google.com/citations?hl=en&user=bRJ7-i4AAAAJ" target="_blank"><i class="fa-solid fa-graduation-cap"></i></a>
+          </div>
+        </div>
+
+        <!-- Rym Bouchendira -->
+        <div class="card">
+          <img src="images\equipe de recherches\Bouchendira-Rym.png" alt="Rym Bouchendira" onerror="this.src='images/equipe de recherches/icon femme.png'">
+          <h2>Rym Bouchendira</h2>
+          <p>Maître-assistante</p>
+          <div class="links">
+            <a class="email" href="mailto:rym.bouchendira@fst.utm.tn" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Bouchendira-Rym" target="_blank"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/rym-bouchendira-1404a6160/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- Jalloul Trabelsi -->
+        <div class="card">
+          <img src="images/equipe de recherches/jalloul-trabelsi.png" alt="Jalloul Trabelsi" onerror="this.src='images/equipe de recherches/icon homme.png'">
+          <h2>Jalloul Trabelsi</h2>
+          <p>Maître-assistant</p>
+          <div class="links">
+            <a class="email" href="mailto:trabelsijalloull@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Jalloul-Trabelsi" target="_blank"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/jalloul-trabelsi-b5481a346/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a class="scholar" href="https://scholar.google.com/citations?hl=en&user=lvIh3sEAAAAJ" target="_blank"><i class="fa-solid fa-graduation-cap"></i></a>
+          </div>
+        </div>
+
+        <!-- Imen Cherni -->
+        <div class="card">
+          <img src="images\equipe de recherches\Imen Cherni.png" alt="Imen Cherni">
+          <h2>Imen Cherni</h2>
+          <p>Maître-assistante</p>
+          <div class="links">
+            <a class="email" href="mailto:cherniimen2@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Imen-Cherni-2" target="_blank"><i class="fa-brands fa-researchgate"></i></a>
+          </div>
+        </div>
+
+        <!-- Rihem Nouir -->
+        <div class="card">
+          <img src="images/equipe de recherches/icon femme.png" alt="Rihem Nouir">
+          <h2>Rihem Nouir</h2>
+          <p>Maître-assistante</p>
+          <div class="links">
+            <a class="email" href="mailto:rihem.nouir@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Rihem-Nouir" target="_blank"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/rihem-nouir-3482b873/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <button id="backToTop" title="Retour en haut">↑</button>
+  </main>
+
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
+
+  <script src="js/scroll.js"></script>
+
+</body>
+</html>

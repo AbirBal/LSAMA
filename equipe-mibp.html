@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Équipe MIBP | LSAMA</title>
+  <link href="images/logoLSAMA.png" rel="icon" sizes="16x16" type="image/png"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link href="styles/equipe-MIBP.css" rel="stylesheet"/>
+</head>
+<body>
+  <div id="navbar-container"></div>
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+        const links = document.querySelectorAll('#navbar-container a.link-green');
+        const currentPage = window.location.pathname.split('/').pop();
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === currentPage || (href === 'presentation.html' && currentPage === '')) {
+            link.classList.add('active');
+          }
+        });
+      })
+      .catch(err => console.error('Erreur chargement navbar:', err));
+  </script>
+
+  <main>
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a> &gt; <a href="equipe-de-recherche-lsama.html"> Les équipes de LSAMA</a> &gt; Équipe MIBP
+    </div>
+
+    <header>
+      <h1>Équipe MIBP</h1>
+      <h2>Molécules d’Intérêt Biologique et Pharmaceutique, <br>porteuse Souad Lahmar</h2>
+    </header>
+
+    <section class="container">
+      <div class="content">
+        <div class="description">
+          <h3>DESCRIPTION</h3>
+          <p>
+            L'équipe <strong>« Molécules d’Intérêt Biologique et Pharmaceutique » (MIBP)</strong> se consacre à l’étude de la structure, des interactions, de la dynamique et des propriétés physico-chimiques des molécules à potentiel biologique ou pharmaceutique.
+            Les recherches combinent chimie computationnelle, modélisation moléculaire, docking, simulations de dynamique moléculaire, et études spectroscopiques pour mieux comprendre les mécanismes d’action, la stabilité et l’optimisation des candidats moléculaires.
+          </p>
+          <p>
+            Les axes de recherche principaux incluent :
+          </p>
+          <ul>
+            <li>Modélisation de la structure 3D et de la conformation des molécules biologiquement actives</li>
+            <li>Études d’interactions ligand–récepteur, docking et affinités</li>
+            <li>Dynamique moléculaire et stabilité en environnement solvant</li>
+            <li>Propriétés spectroscopiques et comparaison avec données expérimentales</li>
+            <li>Optimisation de médicaments candidats et études in silico</li>
+          </ul>
+        </div>
+
+        <div class="keywords">
+          <h3>MOTS-CLÉS</h3>
+          <div class="tags">
+            <span>Molécules biologiques</span>
+            <span>Chimie pharmaceutique</span>
+            <span>Docking</span>
+            <span>Dynamique moléculaire</span>
+            <span>Interactions moléculaires</span>
+            <span>Modélisation computationnelle</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section">
+      <h1>Membres permanents</h1>
+
+      <div class="team-grid">
+        <!-- Souad Lahmar (porteuse) -->
+        <div class="card">
+          <img src="images/equipe de recherches/souad-lahmar.png" alt="Souad Lahmar" onerror="this.src='images/equipe de recherches/icon femme.png'">
+          <h2>Souad Lahmar</h2>
+          <p>Professeur — Porteuse</p>
+          <div class="links">
+            <a class="email" href="mailto:soulahmar@yahoo.fr" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/S-Lahmar" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+          </div>
+        </div>
+
+        <!-- Zoubeida Dhaouadi -->
+        <div class="card">
+          <img src="images\equipe de recherches\Zoubeida Dhaouadi.png" alt="Zoubeida Dhaouadi" onerror="this.src='images/equipe de recherches/icon femme.png'">
+          <h2>Zoubeida Dhaouadi</h2>
+          <p>Professeur</p>
+          <div class="links">
+            <a class="email" href="mailto:dhaouadiz@yahoo.fr" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Dhaouadi-Zoubeida" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/zoubeida-dhaouadi-25287460?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BLQYikFKlSJOqSGY6PKM3Bw%3D%3D" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a class="scholar" href="https://scholar.google.com/citations?hl=fr&user=pzaOvEAAAAAJ" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+          </div>
+        </div>
+
+        <!-- Najoua Derbel -->
+        <div class="card">
+          <img src="images\equipe de recherches\Najoua Derbel.jpg" alt="Najoua Derbel" onerror="this.src='images/equipe de recherches/icon femme.png'">
+          <h2>Najoua Derbel</h2>
+          <p>Professeur</p>
+          <div class="links">
+            <a class="email" href="mailto:najoua.derbel@gmail.com" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Najoua-Derbel" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="scholar" href="https://scholar.google.com/citations?hl=fr&user=KAaGS9gAAAAJ" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+          </div>
+        </div>
+
+        <!-- Ali Zaidi -->
+        <div class="card">
+          <img src="images/equipe de recherches/ali-zaidi.png" alt="Ali Zaidi" onerror="this.src='images/equipe de recherches/icon homme.png'">
+          <h2>Ali Zaidi</h2>
+          <p>Professeur</p>
+          <div class="links">
+            <a class="email" href="mailto:ali.zaidi@ipest.rnu.tn" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Ali-Zaidi-6" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="scholar" href="https://scholar.google.com/citations?user=eXfvSPAAAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+          </div>
+        </div>
+
+      </div> <!-- .team-grid -->
+    </section>
+
+    <button id="backToTop" title="Retour en haut">↑</button>
+  </main>
+
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
+
+  <script src="js/scroll.js"></script>
+
+  <script>
+    document.querySelectorAll('.team-grid img').forEach(img => {
+      img.addEventListener('error', function() {
+        if (this.alt && this.alt.toLowerCase().includes('femme')) {
+          this.src = 'images/equipe de recherches/icon femme.png';
+        } else {
+          this.src = 'images/equipe de recherches/icon homme.png';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

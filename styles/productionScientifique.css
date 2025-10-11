@@ -8,7 +8,20 @@ main{
         align-items: center; 
       
 }
-  
+ .breadcrumb {
+  font-size: 14px;
+  color: #101111;
+  margin-bottom: 10px;
+}
+
+.breadcrumb a {
+  font-size: 1rem;
+  text-decoration: none;
+  color:lightcoral
+}
+.breadcrumb a:hover{
+  text-decoration: none
+}
     .export-bar button {
       padding: 10px 15px;
       background-color: #007bff;

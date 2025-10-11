@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Équipe SDMI2A | LSAMA</title>
+  <link href="images/logoLSAMA.png" rel="icon" sizes="16x16" type="image/png"/>
+  <!-- Icônes Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link href="styles/equipe-SDMI2A.css" rel="stylesheet"/>
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <script>
+    // Charger navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+
+        // Après insertion, marquer le lien actif
+        const links = document.querySelectorAll('#navbar-container a.link-green');
+        const currentPage = window.location.pathname.split('/').pop();
+
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href === currentPage || (href === 'equipe-de-recherche-lsama.html' && currentPage === '')) {
+            link.classList.add('active');
+          }
+        });
+      })
+      .catch(err => console.error('Erreur chargement navbar:', err));
+  </script>
+
+  <main>
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a> &gt; <a href="equipe-de-recherche-lsama.html"> Les équipes de LSAMA</a> &gt; Équipe SDMI2A
+    </div>
+
+    <header>
+      <h1>Équipe SDMI2A</h1>
+      <h2>Structure et Dynamique de Molécules d’Intérêt Astrophysique et Atmosphérique,<br>porteur Kamel Hammami </h2>
+    </header>
+
+    <section class="container">
+      <div class="content">
+        <div class="description">
+          <h3>DESCRIPTION</h3>
+          <p>
+            L'équipe <strong>« Structure et Dynamique de Molécules d’Intérêt Astrophysique et Atmosphérique » (SDMI2A)</strong>
+            étudie la structure électronique et la dynamique des molécules pertinentes en astro-chimie et pour les atmosphères planétaires.
+            Les travaux combinent calculs <em>ab-initio</em>, dynamique moléculaire, spectroscopie théorique et expérimentale,
+            et investigations des processus collisionnels et radiatifs qui gouvernent l'évolution chimique et spectrale des environnements astrophysiques et atmosphériques.
+          </p>
+          <p>
+            Les axes principaux incluent :
+          </p>
+          <ul>
+            <li>Caractérisation structurelle et spectroscopique de molécules polyatomiques d'intérêt</li>
+            <li>Dynamique collisionnelle et mécanismes de relaxation</li>
+            <li>Modélisation ab-initio et comparaisons avec données expérimentales</li>
+            <li>Applications à l'astrochimie, atmosphères planétaires et télédétection</li>
+          </ul>
+        </div>
+
+        <div class="keywords">
+          <h3>MOTS-CLÉS</h3>
+          <div class="tags">
+            <span>Astrochimie</span>
+            <span>Atmosphère</span>
+            <span>Spectroscopie</span>
+            <span>Molécules polyatomiques</span>
+            <span>Dynamique moléculaire</span>
+            <span>Calculs ab-initio</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section">
+      <h1>Membres permanents</h1>
+
+      <div class="team-grid">
+        
+        <!-- Kamel Hammami -->
+        <div class="card">
+          <img src="images\equipe de recherches\Kamel Hammami.jpg" alt="Kamel Hammami">
+          <h2>Kamel Hammami</h2>
+          <p>Professeur</p>
+          <div class="links">
+            <a class="email" href="mailto:kamel.hammami@fst.utm.tn" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/K-Hammami" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="scholar" href="https://scholar.google.com/citations?hl=fr&user=gpZRGYEAAAAJ" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+          </div>
+        </div>
+        <!-- Nejm-Eddine Jaidane -->
+        <div class="card">
+          <img src="images\equipe de recherches\JaidaneN.png" alt="Nejm-Eddine Jaidane" onerror="this.src='images/equipe de recherches/icon homme.png'">
+          <h2>Nejm-Eddine Jaidane</h2>
+          <p>Professeur</p>
+          <div class="links">
+            <a class="email" href="mailto:nejmeddine.jaidane@fst.utm.tn" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Nejm-Eddine-Jaidane" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/nejmeddine-ja%C3%AFdane-65ab721a4" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a class="scholar" href="https://scholar.google.com/citations?user=tdDa3BIAAAAJ&hl=fr&oi=ao" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+          </div>
+        </div>
+
+        <!-- Ounaies Yazidi -->
+        <div class="card">
+          <img src="images\equipe de recherches\ounais yazidi.PNG" alt="Ounaies Yazidi">
+          <h2>Ounaies Yazidi</h2>
+          <p>Maître de conférences </p>
+          <div class="links">
+            <a class="email" href="mailto:yazidiounaies@yahoo.fr" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Ounaies-Yazidi" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="scholar" href="https://scholar.google.com/citations?hl=en&user=faCvQtIAAAAJ" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+          </div>
+        </div>
+
+        <!-- Faouzi Najar -->
+        <div class="card">
+          <img src="images/equipe de recherches/icon homme.png" alt="Faouzi Najar">
+          <h2>Faouzi Najar</h2>
+          <p>Maître de conférences </p>
+          <div class="links">
+            <a class="email" href="mailto:faouzi.najar@ipeit.rnu.tn" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/F-Najar" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="scholar" href="https://scholar.google.com/citations?hl=en&user=BDq7czYAAAAJ" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+          </div>
+        </div>
+
+        <!-- Saida Ben Yaghlene -->
+        <div class="card">
+          <img src="images/equipe de recherches/icon femme.png" alt="Saida Ben Yaghlene">
+          <h2>Saida Ben Yaghlene</h2>
+          <p>Professeur</p>
+          <div class="links">
+            <a class="email" href="mailto:saidayagh@gmail.com" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Ben-Yaghlane-Saida" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+          </div>
+        </div>
+
+        <!-- Adel Ben Houria -->
+        <div class="card">
+          <img src="images\equipe de recherches\adel ben houria.png" alt="Adel Ben Houria">
+          <h2>Adel Ben Houria</h2>
+          <p>Maître de conférences </p>
+          <div class="links">
+            <a class="email" href="mailto:adel.benhouria@fst.utm.tn" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/Adel-Ben-Houria" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/adel-ben-houria-a699b0183/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a class="scholar" href="https://scholar.google.com/citations?hl=en&user=4_EiYDAAAAAJ" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+          </div>
+        </div>
+
+        <!-- Fehmi Khadri -->
+        <div class="card">
+          <img src="images/equipe de recherches/icon homme.png" alt="Fehmi Khadri">
+          <h2>Fehmi Khadri</h2>
+          <p>Maître de conférences </p>
+          <div class="links">
+            <a class="email" href="mailto:fehmi.khadri@yahoo.fr" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a class="researchgate" href="https://www.researchgate.net/profile/F-Khadri" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/fehmi-khadri-65a35324a/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a class="scholar" href="https://scholar.google.com/citations?hl=en&user=zVoK1jgAAAAJ" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+          </div>
+        </div>
+
+      </div> <!-- .team-grid -->
+    </section>
+
+    <button id="backToTop" title="Retour en haut">↑</button>
+  </main>
+
+  <div id="footer-container"></div>
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
+
+  <script src="js/scroll.js"></script>
+
+  <!-- Petit script JS optionnel pour améliorer fallback des images (déjà utilisé via onerror) -->
+  <script>
+    // si nécessaire : remplacer les chemins d'image invalides par des icônes par défaut
+    document.querySelectorAll('.team-grid img').forEach(img => {
+      img.addEventListener('error', function() {
+        if (this.alt && this.alt.toLowerCase().includes('femme')) {
+          this.src = 'images/equipe de recherches/icon femme.png';
+        } else {
+          this.src = 'images/equipe de recherches/icon homme.png';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

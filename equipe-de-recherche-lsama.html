@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Production Scientifique|LSAMA</title>
+<title>Equipe de recherche|LSAMA</title>
 <link href="images\logoLSAMA.png" rel="icon" sizes="16x16" type="image/png"/>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -26,7 +26,7 @@
 
         links.forEach(link => {
           const href = link.getAttribute('href');
-          if (href === currentPage || (href === 'presentation.html' && currentPage === '')) {
+          if (href === currentPage || (href === 'equipe-de-recherche-lsama.html' && currentPage === '')) {
             link.classList.add('active');
           }
         });
@@ -34,7 +34,7 @@
       .catch(err => console.error('Erreur chargement navbar:', err));
   </script>
 <main>
-      <div class="breadcrumb">
+    <div class="breadcrumb">
     <a href="index.html">Accueil</a> &gt;  Les équipes de LSAMA 
   </div>
 
@@ -50,28 +50,28 @@
       <img src="images\icon\atomes froid.jpg" alt="2PM Icon" />
       <h3>DMEAF</h3>
       <p>Dynamique des Molécules Excitées et Atomes Froids</p>
-      <a href="#" class="btn">En savoir plus</a>
+      <a href="equipe-dmeaf.html" class="btn">En savoir plus</a>
     </div>
 
     <div class="team-card">
       <img src="images\icon\Astrophysique et Atmosphérique.jpg" alt="COCP Icon" />
       <h3>SDMI2A</h3>
       <p>Structure et Dynamique de Molécules d’Intérêt Astrophysique et Atmosphérique</p>
-      <a href="#" class="btn">En savoir plus</a>
+      <a href="equipe-sdmi2a.html" class="btn">En savoir plus</a>
     </div>
 
     <div class="team-card">
       <img src="images\icon\pharmaceutique.png" alt="I2E Icon" />
       <h3>MIBP</h3>
       <p>Molécules d’Intérêt Biologique et Pharmaceutiques</p>
-      <a href="#" class="btn">En savoir plus</a>
+      <a href="equipe-mibp.html" class="btn">En savoir plus</a>
     </div>
 
     <div class="team-card">
       <img src="images\icon\Expériences LIBS et Fluorescence.png" alt="MPOE Icon" />
       <h3>ELIBSF</h3>
       <p>Expériences LIBS et Fluorescence</p>
-      <a href="#" class="btn">En savoir plus</a>
+      <a href="equipe-elibsf.html" class="btn">En savoir plus</a>
     </div>
   </div>
 

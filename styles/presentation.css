@@ -14,6 +14,20 @@ main {
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 
     }
+.breadcrumb {
+  font-size: 14px;
+  color: #101111;
+  margin-bottom: 10px;
+}
+
+.breadcrumb a {
+  font-size: 1rem;
+  text-decoration: none;
+  color:lightcoral
+}
+.breadcrumb a:hover{
+  text-decoration: none;
+}
 
     h1 {
       color: var(--primary-color);
