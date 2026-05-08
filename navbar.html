@@ -1,47 +1,71 @@
-<link rel="stylesheet" href="styles/navbar.css">
-<div class="navbar-main attractive-background">
-        <div>
-           <a href="https://utm.rnu.tn/utm/fr/" target="_blank"><img src="images\Logo_UTM.png" alt="Logo" class="logo-img"></a>
-           <a href="https://fst.rnu.tn/fr" target="_blank"><img src="images\Logo_FST.png" alt="Logo" class="logo-img"></a>
-        </div>
-        <ul>
-            <li>
-         <div class="navbar-lang dropdown">
-            <i class="fas fa-globe"></i> Langue ▾
-         <!--<div class="language-switcher">
-              <select onchange="changeLanguage(this.value)">
-                <option value="fr" selected>Français</option>
-                <option value="en">English</option>
-              </select>
-            </div>-->   
-          </div>
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="topbar-logos">
+    <a href="https://utm.rnu.tn" target="_blank" rel="noopener"><img src="images/Logo_UTM.png" alt="UTM"></a>
+    <div class="topbar-sep"></div>
+    <a href="https://fst.rnu.tn" target="_blank" rel="noopener"><img src="images/Logo_FST.png" alt="FST"></a>
+  </div>
+  <div class="topbar-right">
+    <a href="mailto:lsama@fst.utm.tn" class="topbar-email"><i class="fas fa-envelope"></i> lsama@fst.utm.tn</a>
+    <a href="contact.html"><i class="fas fa-phone-alt"></i> Contact</a>
+    <div class="topbar-social">
+      <a href="https://www.facebook.com/lsama.fst" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:lsama@fst.utm.tn" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <button class="lang-btn" onclick="toggleLang()" id="langBtn"><i class="fas fa-globe"></i> <span id="langLabel">EN</span></button>
+  </div>
 </div>
 
-
-<script>
-  function changeLanguage(lang) {
-    const currentPage = window.location.pathname.split('/').pop();
-
-    if (lang === 'en') {
-      window.location.href = currentPage.replace('.html', '_en.html');
-    } else {
-      window.location.href = currentPage.replace('_en.html', '.html');
-    }
-  }
-</script>
-
-<nav class="navbar-sub">
-    <div class="logo">
-      <a href="index.html"><img src="images\logoLSAMA.png" alt="Logo LSAMA" /></a>
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" role="navigation">
+  <div class="nav-logo">
+    <a href="index.html"><img src="images/logoLSAMA.png" alt="Logo LSAMA"></a>
+    <div class="nav-logo-text">
+      <span class="acronym">LSAMA</span>
+      <span class="full-name">Laboratoire de Spectroscopie Atomique Moléculaire &amp; Applications</span>
     </div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <ul class="nav-links" id="navMenu">
-      <li><a href="index.html" class="link-red">Acceuil</a></li>
-      <li><a href="presentation-lsama.html" class="link-lightblue">Présentation</a></li>
-      <li><a href="equipe-de-recherche-lsama.html" class="link-green">Équipes de Recherche</a></li>
-      <li><a href="actualites.html" class="link-blue">Actualités</a></li>
-      <li><a href="production-scientifique-lsama.html" class="link-yellow">Production Scientifique</a></li>
-      <li><a href="annuaire.html" class="link-lightgreen">Annuaire</a></li>
-    </ul>
-  </nav>
-<script src="scriptNavbar.js"></script>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navMenu">
+    <li><a href="index.html" data-page="index.html">Accueil</a></li>
+    <li><a href="presentation-lsama.html" data-page="presentation-lsama.html">Présentation</a></li>
+    <li><a href="equipe-de-recherche-lsama.html" data-page="equipe-de-recherche-lsama.html">Équipes de Recherche</a></li>
+    <li><a href="actualites.html" data-page="actualites.html">Actualités</a></li>
+    <li class="nav-has-dropdown">
+      <a href="production-scientifique-lsama.html" data-page="production-scientifique-lsama.html">Production Scientifique <span class="caret">▾</span></a>
+      <div class="nav-dropdown" id="navDropdown">
+        <a href="production-scientifique-lsama.html" onclick="return true;">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="16" height="16" rx="2"/><line x1="6" y1="7" x2="14" y2="7"/><line x1="6" y1="10" x2="14" y2="10"/><line x1="6" y1="13" x2="10" y2="13"/></svg>
+          Toutes les publications
+        </a>
+        <div class="sep"></div>
+        <a href="production-scientifique-lsama.html#articles">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h12v12H4z" rx="1"/><line x1="7" y1="8" x2="13" y2="8"/><line x1="7" y1="11" x2="13" y2="11"/><line x1="7" y1="14" x2="10" y2="14"/></svg>
+          Articles
+        </a>
+        <a href="production-scientifique-lsama.html#revues">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a1 1 0 011-1h12a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V5z"/><path d="M10 4v12"/></svg>
+          Revues
+        </a>
+        <a href="production-scientifique-lsama.html#chapitres">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2h9l3 3v13H4V2z"/><polyline points="13,2 13,5 16,5"/><line x1="7" y1="9" x2="13" y2="9"/><line x1="7" y1="12" x2="13" y2="12"/></svg>
+          Chapitres de livre
+        </a>
+        <a href="production-scientifique-lsama.html#conferences">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="14" height="10" rx="1"/><path d="M7 18h6M10 14v4"/></svg>
+          Conférences
+        </a>
+        <div class="sep"></div>
+        <a href="production-scientifique-lsama.html#theses">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2L2 7l8 5 8-5-8-5z"/><path d="M2 7v5c0 2.2 3.6 4 8 4s8-1.8 8-4V7"/></svg>
+          Doctorants &amp; Thèses
+        </a>
+      </div>
+    </li>
+    <li><a href="annuaire.html" data-page="annuaire.html">Annuaire</a></li>
+    <li><a href="contact.html" data-page="contact.html">Contact</a></li>
+  </ul>
+</nav>

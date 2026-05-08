@@ -7,10 +7,9 @@
   <link rel="icon" href="images/logoLSAMA.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="styles/style.css">
-
+  
   <style>
-    /* ===== VARIABLES (identiques à index.html) ===== */
+/* ===== VARIABLES (identiques à index.html) ===== */
     :root {
       --navy: #0a1628;
       --navy-mid: #122244;
@@ -42,78 +41,7 @@
       line-height: 1.6;
     }
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-
-    /* ===== TOP BAR ===== */
-    .topbar {
-      background: var(--navy);
-      padding: 8px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-    }
-    .topbar-logos { display: flex; align-items: center; gap: 16px; }
-    .topbar-logos img { height: 36px; filter: brightness(0) invert(1); opacity: 0.85; transition: opacity var(--transition); }
-    .topbar-logos img:hover { opacity: 1; }
-    .topbar-right { display: flex; align-items: center; gap: 20px; }
-    .topbar-right a { color: rgba(255,255,255,0.7); transition: color var(--transition); font-size: 13px; }
-    .topbar-right a:hover { color: var(--teal-light); }
-
-    /* ===== NAVBAR ===== */
-    .navbar {
-      background: var(--white);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 20px rgba(10,22,40,0.10);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
-      height: 72px;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 12px; }
-    .nav-logo img { height: 52px; }
-    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
-    .nav-logo-text .acronym { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); letter-spacing: 1px; }
-    .nav-logo-text .full-name { font-size: 10px; color: var(--text-light); max-width: 280px; text-transform: uppercase; letter-spacing: 0.5px; }
-
-    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-    .nav-links a {
-      display: block;
-      padding: 8px 14px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-light);
-      border-radius: 8px;
-      transition: all var(--transition);
-      position: relative;
-      white-space: nowrap;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 4px;
-      left: 14px;
-      right: 14px;
-      height: 2px;
-      background: var(--teal);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform var(--transition);
-      border-radius: 2px;
-    }
-    .nav-links a:hover { color: var(--navy); background: var(--off-white); }
-    .nav-links a:hover::after { transform: scaleX(1); }
-    .nav-links a.active { color: var(--blue); background: rgba(26,79,160,0.07); }
-    .nav-links a.active::after { transform: scaleX(1); background: var(--blue); }
-
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
-    .hamburger span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: all var(--transition); }
-
-    /* ===== PAGE HERO BANNER ===== */
+    img { max-width: 100%; display: block; }/* ===== PAGE HERO BANNER ===== */
     .page-hero {
       background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--blue) 100%);
       padding: 60px 40px;
@@ -163,26 +91,7 @@
       font-size: 7rem;
       color: rgba(255,255,255,0.04);
       pointer-events: none;
-    }
-
-    /* ===== SECTION BADGE ===== */
-    .section-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(14,154,138,0.08);
-      color: var(--teal);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
-    .section-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
-
-    /* ===== MAIN CONTENT ===== */
+    }/* ===== MAIN CONTENT ===== */
     main {
       max-width: 1100px;
       margin: 0 auto;
@@ -366,133 +275,14 @@
     }
     .empty-state i { font-size: 3rem; color: var(--border); margin-bottom: 16px; display: block; }
     .empty-state p { font-size: 15px; }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.75);
-      padding: 60px 40px 0;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 48px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-    .footer-logo img { height: 44px; filter: brightness(0) invert(1); opacity: 0.85; }
-    .footer-logo .acronym { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: white; }
-    .footer-col p { font-size: 14px; line-height: 1.8; margin-bottom: 20px; }
-    .footer-col h3 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.8px; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 8px; }
-    .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.65); transition: color var(--transition); }
-    .footer-col ul li a:hover { color: var(--teal-light); }
-    .social-links { display: flex; gap: 10px; }
-    .social-link {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.7);
-      font-size: 14px;
-      transition: all var(--transition);
-    }
-    .social-link:hover { background: var(--teal); border-color: var(--teal); color: white; }
-    .contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 14px; }
-    .contact-item i { color: var(--teal-light); margin-top: 3px; width: 14px; }
-    .contact-item a { color: rgba(255,255,255,0.65); transition: color var(--transition); }
-    .contact-item a:hover { color: var(--teal-light); }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 20px 0;
-      text-align: center;
-      font-size: 13px;
-      color: rgba(255,255,255,0.4);
-      margin-top: 48px;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* ===== BACK TO TOP ===== */
-    #backToTop {
-      position: fixed;
-      bottom: 32px; right: 32px;
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: var(--blue);
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 16px rgba(26,79,160,0.35);
-      opacity: 0; pointer-events: none;
-      transition: all var(--transition);
-      z-index: 999;
-    }
-    #backToTop.visible { opacity: 1; pointer-events: auto; }
-    #backToTop:hover { background: var(--blue-light); transform: translateY(-3px); }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 900px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .page-hero h1 { font-size: 1.8rem; }
-      .page-hero-icon { display: none; }
-    }
-    @media (max-width: 640px) {
-      .topbar { display: none; }
-      .navbar { padding: 0 20px; }
-      .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: white; padding: 16px; box-shadow: var(--shadow); gap: 4px; }
-      .nav-links.open { display: flex; }
-      .hamburger { display: flex; }
-      main { padding: 40px 20px; }
-      .page-hero { padding: 40px 20px; }
-      .toolbar { flex-direction: column; align-items: stretch; }
-      .search-wrapper { max-width: 100%; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      footer { padding: 40px 20px 0; }
-    }
   </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/navbar.js" defer></script>
 </head>
 
 <body>
 
-  <!-- ===== TOP BAR ===== -->
-  <div class="topbar">
-    <div class="topbar-logos">
-      <a href="https://fst.rnu.tn" target="_blank" rel="noopener"><img src="images/logoFST.png" alt="FST"></a>
-      <a href="https://www.utm.rnu.tn" target="_blank" rel="noopener"><img src="images/logoUTM.png" alt="UTM"></a>
-    </div>
-    <div class="topbar-right">
-      <a href="mailto:lsamalaboratoire@gmail.com"><i class="fas fa-envelope"></i> lsamalaboratoire@gmail.com</a>
-    </div>
-  </div>
-
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar">
-    <a href="index.html" class="nav-logo">
-      <img src="images/logoLSAMA.png" alt="LSAMA">
-      <div class="nav-logo-text">
-        <span class="acronym">LSAMA</span>
-        <span class="full-name">Laboratoire de Spectroscopie Atomique Moléculaire et Applications</span>
-      </div>
-    </a>
-    <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </div>
-    <ul class="nav-links" id="navMenu">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="presentation-lsama.html">Présentation</a></li>
-      <li><a href="equipe-de-recherche-lsama.html">Équipes</a></li>
-      <li><a href="actualites.html">Actualités</a></li>
-      <li><a href="production-scientifique-lsama.html">Publications</a></li>
-      <li><a href="annuaire.html" class="active">Annuaire</a></li>
-    </ul>
-  </nav>
+  <div id="navbar-placeholder"></div>
 
   <!-- ===== PAGE HERO ===== -->
   <div class="page-hero">
@@ -535,53 +325,7 @@
 
   </main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-logo">
-          <img src="images/logoLSAMA.png" alt="LSAMA">
-          <span class="acronym">LSAMA</span>
-        </div>
-        <p>Laboratoire spécialisé dans l'étude des interactions lumière-matière à l'échelle atomique et moléculaire, développant des techniques spectroscopiques avancées pour l'énergie, l'environnement et la santé.</p>
-        <div class="social-links">
-          <a href="https://www.facebook.com/lsama.fst" target="_blank" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="mailto:lsamalaboratoire@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h3>Navigation</h3>
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="presentation-lsama.html">Présentation</a></li>
-          <li><a href="equipe-de-recherche-lsama.html">Équipes de Recherche</a></li>
-          <li><a href="actualites.html">Actualités</a></li>
-          <li><a href="production-scientifique-lsama.html">Production Scientifique</a></li>
-          <li><a href="annuaire.html">Annuaire</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3>Liens utiles</h3>
-        <ul>
-          <li><a href="https://fst.rnu.tn" target="_blank" rel="noopener">FST — Faculté des Sciences</a></li>
-          <li><a href="https://www.utm.rnu.tn" target="_blank" rel="noopener">UTM — Université de Tunis</a></li>
-          <li><a href="https://www.mes.tn" target="_blank" rel="noopener">MESRS</a></li>
-          <li><a href="https://www.universites.tn" target="_blank" rel="noopener">Portail Universitaire</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3>Contact</h3>
-        <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:lsamalaboratoire@gmail.com">lsamalaboratoire@gmail.com</a></div>
-        <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" rel="noopener">LinkedIn LSAMA</a></div>
-        <div class="contact-item"><i class="fab fa-facebook"></i><a href="https://www.facebook.com/lsama.fst" target="_blank" rel="noopener">Facebook LSAMA</a></div>
-        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Faculté des Sciences de Tunis, Département de Physique — 2092 Manar II, Tunis, Tunisie</span></div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      © 2025 Laboratoire LSAMA — Tous droits réservés. | LR01ES09 — Université de Tunis El Manar
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
 
   <button id="backToTop" aria-label="Retour en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     <i class="fas fa-chevron-up"></i>
@@ -688,11 +432,6 @@
       filterCards();
     }
 
-    // ===== HAMBURGER =====
-    function toggleMenu() {
-      document.getElementById('navMenu').classList.toggle('open');
-    }
-
     // ===== BACK TO TOP =====
     const backBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
@@ -702,6 +441,25 @@
     // ===== INIT =====
     renderCards(sortData(members, 'name', 'asc'));
   </script>
-
+  <script>
+    // ===== LOAD SHARED COMPONENTS =====
+    async function loadComponent(id, file) {
+      try {
+        const res = await fetch(file);
+        const html = await res.text();
+        document.getElementById(id).innerHTML = html;
+        if (id === 'navbar-placeholder') {
+          // Mark active nav link based on current page filename
+          const page = window.location.pathname.split('/').pop() || 'index.html';
+          document.querySelectorAll('#navbar-placeholder .nav-links a[data-page]').forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('data-page') === page) a.classList.add('active');
+          });
+        }
+      } catch(e) { console.warn('Could not load', file, e); }
+    }
+    loadComponent('navbar-placeholder', 'navbar.html');
+    loadComponent('footer-placeholder', 'footer.html');
+  </script>
 </body>
 </html>

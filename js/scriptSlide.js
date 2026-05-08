@@ -1,52 +1,40 @@
-let slideIndex = 0;
-let slides = document.getElementsByClassName("mySlides");
-let dots = document.getElementsByClassName("dot");
+// ===== SLIDESHOW =====
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.getElementById('slideDots');
+let slideTimer;
 
-function showSlides() {
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  
-  slideIndex++;
-  if (slideIndex > slides.length) { slideIndex = 1; }
-
-  for (let i = 0; i < dots.length; i++) {
-    dots[i].classList.remove("active");
-  }
-
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].classList.add("active");
-
-  setTimeout(showSlides, 4000); // Change image every 4 seconds
-}
-
-function currentSlide(n) {
-  clearTimeout(timer); // Stop auto timer
-  slideIndex = n;
-  showManualSlide();
-}
-
-function showManualSlide() {
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-
-  for (let i = 0; i < dots.length; i++) {
-    dots[i].classList.remove("active");
-  }
-
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].classList.add("active");
-}
-
-// Setup dots click listeners
-for (let i = 0; i < dots.length; i++) {
-  dots[i].addEventListener("click", () => {
-    currentSlide(i + 1);
+if (slides.length > 0 && dotsContainer) {
+  slides.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'dot-btn' + (i === 0 ? ' active' : '');
+    btn.setAttribute('aria-label', 'Slide ' + (i + 1));
+    btn.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(btn);
   });
 }
 
-// Launch slideshow
-let timer = setTimeout(showSlides, 100); // Slight delay to avoid flash
+function goToSlide(n) {
+  if (!slides.length) return;
+  slides[currentSlide].classList.remove('active');
+  if (dotsContainer && dotsContainer.children[currentSlide]) {
+    dotsContainer.children[currentSlide].classList.remove('active');
+  }
+  currentSlide = (n + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
+  if (dotsContainer && dotsContainer.children[currentSlide]) {
+    dotsContainer.children[currentSlide].classList.add('active');
+  }
+  resetTimer();
+}
 
+function moveSlide(dir) { goToSlide(currentSlide + dir); }
 
+function resetTimer() {
+  clearInterval(slideTimer);
+  slideTimer = setInterval(() => goToSlide(currentSlide + 1), 5000);
+}
+
+if (slides.length > 0) {
+  resetTimer();
+}

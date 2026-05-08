@@ -7,384 +7,14 @@
   <meta name="description" content="Découvrez les dernières actualités scientifiques, événements et publications du laboratoire LSAMA LR01ES09." />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    /* ===== VARIABLES ===== */
-    :root {
-      --navy: #0a1628;
-      --navy-mid: #122244;
-      --blue: #1a4fa0;
-      --blue-light: #2c6dd4;
-      --teal: #0e9a8a;
-      --teal-light: #14c4b0;
-      --white: #ffffff;
-      --off-white: #f4f6fa;
-      --text: #1c2b3a;
-      --text-light: #4a5d72;
-      --border: #dde3ef;
-      --shadow: 0 4px 24px rgba(10,22,40,0.10);
-      --shadow-lg: 0 12px 40px rgba(10,22,40,0.16);
-      --radius: 12px;
-      --radius-lg: 20px;
-      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
-    }
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/actualites.css">
+  <script src="js/navbar.js" defer></script>
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: var(--text); background: var(--white); line-height: 1.6; }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-
-    /* ===== TOP BAR ===== */
-    .topbar {
-      background: var(--navy);
-      padding: 8px 40px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 13px; color: rgba(255,255,255,0.7);
-    }
-    .topbar-logos { display: flex; align-items: center; gap: 16px; }
-    .topbar-logos img { height: 36px; filter: brightness(0) invert(1); opacity: 0.85; transition: opacity var(--transition); }
-    .topbar-logos img:hover { opacity: 1; }
-    .topbar-right { display: flex; align-items: center; gap: 20px; }
-    .topbar-right a { color: rgba(255,255,255,0.7); transition: color var(--transition); font-size: 13px; }
-    .topbar-right a:hover { color: var(--teal-light); }
-    .lang-btn {
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.85); padding: 4px 12px; border-radius: 20px;
-      font-size: 12px; cursor: pointer; transition: all var(--transition);
-      display: flex; align-items: center; gap: 6px;
-    }
-    .lang-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
-
-    /* ===== NAVBAR ===== */
-    .navbar {
-      background: var(--white); position: sticky; top: 0; z-index: 1000;
-      box-shadow: 0 2px 20px rgba(10,22,40,0.10);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 40px; height: 72px;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 12px; }
-    .nav-logo img { height: 52px; }
-    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
-    .nav-logo-text .acronym { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); letter-spacing: 1px; }
-    .nav-logo-text .full-name { font-size: 10px; color: var(--text-light); max-width: 280px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-    .nav-links a {
-      display: block; padding: 8px 14px; font-size: 14px; font-weight: 600;
-      color: var(--text-light); border-radius: 8px; transition: all var(--transition);
-      position: relative; white-space: nowrap;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: 4px; left: 14px; right: 14px;
-      height: 2px; background: var(--teal); transform: scaleX(0);
-      transform-origin: left; transition: transform var(--transition); border-radius: 2px;
-    }
-    .nav-links a:hover { color: var(--navy); background: var(--off-white); }
-    .nav-links a:hover::after { transform: scaleX(1); }
-    .nav-links a.active { color: var(--blue); background: rgba(26,79,160,0.07); }
-    .nav-links a.active::after { transform: scaleX(1); background: var(--blue); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
-    .hamburger span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: all var(--transition); }
-    /* ===== DROPDOWN ===== */
-    .nav-links li { position: relative; }
-    .nav-links li:hover > .nav-dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
-    .nav-dropdown {
-      position: absolute; top: calc(100% + 8px); left: 0;
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--radius); box-shadow: var(--shadow-lg);
-      min-width: 220px; padding: 8px 0; z-index: 2000;
-      opacity: 0; pointer-events: none;
-      transform: translateY(-8px); transition: all var(--transition);
-    }
-    .nav-dropdown::before {
-      content: ''; position: absolute; top: -6px; left: 20px;
-      width: 12px; height: 12px; background: var(--white);
-      border-left: 1px solid var(--border); border-top: 1px solid var(--border);
-      transform: rotate(45deg);
-    }
-    .nav-dropdown a {
-      display: flex; align-items: center; gap: 10px;
-      padding: 9px 18px; font-size: 13.5px; font-weight: 600;
-      color: var(--text-light); border-radius: 0; white-space: nowrap;
-    }
-    .nav-dropdown a::after { display: none; }
-    .nav-dropdown a:hover { background: var(--off-white); color: var(--navy); }
-    .nav-dropdown a.active-type { color: var(--teal); background: rgba(14,154,138,0.07); }
-    .nav-dropdown a i { width: 16px; text-align: center; font-size: 12px; }
-    .nav-dropdown .sep { height: 1px; background: var(--border); margin: 6px 0; }
-    .nav-has-dropdown > a { padding-right: 14px; }
-    .nav-has-dropdown > a .caret {
-      display: inline-block; margin-left: 4px; font-size: 10px;
-      transition: transform var(--transition); vertical-align: middle;
-    }
-    .nav-has-dropdown:hover > a .caret { transform: rotate(180deg); }
-
-    /* ===== PAGE HERO ===== */
-    .page-hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, #0d2a5e 100%);
-      padding: 72px 40px 64px; position: relative; overflow: hidden;
-    }
-    .page-hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 70% 50%, rgba(14,154,138,0.18) 0%, transparent 60%);
-    }
-    .page-hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
-    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
-    .breadcrumb a { color: rgba(255,255,255,0.6); transition: color var(--transition); }
-    .breadcrumb a:hover { color: var(--teal-light); }
-    .breadcrumb i { font-size: 10px; }
-    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; color: white; line-height: 1.2; margin-bottom: 16px; }
-    .page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.75); max-width: 600px; line-height: 1.7; }
-
-    /* ===== SECTION BADGE ===== */
-    .section-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(14,154,138,0.08); color: var(--teal);
-      font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px;
-      margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.8px;
-    }
-    .section-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
-
-    /* ===== SEARCH + FILTERS ===== */
-    .controls-section {
-      background: var(--off-white);
-      padding: 36px 40px;
-      border-bottom: 1px solid var(--border);
-    }
-    .controls-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-    }
-    .search-box {
-      flex: 1; min-width: 260px;
-      display: flex; align-items: center; gap: 12px;
-      background: white; border: 1.5px solid var(--border);
-      border-radius: 10px; padding: 10px 18px;
-      box-shadow: var(--shadow); transition: border-color var(--transition);
-    }
-    .search-box:focus-within { border-color: var(--teal); }
-    .search-box i { color: var(--text-light); font-size: 15px; }
-    .search-box input {
-      border: none; outline: none; width: 100%;
-      font-family: 'Source Sans 3', sans-serif; font-size: 14px; color: var(--text);
-      background: transparent;
-    }
-    .search-box input::placeholder { color: var(--text-light); }
-
-    .filter-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-    .filter-btn {
-      padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 600;
-      border: 1.5px solid var(--border); background: white; color: var(--text-light);
-      cursor: pointer; transition: all var(--transition);
-    }
-    .filter-btn:hover { border-color: var(--teal); color: var(--teal); }
-    .filter-btn.active { background: var(--teal); border-color: var(--teal); color: white; }
-
-    /* ===== NEWS GRID ===== */
-    .news-section {
-      padding: 60px 40px 80px;
-      background: var(--white);
-    }
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 28px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .news-card {
-      background: white;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      transition: all var(--transition);
-      display: flex; flex-direction: column;
-    }
-    .news-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-    .news-card-img {
-      height: 180px;
-      background: linear-gradient(135deg, var(--navy-mid), var(--blue));
-      display: flex; align-items: center; justify-content: center; padding: 24px;
-      position: relative; overflow: hidden;
-    }
-    .news-card-img::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(14,154,138,0.25) 0%, transparent 60%);
-    }
-    .news-card-img img { max-height: 100%; max-width: 55%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85; position: relative; }
-    .news-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
-    .news-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
-    .news-date {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 12px; color: var(--teal); font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.5px;
-    }
-    .news-tag {
-      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px;
-      background: rgba(26,79,160,0.08); color: var(--blue);
-      text-transform: uppercase; letter-spacing: 0.5px;
-    }
-    .news-card-body h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem; color: var(--navy);
-      margin-bottom: 10px; line-height: 1.4;
-    }
-    .news-card-body p { color: var(--text-light); font-size: 14px; line-height: 1.75; flex: 1; margin-bottom: 20px; }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--blue);
-      border: 1.5px solid var(--blue);
-      padding: 9px 20px; border-radius: 8px;
-      font-size: 13px; font-weight: 600;
-      transition: all var(--transition); cursor: pointer;
-      align-self: flex-start;
-    }
-    .btn-outline:hover { background: var(--blue); color: white; transform: translateY(-1px); }
-
-    /* No results */
-    .no-results {
-      text-align: center; padding: 60px 20px; color: var(--text-light);
-      display: none; grid-column: 1 / -1;
-    }
-    .no-results i { font-size: 48px; margin-bottom: 16px; color: var(--border); display: block; }
-    .no-results p { font-size: 15px; }
-
-    /* ===== FOOTER ===== */
-    footer { background: var(--navy); color: rgba(255,255,255,0.75); padding: 60px 40px 0; }
-    .footer-grid {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 40px; max-width: 1100px; margin: 0 auto; padding-bottom: 50px;
-    }
-    .footer-col h3 {
-      font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-      color: var(--teal-light); margin-bottom: 20px; padding-bottom: 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .footer-col p { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.6); }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 10px; }
-    .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color var(--transition); }
-    .footer-col ul li a:hover { color: var(--teal-light); }
-    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-    .footer-logo img { height: 44px; filter: brightness(0) invert(1); opacity: 0.8; }
-    .footer-logo .acronym { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: white; }
-    .social-links { display: flex; gap: 12px; margin-top: 16px; }
-    .social-link {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.7); font-size: 14px; transition: all var(--transition);
-    }
-    .social-link:hover { background: var(--teal); border-color: var(--teal); color: white; transform: translateY(-2px); }
-    .contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 14px; }
-    .contact-item i { color: var(--teal-light); margin-top: 3px; min-width: 16px; }
-    .contact-item a { color: rgba(255,255,255,0.6); transition: color var(--transition); word-break: break-all; }
-    .contact-item a:hover { color: var(--teal-light); }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 0;
-      text-align: center; font-size: 13px; color: rgba(255,255,255,0.35);
-      max-width: 1100px; margin: 0 auto;
-    }
-
-    /* ===== BACK TO TOP ===== */
-    #backToTop {
-      position: fixed; bottom: 36px; right: 28px; z-index: 999;
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--blue); color: white; border: none; cursor: pointer;
-      display: none; align-items: center; justify-content: center;
-      font-size: 16px; box-shadow: 0 4px 16px rgba(26,79,160,0.4);
-      transition: all var(--transition);
-    }
-    #backToTop.visible { display: flex; }
-    #backToTop:hover { background: var(--blue-light); transform: translateY(-3px); }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 768px) {
-      .topbar { padding: 8px 20px; }
-      .topbar-right .topbar-email { display: none; }
-      .navbar { padding: 0 20px; }
-      .nav-logo-text .full-name { display: none; }
-      .nav-links {
-        display: none; flex-direction: column;
-        position: absolute; top: 72px; left: 0; right: 0;
-        background: white; padding: 16px; box-shadow: var(--shadow-lg); gap: 4px;
-      }
-      .nav-links.open { display: flex; }
-      .hamburger { display: flex; }
-      .page-hero { padding: 48px 24px; }
-      .page-hero h1 { font-size: 1.8rem; }
-      .controls-section { padding: 24px 20px; }
-      .news-section { padding: 40px 20px 60px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-      footer { padding: 48px 24px 0; }
-    }
-  </style>
 </head>
 <body>
 
-  <!-- ===== TOP BAR ===== -->
-  <div class="topbar">
-    <div class="topbar-logos">
-      <a href="https://utm.rnu.tn" target="_blank"><img src="images/Logo_UTM.png" alt="UTM"></a>
-      <a href="https://fst.rnu.tn" target="_blank"><img src="images/Logo_FST.png" alt="FST"></a>
-    </div>
-    <div class="topbar-right">
-      <a href="mailto:lsamalaboratoire@gmail.com" class="topbar-email"><i class="fas fa-envelope"></i> lsamalaboratoire@gmail.com</a>
-      <button class="lang-btn"><i class="fas fa-globe"></i> Français / EN</button>
-    </div>
-  </div>
-
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar" role="navigation">
-    <div class="nav-logo">
-      <a href="index.html"><img src="images/logoLSAMA.png" alt="Logo LSAMA"></a>
-      <div class="nav-logo-text">
-        <span class="acronym">LSAMA</span>
-        <span class="full-name">Laboratoire de Spectroscopie Atomique Moléculaire & Applications</span>
-      </div>
-    </div>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navMenu">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="presentation-lsama.html">Présentation</a></li>
-      <li><a href="equipe-de-recherche-lsama.html">Équipes de Recherche</a></li>
-      <li><a href="actualites.html" class="active">Actualités</a></li>
-      <li><a href="production-scientifique-lsama.html">Production Scientifique<span class="caret">▾</span></a>
-        <div class="nav-dropdown" id="navDropdown">
-        <a href="#" onclick="navFilterType(''); return false;">
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="16" height="16" rx="2"/><line x1="6" y1="7" x2="14" y2="7"/><line x1="6" y1="10" x2="14" y2="10"/><line x1="6" y1="13" x2="10" y2="13"/></svg>
-          Toutes les publications
-        </a>
-        <div class="sep"></div>
-        <a href="#" onclick="navFilterType('Article'); return false;" id="nd-Article">
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h12v12H4z" rx="1"/><line x1="7" y1="8" x2="13" y2="8"/><line x1="7" y1="11" x2="13" y2="11"/><line x1="7" y1="14" x2="10" y2="14"/></svg>
-          Articles
-        </a>
-        <a href="#" onclick="navFilterType('Revue'); return false;" id="nd-Revue">
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a1 1 0 011-1h12a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V5z"/><path d="M10 4v12"/></svg>
-          Revues
-        </a>
-        <a href="#" onclick="navFilterType('Chapitre de livre'); return false;" id="nd-Chapitre de livre">
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2h9l3 3v13H4V2z"/><polyline points="13,2 13,5 16,5"/><line x1="7" y1="9" x2="13" y2="9"/><line x1="7" y1="12" x2="13" y2="12"/></svg>
-          Chapitres de livre
-        </a>
-        <a href="#" onclick="navFilterType('Conférence'); return false;" id="nd-Conférence">
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="14" height="10" rx="1"/><path d="M7 18h6M10 14v4"/></svg>
-          Conférences
-        </a>
-        <div class="sep"></div>
-        <a href="#" onclick="switchTabNav('theses'); return false;">
-          <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2L2 7l8 5 8-5-8-5z"/><path d="M2 7v5c0 2.2 3.6 4 8 4s8-1.8 8-4V7"/></svg>
-          Doctorants &amp; Thèses
-        </a>
-      </div>
-    </li>
-          <li><a href="annuaire.html">Annuaire</a></li>
-    </ul>
-  </nav>
+  <div id="navbar-placeholder"></div>
 
   <!-- ===== PAGE HERO ===== -->
   <div class="page-hero">
@@ -480,64 +110,14 @@
 
   </main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-logo">
-          <img src="images/logoLSAMA.png" alt="LSAMA">
-          <span class="acronym">LSAMA</span>
-        </div>
-        <p>Laboratoire spécialisé dans l'étude des interactions lumière-matière à l'échelle atomique et moléculaire, développant des techniques spectroscopiques avancées pour l'énergie, l'environnement et la santé.</p>
-        <div class="social-links">
-          <a href="https://www.facebook.com/lsama.fst" target="_blank" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="mailto:lsamalaboratoire@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h3>Navigation</h3>
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="presentation-lsama.html">Présentation</a></li>
-          <li><a href="equipe-de-recherche-lsama.html">Équipes de Recherche</a></li>
-          <li><a href="actualites.html">Actualités</a></li>
-          <li><a href="production-scientifique-lsama.html">Production Scientifique</a></li>
-          <li><a href="annuaire.html">Annuaire</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3>Liens utiles</h3>
-        <ul>
-          <li><a href="https://fst.rnu.tn" target="_blank" rel="noopener">FST — Faculté des Sciences</a></li>
-          <li><a href="https://www.utm.rnu.tn" target="_blank" rel="noopener">UTM — Université de Tunis</a></li>
-          <li><a href="https://www.mes.tn" target="_blank" rel="noopener">MESRS</a></li>
-          <li><a href="https://www.universites.tn" target="_blank" rel="noopener">Portail Universitaire</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3>Contact</h3>
-        <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:lsamalaboratoire@gmail.com">lsamalaboratoire@gmail.com</a></div>
-        <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" rel="noopener">LinkedIn LSAMA</a></div>
-        <div class="contact-item"><i class="fab fa-facebook"></i><a href="https://www.facebook.com/lsama.fst" target="_blank" rel="noopener">Facebook LSAMA</a></div>
-        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Faculté des Sciences de Tunis, Département de Physique — 2092 Manar II, Tunis, Tunisie</span></div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      © 2025 Laboratoire LSAMA — Tous droits réservés. | LR01ES09 — Université de Tunis El Manar
-    </div>
-  </footer>
+  <div id="footer-placeholder"></div>
 
   <button id="backToTop" aria-label="Retour en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     <i class="fas fa-chevron-up"></i>
   </button>
 
   <script>
-    // Hamburger
-    function toggleMenu() {
-      document.getElementById('navMenu').classList.toggle('open');
-    }
-// ===== NAVBAR DROPDOWN NAVIGATION =====
+    // Hamburger// ===== NAVBAR DROPDOWN NAVIGATION =====
 function navFilterType(type) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -589,6 +169,26 @@ function navFilterType(type) {
         applyFilters();
       });
     });
+  </script>
+  <script>
+    // ===== LOAD SHARED COMPONENTS =====
+    async function loadComponent(id, file) {
+      try {
+        const res = await fetch(file);
+        const html = await res.text();
+        document.getElementById(id).innerHTML = html;
+        if (id === 'navbar-placeholder') {
+          // Mark active nav link based on current page filename
+          const page = window.location.pathname.split('/').pop() || 'index.html';
+          document.querySelectorAll('#navbar-placeholder .nav-links a[data-page]').forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('data-page') === page) a.classList.add('active');
+          });
+        }
+      } catch(e) { console.warn('Could not load', file, e); }
+    }
+    loadComponent('navbar-placeholder', 'navbar.html');
+    loadComponent('footer-placeholder', 'footer.html');
   </script>
 </body>
 </html>
