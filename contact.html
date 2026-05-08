@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | LSAMA</title>
+  <meta name="description" content="Contactez le Laboratoire de Spectroscopie Atomique Moléculaire et Applications (LSAMA) — Faculté des Sciences de Tunis." />
+  <link rel="icon" href="images/logoLSAMA.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #122244;
+      --blue: #1a4fa0;
+      --blue-light: #2c6dd4;
+      --teal: #0e9a8a;
+      --teal-light: #14c4b0;
+      --gold: #c9961a;
+      --white: #ffffff;
+      --off-white: #f4f6fa;
+      --text: #1c2b3a;
+      --text-light: #4a5d72;
+      --border: #dde3ef;
+      --shadow: 0 4px 24px rgba(10,22,40,0.10);
+      --shadow-lg: 0 12px 40px rgba(10,22,40,0.16);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: var(--text); background: var(--white); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== TOP BAR ===== */
+    .topbar {
+      background: var(--navy);
+      padding: 8px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: rgba(255,255,255,0.7);
+    }
+    .topbar-logos { display: flex; align-items: center; gap: 16px; }
+    .topbar-logos img { height: 36px; filter: brightness(0) invert(1); opacity: 0.85; transition: opacity var(--transition); }
+    .topbar-logos img:hover { opacity: 1; }
+    .topbar-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.15); }
+    .topbar-right { display: flex; align-items: center; gap: 16px; }
+    .topbar-right > a { color: rgba(255,255,255,0.7); transition: color var(--transition); font-size: 13px; display: flex; align-items: center; gap: 6px; }
+    .topbar-right > a:hover { color: var(--teal-light); }
+    .topbar-social { display: flex; align-items: center; gap: 8px; }
+    .topbar-social a {
+      width: 26px; height: 26px; border-radius: 6px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: rgba(255,255,255,0.65); transition: all var(--transition);
+    }
+    .topbar-social a:hover { background: var(--teal); border-color: var(--teal); color: white; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: var(--white); position: sticky; top: 0; z-index: 1000;
+      box-shadow: 0 2px 20px rgba(10,22,40,0.10);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 72px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 52px; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .nav-logo-text .acronym { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); letter-spacing: 1px; }
+    .nav-logo-text .full-name { font-size: 10px; color: var(--text-light); max-width: 280px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a {
+      display: block; padding: 8px 14px; font-size: 14px; font-weight: 600;
+      color: var(--text-light); border-radius: 8px; transition: all var(--transition);
+      position: relative; white-space: nowrap;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 4px; left: 14px; right: 14px;
+      height: 2px; background: var(--teal); transform: scaleX(0);
+      transform-origin: left; transition: transform var(--transition); border-radius: 2px;
+    }
+    .nav-links a:hover { color: var(--navy); background: var(--off-white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a.active { color: var(--blue); background: rgba(26,79,160,0.07); }
+    .nav-links a.active::after { transform: scaleX(1); background: var(--blue); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: all var(--transition); }
+
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--blue) 100%);
+      padding: 64px 40px 56px; position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 75% 50%, rgba(14,154,138,0.18) 0%, transparent 60%);
+    }
+    .page-hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 20px;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.55); transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--teal-light); }
+    .breadcrumb i { font-size: 10px; }
+    .section-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(14,154,138,0.12); color: var(--teal-light);
+      font-size: 12px; font-weight: 600; padding: 5px 14px;
+      border-radius: 20px; margin-bottom: 16px;
+      text-transform: uppercase; letter-spacing: 0.8px;
+    }
+    .section-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal-light); }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem; font-weight: 700; color: white;
+      line-height: 1.2; margin-bottom: 12px;
+    }
+    .page-hero p { color: rgba(255,255,255,0.75); font-size: 1.05rem; max-width: 540px; }
+    .page-hero-icon {
+      position: absolute; right: 60px; top: 50%; transform: translateY(-50%);
+      font-size: 8rem; color: rgba(255,255,255,0.04); pointer-events: none;
+    }
+
+    /* ===== MAIN LAYOUT ===== */
+    main { max-width: 1100px; margin: 0 auto; padding: 64px 40px; }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ===== INFO CARDS ===== */
+    .info-col { display: flex; flex-direction: column; gap: 20px; }
+
+    .info-card {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      transition: all var(--transition);
+    }
+    .info-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: rgba(14,154,138,0.3); }
+
+    .info-card-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+    }
+    .info-card-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal-light); font-size: 1.2rem; flex-shrink: 0;
+    }
+    .info-card-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; color: var(--navy);
+    }
+
+    .info-row {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid var(--off-white);
+      font-size: 14px;
+    }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-row i {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(14,154,138,0.08); color: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; flex-shrink: 0; margin-top: 1px;
+    }
+    .info-row-content { flex: 1; }
+    .info-row-label { font-size: 11px; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+    .info-row-value { color: var(--text); font-size: 14px; }
+    .info-row-value a { color: var(--blue); font-weight: 600; transition: color var(--transition); }
+    .info-row-value a:hover { color: var(--teal); }
+
+    /* Social links card */
+    .social-card-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .social-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 8px;
+      border: 1.5px solid var(--border); font-size: 13px; font-weight: 600;
+      color: var(--text-light); transition: all var(--transition);
+      background: white;
+    }
+    .social-pill i { font-size: 14px; }
+    .social-pill.fb:hover { border-color: #1877f2; color: #1877f2; background: rgba(24,119,242,0.05); }
+    .social-pill.li:hover { border-color: #0a66c2; color: #0a66c2; background: rgba(10,102,194,0.05); }
+    .social-pill.em:hover { border-color: var(--teal); color: var(--teal); background: rgba(14,154,138,0.05); }
+
+    /* Map card */
+    .map-card {
+      background: white; border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .map-card iframe { display: block; width: 100%; height: 240px; border: none; }
+    .map-card-footer {
+      padding: 14px 20px; display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--text-light);
+      border-top: 1px solid var(--border);
+    }
+    .map-card-footer i { color: var(--teal); }
+    .map-card-footer a { color: var(--blue); font-weight: 600; font-size: 12px; margin-left: auto; white-space: nowrap; }
+    .map-card-footer a:hover { color: var(--teal); }
+
+    /* ===== FORM CARD ===== */
+    .form-card {
+      background: white; border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg); padding: 36px;
+      box-shadow: var(--shadow);
+      position: sticky; top: 88px;
+    }
+    .form-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .form-card > p { color: var(--text-light); font-size: 14px; margin-bottom: 28px; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-size: 12px; font-weight: 600;
+      color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .form-group label span { color: #e53e3e; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-control {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: inherit; font-size: 14px; color: var(--text);
+      background: var(--off-white); transition: all var(--transition); outline: none;
+    }
+    .form-control:focus { border-color: var(--blue); background: white; box-shadow: 0 0 0 3px rgba(26,79,160,0.09); }
+    textarea.form-control { resize: vertical; min-height: 130px; }
+    select.form-control { cursor: pointer; }
+
+    .form-footer { margin-top: 8px; }
+    .btn-send {
+      width: 100%; padding: 13px;
+      background: var(--blue); color: white; border: none;
+      border-radius: 8px; font-family: inherit; font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: all var(--transition);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-send:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,79,160,0.28); }
+    .form-note { font-size: 12px; color: var(--text-light); text-align: center; margin-top: 12px; }
+
+    /* Success message */
+    .form-success {
+      display: none; text-align: center; padding: 40px 20px;
+    }
+    .form-success i { font-size: 3rem; color: var(--teal); margin-bottom: 16px; display: block; }
+    .form-success h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 8px; }
+    .form-success p { color: var(--text-light); font-size: 14px; }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--navy); color: rgba(255,255,255,0.75); padding: 56px 40px 0; margin-top: 80px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; max-width: 1100px; margin: 0 auto; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-logo img { height: 44px; filter: brightness(0) invert(1); opacity: 0.85; }
+    .footer-logo .acronym { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: white; }
+    .footer-col p { font-size: 14px; line-height: 1.8; margin-bottom: 20px; }
+    .footer-col h3 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.8px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.65); transition: color var(--transition); }
+    .footer-col ul li a:hover { color: var(--teal-light); }
+    .f-social-links { display: flex; gap: 10px; }
+    .f-social-link {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7); font-size: 14px; transition: all var(--transition);
+    }
+    .f-social-link:hover { background: var(--teal); border-color: var(--teal); color: white; }
+    .f-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 14px; }
+    .f-contact-item i { color: var(--teal-light); margin-top: 3px; width: 14px; }
+    .f-contact-item a { color: rgba(255,255,255,0.65); transition: color var(--transition); }
+    .f-contact-item a:hover { color: var(--teal-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 0; text-align: center;
+      font-size: 13px; color: rgba(255,255,255,0.4);
+      max-width: 1100px; margin: 48px auto 0;
+    }
+
+    /* ===== BACK TO TOP ===== */
+    #backToTop {
+      position: fixed; bottom: 32px; right: 32px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--blue); color: white; border: none;
+      cursor: pointer; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(26,79,160,0.35);
+      opacity: 0; pointer-events: none; transition: all var(--transition); z-index: 999;
+    }
+    #backToTop.visible { opacity: 1; pointer-events: auto; }
+    #backToTop:hover { background: var(--blue-light); transform: translateY(-3px); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .form-card { position: static; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .page-hero h1 { font-size: 1.9rem; }
+    }
+    @media (max-width: 600px) {
+      .topbar { padding: 6px 16px; }
+      .topbar-right > a.topbar-email { display: none; }
+      .navbar { padding: 0 16px; }
+      .nav-logo-text .full-name { display: none; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: white; padding: 16px; box-shadow: var(--shadow-lg); gap: 4px; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      main { padding: 40px 20px; }
+      .page-hero { padding: 40px 20px; }
+      .page-hero-icon { display: none; }
+      .form-card { padding: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      footer { padding: 40px 20px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <div class="topbar-logos">
+      <a href="https://utm.rnu.tn" target="_blank" rel="noopener"><img src="images/Logo_UTM.png" alt="UTM"></a>
+      <div class="topbar-sep"></div>
+      <a href="https://fst.rnu.tn" target="_blank" rel="noopener"><img src="images/Logo_FST.png" alt="FST"></a>
+    </div>
+    <div class="topbar-right">
+      <a href="mailto:lsamalaboratoire@gmail.com" class="topbar-email"><i class="fas fa-envelope"></i> lsamalaboratoire@gmail.com</a>
+      <a href="contact.html"><i class="fas fa-phone-alt"></i> Contact</a>
+      <div class="topbar-social">
+        <a href="https://www.facebook.com/lsama.fst" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:lsamalaboratoire@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" role="navigation">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logoLSAMA.png" alt="Logo LSAMA">
+      <div class="nav-logo-text">
+        <span class="acronym">LSAMA</span>
+        <span class="full-name">Laboratoire de Spectroscopie Atomique Moléculaire & Applications</span>
+      </div>
+    </a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navMenu">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="presentation-lsama.html">Présentation</a></li>
+      <li><a href="equipe-de-recherche-lsama.html">Équipes de Recherche</a></li>
+      <li><a href="actualites.html">Actualités</a></li>
+      <li><a href="production-scientifique-lsama.html">Production Scientifique</a></li>
+      <li><a href="annuaire.html">Annuaire</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <div class="page-hero">
+    <i class="fas fa-paper-plane page-hero-icon"></i>
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="index.html">Accueil</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Contact</span>
+      </nav>
+      <div class="section-badge">Nous contacter</div>
+      <h1>Contact</h1>
+      <p>Une question, une collaboration ou une demande d'information ? Nous sommes à votre écoute.</p>
+    </div>
+  </div>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+    <div class="contact-layout">
+
+      <!-- LEFT: Info cards -->
+      <div class="info-col">
+
+        <!-- Coordonnées -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <h3>Coordonnées</h3>
+          </div>
+          <div class="info-row">
+            <i class="fas fa-university"></i>
+            <div class="info-row-content">
+              <div class="info-row-label">Adresse</div>
+              <div class="info-row-value">Faculté des Sciences de Tunis<br>Département de Physique, Bureau 212<br>2092 Manar II, Tunis, Tunisie</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <i class="fas fa-envelope"></i>
+            <div class="info-row-content">
+              <div class="info-row-label">Email</div>
+              <div class="info-row-value"><a href="mailto:lsamalaboratoire@gmail.com">lsamalaboratoire@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="info-row">
+            <i class="fas fa-phone"></i>
+            <div class="info-row-content">
+              <div class="info-row-label">Téléphone</div>
+              <div class="info-row-value"><a href="tel:+21671872600">+216 71 872 600</a></div>
+            </div>
+          </div>
+          <div class="info-row">
+            <i class="fas fa-clock"></i>
+            <div class="info-row-content">
+              <div class="info-row-label">Horaires d'accueil</div>
+              <div class="info-row-value">Lundi – Vendredi : 8h00 – 17h00<br>Samedi : 8h00 – 13h00</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direction -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon"><i class="fas fa-user-tie"></i></div>
+            <h3>Direction du laboratoire</h3>
+          </div>
+          <div class="info-row">
+            <i class="fas fa-user"></i>
+            <div class="info-row-content">
+              <div class="info-row-label">Directeur</div>
+              <div class="info-row-value"><strong>Prof. Mourad Telmini</strong></div>
+            </div>
+          </div>
+          <div class="info-row">
+            <i class="fas fa-phone"></i>
+            <div class="info-row-content">
+              <div class="info-row-label">Téléphone direct</div>
+              <div class="info-row-value"><a href="tel:+21698417878">+216 98 417 878</a></div>
+            </div>
+          </div>
+          <div class="info-row">
+            <i class="fas fa-tag"></i>
+            <div class="info-row-content">
+              <div class="info-row-label">Référence nationale</div>
+              <div class="info-row-value">LR01ES09 — Université de Tunis El Manar</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Réseaux sociaux -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon"><i class="fas fa-share-alt"></i></div>
+            <h3>Réseaux sociaux</h3>
+          </div>
+          <div class="social-card-links">
+            <a href="https://www.facebook.com/lsama.fst" target="_blank" rel="noopener" class="social-pill fb">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" rel="noopener" class="social-pill li">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+            <a href="mailto:lsamalaboratoire@gmail.com" class="social-pill em">
+              <i class="fas fa-envelope"></i> Email
+            </a>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="map-card">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.7654!2d10.170000!3d36.846000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd340a6b7a0001%3A0x123!2sFacult%C3%A9+des+Sciences+de+Tunis!5e0!3m2!1sfr!2stn!4v1700000000"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Localisation FST Tunis">
+          </iframe>
+          <div class="map-card-footer">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Faculté des Sciences de Tunis — 2092 Manar II</span>
+            <a href="https://maps.google.com/?q=Faculté+des+Sciences+de+Tunis" target="_blank" rel="noopener">
+              <i class="fas fa-external-link-alt"></i> Ouvrir
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /info-col -->
+
+      <!-- RIGHT: Contact form -->
+      <div class="form-card">
+        <h2>Envoyer un message</h2>
+        <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans les meilleurs délais.</p>
+
+        <div id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Prénom <span>*</span></label>
+              <input type="text" class="form-control" id="firstName" placeholder="Votre prénom" required>
+            </div>
+            <div class="form-group">
+              <label>Nom <span>*</span></label>
+              <input type="text" class="form-control" id="lastName" placeholder="Votre nom" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email <span>*</span></label>
+            <input type="email" class="form-control" id="emailInput" placeholder="votre@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label>Téléphone</label>
+            <input type="tel" class="form-control" id="phoneInput" placeholder="+216 XX XXX XXX">
+          </div>
+
+          <div class="form-group">
+            <label>Objet <span>*</span></label>
+            <select class="form-control" id="subjectSelect" required>
+              <option value="">Sélectionner un objet…</option>
+              <option value="collaboration">Collaboration scientifique</option>
+              <option value="these">Candidature doctorat</option>
+              <option value="stage">Demande de stage</option>
+              <option value="information">Demande d'information</option>
+              <option value="presse">Presse / Médias</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Message <span>*</span></label>
+            <textarea class="form-control" id="messageInput" placeholder="Décrivez votre demande…" required></textarea>
+          </div>
+
+          <div class="form-footer">
+            <button class="btn-send" onclick="submitForm()">
+              <i class="fas fa-paper-plane"></i> Envoyer le message
+            </button>
+            <p class="form-note"><i class="fas fa-lock" style="color:var(--teal);margin-right:4px;"></i>Vos informations sont confidentielles et ne seront pas partagées.</p>
+          </div>
+        </div>
+
+        <!-- Success -->
+        <div class="form-success" id="formSuccess">
+          <i class="fas fa-check-circle"></i>
+          <h3>Message envoyé !</h3>
+          <p>Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">
+          <img src="images/logoLSAMA.png" alt="LSAMA">
+          <span class="acronym">LSAMA</span>
+        </div>
+        <p>Laboratoire spécialisé dans l'étude des interactions lumière-matière à l'échelle atomique et moléculaire, développant des techniques spectroscopiques avancées pour l'énergie, l'environnement et la santé.</p>
+        <div class="f-social-links">
+          <a href="https://www.facebook.com/lsama.fst" target="_blank" class="f-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" class="f-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:lsamalaboratoire@gmail.com" class="f-social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="presentation-lsama.html">Présentation</a></li>
+          <li><a href="equipe-de-recherche-lsama.html">Équipes de Recherche</a></li>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="production-scientifique-lsama.html">Production Scientifique</a></li>
+          <li><a href="annuaire.html">Annuaire</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Liens utiles</h3>
+        <ul>
+          <li><a href="https://fst.rnu.tn" target="_blank" rel="noopener">FST — Faculté des Sciences</a></li>
+          <li><a href="https://www.utm.rnu.tn" target="_blank" rel="noopener">UTM — Université de Tunis</a></li>
+          <li><a href="https://www.mes.tn" target="_blank" rel="noopener">MESRS</a></li>
+          <li><a href="https://www.universites.tn" target="_blank" rel="noopener">Portail Universitaire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <div class="f-contact-item"><i class="fas fa-envelope"></i><a href="mailto:lsamalaboratoire@gmail.com">lsamalaboratoire@gmail.com</a></div>
+        <div class="f-contact-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" rel="noopener">LinkedIn LSAMA</a></div>
+        <div class="f-contact-item"><i class="fab fa-facebook"></i><a href="https://www.facebook.com/lsama.fst" target="_blank" rel="noopener">Facebook LSAMA</a></div>
+        <div class="f-contact-item"><i class="fas fa-map-marker-alt"></i><span>Faculté des Sciences de Tunis, Département de Physique — 2092 Manar II, Tunis, Tunisie</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Laboratoire LSAMA — Tous droits réservés. | LR01ES09 — Université de Tunis El Manar
+    </div>
+  </footer>
+
+  <button id="backToTop" aria-label="Retour en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('open');
+    }
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 300);
+    });
+
+    function submitForm() {
+      const fields = ['firstName', 'lastName', 'emailInput', 'subjectSelect', 'messageInput'];
+      let valid = true;
+
+      fields.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          el.style.borderColor = '#e53e3e';
+          el.style.boxShadow = '0 0 0 3px rgba(229,62,62,0.1)';
+          valid = false;
+        } else {
+          el.style.borderColor = '';
+          el.style.boxShadow = '';
+        }
+      });
+
+      // Email validation
+      const emailEl = document.getElementById('emailInput');
+      if (emailEl.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
+        emailEl.style.borderColor = '#e53e3e';
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      // Simulate send (replace with real backend / mailto)
+      const btn = document.querySelector('.btn-send');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours…';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        document.getElementById('contactForm').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }, 1400);
+    }
+  </script>
+</body>
+</html>

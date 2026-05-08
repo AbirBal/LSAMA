@@ -5,107 +5,703 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Annuaire | LSAMA</title>
   <link rel="icon" href="images/logoLSAMA.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles/annuaire.css" />
+  <link rel="stylesheet" href="styles/style.css">
+
+  <style>
+    /* ===== VARIABLES (identiques à index.html) ===== */
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #122244;
+      --blue: #1a4fa0;
+      --blue-light: #2c6dd4;
+      --teal: #0e9a8a;
+      --teal-light: #14c4b0;
+      --gold: #c9961a;
+      --gold-light: #f0c040;
+      --white: #ffffff;
+      --off-white: #f4f6fa;
+      --text: #1c2b3a;
+      --text-light: #4a5d72;
+      --border: #dde3ef;
+      --shadow: 0 4px 24px rgba(10,22,40,0.10);
+      --shadow-lg: 0 12px 40px rgba(10,22,40,0.16);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 16px;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== TOP BAR ===== */
+    .topbar {
+      background: var(--navy);
+      padding: 8px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+    }
+    .topbar-logos { display: flex; align-items: center; gap: 16px; }
+    .topbar-logos img { height: 36px; filter: brightness(0) invert(1); opacity: 0.85; transition: opacity var(--transition); }
+    .topbar-logos img:hover { opacity: 1; }
+    .topbar-right { display: flex; align-items: center; gap: 20px; }
+    .topbar-right a { color: rgba(255,255,255,0.7); transition: color var(--transition); font-size: 13px; }
+    .topbar-right a:hover { color: var(--teal-light); }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(10,22,40,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 72px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 52px; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .nav-logo-text .acronym { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); letter-spacing: 1px; }
+    .nav-logo-text .full-name { font-size: 10px; color: var(--text-light); max-width: 280px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a {
+      display: block;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-light);
+      border-radius: 8px;
+      transition: all var(--transition);
+      position: relative;
+      white-space: nowrap;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      background: var(--teal);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+      border-radius: 2px;
+    }
+    .nav-links a:hover { color: var(--navy); background: var(--off-white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a.active { color: var(--blue); background: rgba(26,79,160,0.07); }
+    .nav-links a.active::after { transform: scaleX(1); background: var(--blue); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: all var(--transition); }
+
+    /* ===== PAGE HERO BANNER ===== */
+    .page-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--blue) 100%);
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 50%, rgba(14,154,138,0.18) 0%, transparent 60%);
+    }
+    .page-hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .breadcrumb {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.7); transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--teal-light); }
+    .breadcrumb i { font-size: 10px; }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 12px;
+    }
+    .page-hero p {
+      color: rgba(255,255,255,0.75);
+      font-size: 15px;
+      max-width: 520px;
+    }
+    .page-hero-icon {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 7rem;
+      color: rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+
+    /* ===== SECTION BADGE ===== */
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14,154,138,0.08);
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .section-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+
+    /* ===== MAIN CONTENT ===== */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    /* ===== TOOLBAR (search + sort) ===== */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .search-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+      max-width: 400px;
+    }
+    .search-wrapper i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      font-size: 14px;
+      pointer-events: none;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 11px 16px 11px 40px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text);
+      background: var(--off-white);
+      transition: all var(--transition);
+      outline: none;
+    }
+    #searchInput:focus {
+      border-color: var(--blue);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(26,79,160,0.09);
+    }
+    .sort-btns {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .sort-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: white;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .sort-btn:hover { border-color: var(--blue); color: var(--blue); background: rgba(26,79,160,0.05); }
+    .sort-btn.active { border-color: var(--blue); color: var(--blue); background: rgba(26,79,160,0.08); }
+    .sort-btn i { font-size: 11px; }
+
+    /* ===== COUNT ===== */
+    .results-count {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 24px;
+    }
+    .results-count strong { color: var(--navy); }
+
+    /* ===== CARDS GRID ===== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .member-card {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      transition: all var(--transition);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .member-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(26,79,160,0.2);
+    }
+    .member-card-top {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 28px 24px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .member-card-top::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(14,154,138,0.25) 0%, transparent 65%);
+    }
+    .member-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--teal-light);
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+    .member-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: white;
+      line-height: 1.3;
+      position: relative;
+      z-index: 1;
+    }
+    .member-card-body {
+      padding: 20px 24px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .member-info-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+    .member-info-row i {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(14,154,138,0.08);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+    .member-info-row a {
+      color: var(--blue);
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+    .member-info-row a:hover { color: var(--teal); }
+
+    /* ===== EMPTY STATE ===== */
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-light);
+      grid-column: 1 / -1;
+    }
+    .empty-state i { font-size: 3rem; color: var(--border); margin-bottom: 16px; display: block; }
+    .empty-state p { font-size: 15px; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.75);
+      padding: 60px 40px 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-logo img { height: 44px; filter: brightness(0) invert(1); opacity: 0.85; }
+    .footer-logo .acronym { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: white; }
+    .footer-col p { font-size: 14px; line-height: 1.8; margin-bottom: 20px; }
+    .footer-col h3 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.8px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.65); transition: color var(--transition); }
+    .footer-col ul li a:hover { color: var(--teal-light); }
+    .social-links { display: flex; gap: 10px; }
+    .social-link {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      transition: all var(--transition);
+    }
+    .social-link:hover { background: var(--teal); border-color: var(--teal); color: white; }
+    .contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 14px; }
+    .contact-item i { color: var(--teal-light); margin-top: 3px; width: 14px; }
+    .contact-item a { color: rgba(255,255,255,0.65); transition: color var(--transition); }
+    .contact-item a:hover { color: var(--teal-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 0;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 48px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ===== BACK TO TOP ===== */
+    #backToTop {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(26,79,160,0.35);
+      opacity: 0; pointer-events: none;
+      transition: all var(--transition);
+      z-index: 999;
+    }
+    #backToTop.visible { opacity: 1; pointer-events: auto; }
+    #backToTop:hover { background: var(--blue-light); transform: translateY(-3px); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .page-hero h1 { font-size: 1.8rem; }
+      .page-hero-icon { display: none; }
+    }
+    @media (max-width: 640px) {
+      .topbar { display: none; }
+      .navbar { padding: 0 20px; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: white; padding: 16px; box-shadow: var(--shadow); gap: 4px; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      main { padding: 40px 20px; }
+      .page-hero { padding: 40px 20px; }
+      .toolbar { flex-direction: column; align-items: stretch; }
+      .search-wrapper { max-width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      footer { padding: 40px 20px 0; }
+    }
+  </style>
 </head>
 
 <body>
- <div id="navbar-container"></div>
 
-  <script>
-    // Charger navbar
-    fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-container').innerHTML = data;
-
-        // Après insertion, marquer le lien actif
-        const links = document.querySelectorAll('#navbar-container a.link-lightgreen');
-        const currentPage = window.location.pathname.split('/').pop();
-
-        links.forEach(link => {
-          const href = link.getAttribute('href');
-          if (href === currentPage || (href === 'presentation.html' && currentPage === '')) {
-            link.classList.add('active');
-          }
-        });
-      })
-      .catch(err => console.error('Erreur chargement navbar:', err));
-  </script>
-
-<main>
-  <div class="breadcrumb">
-      <a href="index.html">Accueil</a> &gt; Annuaire
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <div class="topbar-logos">
+      <a href="https://fst.rnu.tn" target="_blank" rel="noopener"><img src="images/logoFST.png" alt="FST"></a>
+      <a href="https://www.utm.rnu.tn" target="_blank" rel="noopener"><img src="images/logoUTM.png" alt="UTM"></a>
     </div>
-<h1>Annuaire</h1>
+    <div class="topbar-right">
+      <a href="mailto:lsamalaboratoire@gmail.com"><i class="fas fa-envelope"></i> lsamalaboratoire@gmail.com</a>
+    </div>
+  </div>
 
-<table id="annuaireTable">
-  <thead>
-    <tr>
-      <th onclick="sortTable(0)">Nom et prénom</th>
-      <th onclick="sortTable(1)">Téléphone</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>Mourad Telmini</td><td>98417878</td></tr>
-    <tr><td>Fehmi Khadri</td><td>20557752</td></tr>
-    <tr><td>Soumaya Bezzaouia</td><td>98651102</td></tr>
-    <tr><td>Rym Bochendira</td><td>98434616</td></tr>
-    <tr><td>Souad Lahmar</td><td>29251660</td></tr>
-    <tr><td>Ounais Yazidi</td><td>28141130</td></tr>
-    <tr><td>Kamel Hammami</td><td>98612221</td></tr>
-  </tbody>
-</table>
-</main>
-<div id="footer-container"></div>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logoLSAMA.png" alt="LSAMA">
+      <div class="nav-logo-text">
+        <span class="acronym">LSAMA</span>
+        <span class="full-name">Laboratoire de Spectroscopie Atomique Moléculaire et Applications</span>
+      </div>
+    </a>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navMenu">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="presentation-lsama.html">Présentation</a></li>
+      <li><a href="equipe-de-recherche-lsama.html">Équipes</a></li>
+      <li><a href="actualites.html">Actualités</a></li>
+      <li><a href="production-scientifique-lsama.html">Publications</a></li>
+      <li><a href="annuaire.html" class="active">Annuaire</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <div class="page-hero">
+    <i class="fas fa-address-book page-hero-icon"></i>
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="index.html">Accueil</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Annuaire</span>
+      </nav>
+      <div class="section-badge">Membres du laboratoire</div>
+      <h1>Annuaire</h1>
+      <p>Retrouvez les coordonnées de tous les membres du Laboratoire LSAMA.</p>
+    </div>
+  </div>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="search-wrapper">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Rechercher un membre…" oninput="filterCards()" />
+      </div>
+      <div class="sort-btns">
+        <button class="sort-btn active" id="sortNameBtn" onclick="sortCards('name')">
+          <i class="fas fa-sort-alpha-down"></i> Nom
+        </button>
+        <button class="sort-btn" id="sortPhoneBtn" onclick="sortCards('phone')">
+          <i class="fas fa-phone"></i> Téléphone
+        </button>
+      </div>
+    </div>
+
+    <p class="results-count" id="resultsCount"></p>
+
+    <!-- Cards grid -->
+    <div class="cards-grid" id="cardsGrid"></div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">
+          <img src="images/logoLSAMA.png" alt="LSAMA">
+          <span class="acronym">LSAMA</span>
+        </div>
+        <p>Laboratoire spécialisé dans l'étude des interactions lumière-matière à l'échelle atomique et moléculaire, développant des techniques spectroscopiques avancées pour l'énergie, l'environnement et la santé.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/lsama.fst" target="_blank" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:lsamalaboratoire@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="presentation-lsama.html">Présentation</a></li>
+          <li><a href="equipe-de-recherche-lsama.html">Équipes de Recherche</a></li>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="production-scientifique-lsama.html">Production Scientifique</a></li>
+          <li><a href="annuaire.html">Annuaire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Liens utiles</h3>
+        <ul>
+          <li><a href="https://fst.rnu.tn" target="_blank" rel="noopener">FST — Faculté des Sciences</a></li>
+          <li><a href="https://www.utm.rnu.tn" target="_blank" rel="noopener">UTM — Université de Tunis</a></li>
+          <li><a href="https://www.mes.tn" target="_blank" rel="noopener">MESRS</a></li>
+          <li><a href="https://www.universites.tn" target="_blank" rel="noopener">Portail Universitaire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:lsamalaboratoire@gmail.com">lsamalaboratoire@gmail.com</a></div>
+        <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" rel="noopener">LinkedIn LSAMA</a></div>
+        <div class="contact-item"><i class="fab fa-facebook"></i><a href="https://www.facebook.com/lsama.fst" target="_blank" rel="noopener">Facebook LSAMA</a></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Faculté des Sciences de Tunis, Département de Physique — 2092 Manar II, Tunis, Tunisie</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Laboratoire LSAMA — Tous droits réservés. | LR01ES09 — Université de Tunis El Manar
+    </div>
+  </footer>
+
+  <button id="backToTop" aria-label="Retour en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
   <script>
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("footer-container").innerHTML = data;
-      });
-  </script>
-<script>
-  // Fonction pour trier le tableau par colonne
-  function sortTable(n) {
-    let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    table = document.getElementById("annuaireTable");
-    switching = true;
-    dir = "asc"; 
+    // ===== DATA =====
+    const members = [
+      { name: "Mourad Telmini",    phone: "98417878" },
+      { name: "Fehmi Khadri",      phone: "20557752" },
+      { name: "Soumaya Bezzaouia", phone: "98651102" },
+      { name: "Rym Bochendira",    phone: "98434616" },
+      { name: "Souad Lahmar",      phone: "29251660" },
+      { name: "Ounais Yazidi",     phone: "28141130" },
+      { name: "Kamel Hammami",     phone: "98612221" },
+    ];
 
-    while (switching) {
-      switching = false;
-      rows = table.rows;
-      for (i = 1; i < (rows.length - 1); i++) {
-        shouldSwitch = false;
-        x = rows[i].getElementsByTagName("TD")[n];
-        y = rows[i + 1].getElementsByTagName("TD")[n];
-        if (dir == "asc") {
-          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-            shouldSwitch = true;
-            break;
-          }
-        } else if (dir == "desc") {
-          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-            shouldSwitch = true;
-            break;
-          }
-        }
-      }
-      if (shouldSwitch) {
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-        switchcount ++;
-      } else {
-        if (switchcount == 0 && dir == "asc") {
-          dir = "desc";
-          switching = true;
-        }
-      }
+    let currentSort = 'name';
+    let sortDir = { name: 'asc', phone: 'asc' };
+
+    function getInitials(name) {
+      return name.split(' ').map(p => p[0]).join('').slice(0, 2).toUpperCase();
     }
-  }
-</script>
+
+    function formatPhone(phone) {
+      // Format tunisien : XX XXX XXX
+      return phone.replace(/(\d{2})(\d{3})(\d{3})/, '$1 $2 $3');
+    }
+
+    function renderCards(data) {
+      const grid = document.getElementById('cardsGrid');
+      const count = document.getElementById('resultsCount');
+
+      if (data.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-user-slash"></i>
+            <p>Aucun membre ne correspond à votre recherche.</p>
+          </div>`;
+        count.innerHTML = '';
+        return;
+      }
+
+      count.innerHTML = `<strong>${data.length}</strong> membre${data.length > 1 ? 's' : ''} trouvé${data.length > 1 ? 's' : ''}`;
+
+      grid.innerHTML = data.map(m => `
+        <div class="member-card">
+          <div class="member-card-top">
+            <div class="member-avatar">${getInitials(m.name)}</div>
+            <div class="member-name">${m.name}</div>
+          </div>
+          <div class="member-card-body">
+            <div class="member-info-row">
+              <i class="fas fa-phone"></i>
+              <a href="tel:+216${m.phone}">${formatPhone(m.phone)}</a>
+            </div>
+            <div class="member-info-row">
+              <i class="fas fa-university"></i>
+              <span>LSAMA — FST Tunis</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterCards() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const filtered = members.filter(m =>
+        m.name.toLowerCase().includes(query) ||
+        m.phone.includes(query)
+      );
+      const sorted = sortData(filtered, currentSort, sortDir[currentSort]);
+      renderCards(sorted);
+    }
+
+    function sortData(data, key, dir) {
+      return [...data].sort((a, b) => {
+        const va = key === 'name' ? a.name.toLowerCase() : a.phone;
+        const vb = key === 'name' ? b.name.toLowerCase() : b.phone;
+        if (va < vb) return dir === 'asc' ? -1 : 1;
+        if (va > vb) return dir === 'asc' ? 1 : -1;
+        return 0;
+      });
+    }
+
+    function sortCards(key) {
+      // Toggle direction if same key
+      if (currentSort === key) {
+        sortDir[key] = sortDir[key] === 'asc' ? 'desc' : 'asc';
+      }
+      currentSort = key;
+
+      // Update button states
+      document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('sort' + (key === 'name' ? 'Name' : 'Phone') + 'Btn').classList.add('active');
+
+      // Update icon direction
+      const btn = document.getElementById('sort' + (key === 'name' ? 'Name' : 'Phone') + 'Btn');
+      const icon = btn.querySelector('i');
+      if (key === 'name') {
+        icon.className = sortDir[key] === 'asc' ? 'fas fa-sort-alpha-down' : 'fas fa-sort-alpha-up';
+      }
+
+      filterCards();
+    }
+
+    // ===== HAMBURGER =====
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('open');
+    }
+
+    // ===== BACK TO TOP =====
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+
+    // ===== INIT =====
+    renderCards(sortData(members, 'name', 'asc'));
+  </script>
 
 </body>
 </html>

@@ -1,66 +1,334 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Équipe MIBP | LSAMA</title>
-  <link href="images/logoLSAMA.png" rel="icon" sizes="16x16" type="image/png"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather&amp;display=swap" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <link href="styles/equipe-MIBP.css" rel="stylesheet"/>
+  <meta name="description" content="Équipe Dynamique des Molécules Excitées et Atomes Froids — Laboratoire LSAMA, FST Tunis"/>
+  <link rel="icon" href="images/logoLSAMA.png" type="image/png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #122244;
+      --blue: #1a4fa0;
+      --blue-light: #2c6dd4;
+      --teal: #0e9a8a;
+      --teal-light: #14c4b0;
+      --gold: #c9961a;
+      --white: #ffffff;
+      --off-white: #f4f6fa;
+      --text: #1c2b3a;
+      --text-light: #4a5d72;
+      --border: #dde3ef;
+      --shadow: 0 4px 24px rgba(10,22,40,0.10);
+      --shadow-lg: 0 12px 40px rgba(10,22,40,0.16);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+      --team-color: #1a4fa0; /* per-team accent — override per page */
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; font-size: 16px; color: var(--text); background: var(--white); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ===== TOP BAR ===== */
+    .topbar { background: var(--navy); padding: 8px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.7); }
+    .topbar-logos { display: flex; align-items: center; gap: 16px; }
+    .topbar-logos img { height: 34px; filter: brightness(0) invert(1); opacity: 0.85; transition: opacity var(--transition); }
+    .topbar-logos img:hover { opacity: 1; }
+    .topbar-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.15); }
+    .topbar-right { display: flex; align-items: center; gap: 16px; }
+    .topbar-right > a { color: rgba(255,255,255,0.7); font-size: 13px; display: flex; align-items: center; gap: 6px; transition: color var(--transition); }
+    .topbar-right > a:hover { color: var(--teal-light); }
+    .topbar-social { display: flex; gap: 8px; }
+    .topbar-social a { width: 26px; height: 26px; border-radius: 6px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.65); transition: all var(--transition); }
+    .topbar-social a:hover { background: var(--teal); border-color: var(--teal); color: white; }
+
+    /* ===== NAVBAR ===== */
+    .navbar { background: var(--white); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(10,22,40,0.10); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 72px; position: relative; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img { height: 52px; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .nav-logo-text .acronym { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); letter-spacing: 1px; }
+    .nav-logo-text .full-name { font-size: 10px; color: var(--text-light); max-width: 280px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { display: block; padding: 8px 13px; font-size: 14px; font-weight: 600; color: var(--text-light); border-radius: 8px; transition: all var(--transition); position: relative; white-space: nowrap; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 4px; left: 13px; right: 13px; height: 2px; background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform var(--transition); border-radius: 2px; }
+    .nav-links a:hover { color: var(--navy); background: var(--off-white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a.active { color: var(--blue); background: rgba(26,79,160,0.07); }
+    .nav-links a.active::after { transform: scaleX(1); background: var(--blue); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: all var(--transition); display: block; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 55%, var(--blue) 100%);
+      padding: 64px 40px 56px; position: relative; overflow: hidden;
+    }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(14,154,138,0.18) 0%, transparent 60%); }
+    .page-hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .page-hero-left { flex: 1; }
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.55); transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--teal-light); }
+    .breadcrumb i { font-size: 10px; }
+    .team-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18);
+      color: white; font-size: 12px; font-weight: 700;
+      padding: 5px 14px; border-radius: 20px; margin-bottom: 16px;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .team-badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--teal-light); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; color: white; line-height: 1.15; margin-bottom: 10px; }
+    .page-hero h2 { font-size: 1rem; color: rgba(255,255,255,0.72); font-weight: 400; line-height: 1.5; max-width: 520px; }
+    .page-hero h2 strong { color: var(--teal-light); font-weight: 600; }
+    .hero-icon { font-size: 7rem; color: rgba(255,255,255,0.05); flex-shrink: 0; }
+
+    /* ===== MAIN ===== */
+    main { max-width: 1100px; margin: 0 auto; padding: 56px 40px 80px; }
+
+    /* ===== SECTION BADGE ===== */
+    .section-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(14,154,138,0.08); color: var(--teal); font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.8px; }
+    .section-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-section { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; margin-bottom: 64px; align-items: start; }
+    .about-card { background: white; border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 36px; box-shadow: var(--shadow); }
+    .about-card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--off-white); display: flex; align-items: center; gap: 10px; }
+    .about-card h3 i { color: var(--teal); font-size: 1rem; }
+    .about-card p { color: var(--text-light); font-size: 15px; line-height: 1.75; margin-bottom: 14px; }
+    .about-card p:last-child { margin-bottom: 0; }
+    .about-card ul { display: flex; flex-direction: column; gap: 10px; }
+    .about-card ul li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-light); }
+    .about-card ul li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); margin-top: 7px; flex-shrink: 0; }
+
+    /* Keywords card */
+    .keywords-card { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-lg); }
+    .keywords-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .keywords-card h3 i { color: var(--teal-light); }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tags span {
+      display: inline-block; padding: 7px 16px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85); border-radius: 20px;
+      font-size: 13px; font-weight: 600; transition: all var(--transition);
+    }
+    .tags span:hover { background: var(--teal); border-color: var(--teal); color: white; }
+
+    /* Axes card */
+    .axes-card { background: white; border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow); margin-top: 20px; }
+    .axes-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .axes-card h3 i { color: var(--blue); font-size: 0.95rem; }
+    .axes-list { display: flex; flex-direction: column; gap: 10px; }
+    .axes-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 14px; background: var(--off-white); border-radius: 8px; font-size: 14px; color: var(--text); }
+    .axes-item i { color: var(--teal); margin-top: 2px; flex-shrink: 0; }
+
+    /* ===== TEAM SECTION ===== */
+    .team-section { margin-bottom: 48px; }
+    .team-section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
+    .team-section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--navy); }
+    .member-count { font-size: 13px; color: var(--text-light); background: var(--off-white); padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); }
+
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+
+    .member-card {
+      background: white; border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow); transition: all var(--transition);
+      display: flex; flex-direction: column;
+    }
+    .member-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: rgba(14,154,138,0.25); }
+
+    .member-card-photo {
+      position: relative; height: 200px; overflow: hidden;
+      background: linear-gradient(135deg, var(--off-white), #e8ecf4);
+    }
+    .member-card-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      transition: transform var(--transition);
+    }
+    .member-card:hover .member-card-photo img { transform: scale(1.05); }
+    .member-card-photo .photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(10,22,40,0.6) 100%);
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .member-card:hover .photo-overlay { opacity: 1; }
+
+    .member-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .member-card-body h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; line-height: 1.3; }
+    .member-role { font-size: 12.5px; color: var(--text-light); margin-bottom: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+    .member-role.porteur { color: var(--teal); }
+
+    .member-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+    .member-link {
+      width: 32px; height: 32px; border-radius: 8px;
+      border: 1.5px solid var(--border); display: flex; align-items: center;
+      justify-content: center; font-size: 13px; color: var(--text-light);
+      transition: all var(--transition); background: white;
+    }
+    .member-link:hover { transform: translateY(-2px); }
+    .member-link.email:hover { border-color: var(--teal); color: var(--teal); background: rgba(14,154,138,0.05); }
+    .member-link.rg:hover { border-color: #00ccbb; color: #00ccbb; background: rgba(0,204,187,0.05); }
+    .member-link.li:hover { border-color: #0a66c2; color: #0a66c2; background: rgba(10,102,194,0.05); }
+    .member-link.scholar:hover { border-color: var(--blue); color: var(--blue); background: rgba(26,79,160,0.05); }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--navy); color: rgba(255,255,255,0.75); padding: 56px 40px 0; margin-top: 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; max-width: 1100px; margin: 0 auto; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-logo img { height: 44px; filter: brightness(0) invert(1); opacity: 0.85; }
+    .footer-logo .acronym { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: white; }
+    .footer-col p { font-size: 14px; line-height: 1.8; margin-bottom: 20px; }
+    .footer-col h3 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.8px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.65); transition: color var(--transition); }
+    .footer-col ul li a:hover { color: var(--teal-light); }
+    .f-social { display: flex; gap: 10px; }
+    .f-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); font-size: 14px; transition: all var(--transition); }
+    .f-social a:hover { background: var(--teal); border-color: var(--teal); color: white; }
+    .f-contact { display: flex; flex-direction: column; gap: 10px; }
+    .f-contact-row { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; }
+    .f-contact-row i { color: var(--teal-light); margin-top: 3px; width: 14px; flex-shrink: 0; }
+    .f-contact-row a { color: rgba(255,255,255,0.65); transition: color var(--transition); }
+    .f-contact-row a:hover { color: var(--teal-light); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; text-align: center; font-size: 13px; color: rgba(255,255,255,0.4); max-width: 1100px; margin: 48px auto 0; }
+
+    /* ===== BACK TO TOP ===== */
+    #backToTop { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%; background: var(--blue); color: white; border: none; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(26,79,160,0.35); opacity: 0; pointer-events: none; transition: all var(--transition); z-index: 999; }
+    #backToTop.visible { opacity: 1; pointer-events: auto; }
+    #backToTop:hover { background: var(--blue-light); transform: translateY(-3px); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 960px) {
+      .about-section { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .page-hero h1 { font-size: 2rem; }
+      .hero-icon { display: none; }
+    }
+    @media (max-width: 700px) {
+      .topbar { padding: 6px 16px; }
+      .topbar-right > a.topbar-email { display: none; }
+      .navbar { padding: 0 16px; }
+      .nav-logo-text .full-name { display: none; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: white; padding: 12px 16px 20px; box-shadow: 0 8px 32px rgba(10,22,40,0.14); z-index: 999; border-top: 2px solid var(--border); gap: 2px; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .page-hero { padding: 40px 16px 36px; }
+      main { padding: 40px 16px 60px; }
+      .team-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      footer { padding: 40px 20px 0; }
+    }
+    @media (min-width: 701px) and (max-width: 960px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: white; padding: 12px 16px 20px; box-shadow: 0 8px 32px rgba(10,22,40,0.14); z-index: 999; border-top: 2px solid var(--border); gap: 2px; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .navbar { padding: 0 24px; }
+    }
+  </style>
 </head>
 <body>
-  <div id="navbar-container"></div>
-  <script>
-    fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-container').innerHTML = data;
-        const links = document.querySelectorAll('#navbar-container a.link-green');
-        const currentPage = window.location.pathname.split('/').pop();
-        links.forEach(link => {
-          const href = link.getAttribute('href');
-          if (href === currentPage || (href === 'presentation.html' && currentPage === '')) {
-            link.classList.add('active');
-          }
-        });
-      })
-      .catch(err => console.error('Erreur chargement navbar:', err));
-  </script>
 
-  <main>
-    <div class="breadcrumb">
-      <a href="index.html">Accueil</a> &gt; <a href="equipe-de-recherche-lsama.html"> Les équipes de LSAMA</a> &gt; Équipe MIBP
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <div class="topbar-logos">
+      <a href="https://utm.rnu.tn" target="_blank" rel="noopener"><img src="images/Logo_UTM.png" alt="UTM"></a>
+      <div class="topbar-sep"></div>
+      <a href="https://fst.rnu.tn" target="_blank" rel="noopener"><img src="images/Logo_FST.png" alt="FST"></a>
     </div>
+    <div class="topbar-right">
+      <a href="mailto:lsamalaboratoire@gmail.com" class="topbar-email"><i class="fas fa-envelope"></i> lsamalaboratoire@gmail.com</a>
+      <a href="contact.html"><i class="fas fa-phone-alt"></i> Contact</a>
+      <div class="topbar-social">
+        <a href="https://www.facebook.com/lsama.fst" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
 
-    <header>
-      <h1>Équipe MIBP</h1>
-      <h2>Molécules d’Intérêt Biologique et Pharmaceutique, <br>porteuse Souad Lahmar</h2>
-    </header>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" role="navigation">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logoLSAMA.png" alt="Logo LSAMA">
+      <div class="nav-logo-text">
+        <span class="acronym">LSAMA</span>
+        <span class="full-name">Laboratoire de Spectroscopie Atomique Moléculaire & Applications</span>
+      </div>
+    </a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navMenu">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="presentation-lsama.html">Présentation</a></li>
+      <li><a href="equipe-de-recherche-lsama.html" class="active">Équipes de Recherche</a></li>
+      <li><a href="actualites.html">Actualités</a></li>
+      <li><a href="production-scientifique-lsama.html">Production Scientifique</a></li>
+      <li><a href="annuaire.html">Annuaire</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-    <section class="container">
-      <div class="content">
-        <div class="description">
-          <h3>DESCRIPTION</h3>
-          <p>
-            L'équipe <strong>« Molécules d’Intérêt Biologique et Pharmaceutique » (MIBP)</strong> se consacre à l’étude de la structure, des interactions, de la dynamique et des propriétés physico-chimiques des molécules à potentiel biologique ou pharmaceutique.
-            Les recherches combinent chimie computationnelle, modélisation moléculaire, docking, simulations de dynamique moléculaire, et études spectroscopiques pour mieux comprendre les mécanismes d’action, la stabilité et l’optimisation des candidats moléculaires.
-          </p>
-          <p>
-            Les axes de recherche principaux incluent :
-          </p>
-          <ul>
-            <li>Modélisation de la structure 3D et de la conformation des molécules biologiquement actives</li>
-            <li>Études d’interactions ligand–récepteur, docking et affinités</li>
-            <li>Dynamique moléculaire et stabilité en environnement solvant</li>
-            <li>Propriétés spectroscopiques et comparaison avec données expérimentales</li>
-            <li>Optimisation de médicaments candidats et études in silico</li>
-          </ul>
+  <!-- ===== PAGE HERO ===== -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-left">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+          <a href="index.html">Accueil</a>
+          <i class="fas fa-chevron-right"></i>
+          <a href="equipe-de-recherche-lsama.html">Équipes</a>
+          <i class="fas fa-chevron-right"></i>
+          <span>MIBP</span>
+        </nav>
+        <div class="team-badge">Équipe de recherche</div>
+        <h1>Équipe MIBP</h1>
+        <h2>Molécules d'Intérêt Biologique et Pharmaceutique<br><strong>Porteuse : Souad Lahmar</strong></h2>
+      </div>
+      <i class="fas fa-dna hero-icon"></i>
+    </div>
+  </div>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+
+    <!-- About + Keywords -->
+    <div class="about-section">
+      <div>
+        <div class="section-badge">Description</div>
+        <div class="about-card">
+          <h3><i class="fas fa-flask"></i> Présentation de l'équipe</h3>
+          <p>L'équipe <strong>« Molécules d'Intérêt Biologique et Pharmaceutique » (MIBP)</strong> se consacre à l'étude de la structure, des interactions, de la dynamique et des propriétés physico-chimiques des molécules à potentiel biologique ou pharmaceutique.</p>
+          <p>Les recherches combinent chimie computationnelle, modélisation moléculaire, docking, simulations de dynamique moléculaire, et études spectroscopiques pour mieux comprendre les mécanismes d'action, la stabilité et l'optimisation des candidats moléculaires.</p>
+          <p>L'équipe contribue à l'émergence d'une pharmacologie computationnelle nationale, en lien avec des partenaires académiques et industriels.</p>
         </div>
 
-        <div class="keywords">
-          <h3>MOTS-CLÉS</h3>
+        <div class="axes-card">
+          <h3><i class="fas fa-layer-group"></i> Axes de recherche</h3>
+          <div class="axes-list">
+            <div class="axes-item"><i class="fas fa-chevron-right"></i> Modélisation de la structure 3D et conformation des molécules actives</div>
+            <div class="axes-item"><i class="fas fa-chevron-right"></i> Études d'interactions ligand–récepteur, docking et affinités</div>
+            <div class="axes-item"><i class="fas fa-chevron-right"></i> Dynamique moléculaire et stabilité en environnement solvant</div>
+            <div class="axes-item"><i class="fas fa-chevron-right"></i> Optimisation de médicaments candidats et études in silico</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="keywords-card">
+          <h3><i class="fas fa-tags"></i> Mots-clés</h3>
           <div class="tags">
             <span>Molécules biologiques</span>
             <span>Chimie pharmaceutique</span>
@@ -71,88 +339,160 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="team-section">
-      <h1>Membres permanents</h1>
+    <!-- ===== TEAM GRID ===== -->
+    <div class="team-section">
+      <div class="team-section-header">
+        <div>
+          <div class="section-badge">Membres</div>
+          <h2>Membres permanents</h2>
+        </div>
+        <span class="member-count">4 membres</span>
+      </div>
 
       <div class="team-grid">
-        <!-- Souad Lahmar (porteuse) -->
-        <div class="card">
-          <img src="images/equipe de recherches/souad-lahmar.png" alt="Souad Lahmar" onerror="this.src='images/equipe de recherches/icon femme.png'">
-          <h2>Souad Lahmar</h2>
-          <p>Professeur — Porteuse</p>
-          <div class="links">
-            <a class="email" href="mailto:soulahmar@yahoo.fr" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
-            <a class="researchgate" href="https://www.researchgate.net/profile/S-Lahmar" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
+
+                <!-- Souad Lahmar -->
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/equipe de recherches/souad-lahmar.png" alt="Souad Lahmar" onerror="this.src='images/equipe de recherches/icon femme.png'">
+            <div class="photo-overlay"></div>
+          </div>
+          <div class="member-card-body">
+            <h3>Souad Lahmar</h3>
+            <p class="member-role porteur">Professeur — Porteuse</p>
+            <div class="member-links">
+              <a class="member-link email" href="mailto:soulahmar@yahoo.fr" title="Email"><i class="fas fa-envelope"></i></a>
+              <a class="member-link rg" href="https://www.researchgate.net/profile/S-Lahmar" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+            </div>
           </div>
         </div>
-
         <!-- Zoubeida Dhaouadi -->
-        <div class="card">
-          <img src="images\equipe de recherches\Zoubeida Dhaouadi.png" alt="Zoubeida Dhaouadi" onerror="this.src='images/equipe de recherches/icon femme.png'">
-          <h2>Zoubeida Dhaouadi</h2>
-          <p>Professeur</p>
-          <div class="links">
-            <a class="email" href="mailto:dhaouadiz@yahoo.fr" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
-            <a class="researchgate" href="https://www.researchgate.net/profile/Dhaouadi-Zoubeida" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
-            <a class="linkedin" href="https://www.linkedin.com/in/zoubeida-dhaouadi-25287460?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BLQYikFKlSJOqSGY6PKM3Bw%3D%3D" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a class="scholar" href="https://scholar.google.com/citations?hl=fr&user=pzaOvEAAAAAJ" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/equipe de recherches/Zoubeida Dhaouadi.png" alt="Zoubeida Dhaouadi" onerror="this.src='images/equipe de recherches/icon femme.png'">
+            <div class="photo-overlay"></div>
+          </div>
+          <div class="member-card-body">
+            <h3>Zoubeida Dhaouadi</h3>
+            <p class="member-role">Professeur</p>
+            <div class="member-links">
+              <a class="member-link email" href="mailto:dhaouadiz@yahoo.fr" title="Email"><i class="fas fa-envelope"></i></a>
+              <a class="member-link rg" href="https://www.researchgate.net/profile/Dhaouadi-Zoubeida" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+              <a class="member-link li" href="https://www.linkedin.com/in/zoubeida-dhaouadi-25287460" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a class="member-link scholar" href="https://scholar.google.com/citations?user=pzaOvEAAAAAJ" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            </div>
           </div>
         </div>
-
         <!-- Najoua Derbel -->
-        <div class="card">
-          <img src="images\equipe de recherches\Najoua Derbel.jpg" alt="Najoua Derbel" onerror="this.src='images/equipe de recherches/icon femme.png'">
-          <h2>Najoua Derbel</h2>
-          <p>Professeur</p>
-          <div class="links">
-            <a class="email" href="mailto:najoua.derbel@gmail.com" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
-            <a class="researchgate" href="https://www.researchgate.net/profile/Najoua-Derbel" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
-            <a class="scholar" href="https://scholar.google.com/citations?hl=fr&user=KAaGS9gAAAAJ" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/equipe de recherches/Najoua Derbel.jpg" alt="Najoua Derbel" onerror="this.src='images/equipe de recherches/icon femme.png'">
+            <div class="photo-overlay"></div>
+          </div>
+          <div class="member-card-body">
+            <h3>Najoua Derbel</h3>
+            <p class="member-role">Professeur</p>
+            <div class="member-links">
+              <a class="member-link email" href="mailto:najoua.derbel@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+              <a class="member-link rg" href="https://www.researchgate.net/profile/Najoua-Derbel" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+              <a class="member-link scholar" href="https://scholar.google.com/citations?user=KAaGS9gAAAAJ" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            </div>
           </div>
         </div>
-
         <!-- Ali Zaidi -->
-        <div class="card">
-          <img src="images/equipe de recherches/ali-zaidi.png" alt="Ali Zaidi" onerror="this.src='images/equipe de recherches/icon homme.png'">
-          <h2>Ali Zaidi</h2>
-          <p>Professeur</p>
-          <div class="links">
-            <a class="email" href="mailto:ali.zaidi@ipest.rnu.tn" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
-            <a class="researchgate" href="https://www.researchgate.net/profile/Ali-Zaidi-6" target="_blank" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
-            <a class="scholar" href="https://scholar.google.com/citations?user=eXfvSPAAAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+        <div class="member-card">
+          <div class="member-card-photo">
+            <img src="images/equipe de recherches/ali-zaidi.png" alt="Ali Zaidi" onerror="this.src='images/equipe de recherches/icon homme.png'">
+            <div class="photo-overlay"></div>
+          </div>
+          <div class="member-card-body">
+            <h3>Ali Zaidi</h3>
+            <p class="member-role">Professeur</p>
+            <div class="member-links">
+              <a class="member-link email" href="mailto:ali.zaidi@ipest.rnu.tn" title="Email"><i class="fas fa-envelope"></i></a>
+              <a class="member-link rg" href="https://www.researchgate.net/profile/Ali-Zaidi-6" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+              <a class="member-link scholar" href="https://scholar.google.com/citations?user=eXfvSPAAAAAJ" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            </div>
           </div>
         </div>
 
-      </div> <!-- .team-grid -->
-    </section>
+      </div><!-- /team-grid -->
+    </div><!-- /team-section -->
 
-    <button id="backToTop" title="Retour en haut">↑</button>
   </main>
 
-  <div id="footer-container"></div>
-  <script>
-    fetch('footer.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-      });
-  </script>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">
+          <img src="images/logoLSAMA.png" alt="LSAMA">
+          <span class="acronym">LSAMA</span>
+        </div>
+        <p>Laboratoire spécialisé dans l'étude des interactions lumière-matière à l'échelle atomique et moléculaire, développant des techniques spectroscopiques avancées pour l'énergie, l'environnement et la santé.</p>
+        <div class="f-social">
+          <a href="https://www.facebook.com/lsama.fst" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:lsamalaboratoire@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="presentation-lsama.html">Présentation</a></li>
+          <li><a href="equipe-de-recherche-lsama.html">Équipes de Recherche</a></li>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="production-scientifique-lsama.html">Production Scientifique</a></li>
+          <li><a href="annuaire.html">Annuaire</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Équipes</h3>
+        <ul>
+          <li><a href="equipe-dmeaf.html">DMEAF</a></li>
+          <li><a href="equipe-sdmi2a.html">SDMI2A</a></li>
+          <li><a href="equipe-mibp.html">MIBP</a></li>
+          <li><a href="equipe-elibsf.html">ELIBSF</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <div class="f-contact">
+          <div class="f-contact-row"><i class="fas fa-envelope"></i><a href="mailto:lsamalaboratoire@gmail.com">lsamalaboratoire@gmail.com</a></div>
+          <div class="f-contact-row"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank">LinkedIn LSAMA</a></div>
+          <div class="f-contact-row"><i class="fab fa-facebook"></i><a href="https://www.facebook.com/lsama.fst" target="_blank">Facebook LSAMA</a></div>
+          <div class="f-contact-row"><i class="fas fa-map-marker-alt"></i><span>Faculté des Sciences de Tunis, Dép. Physique — 2092 Manar II, Tunis</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Laboratoire LSAMA — Tous droits réservés. | LR01ES09 — Université de Tunis El Manar</div>
+  </footer>
 
-  <script src="js/scroll.js"></script>
+  <button id="backToTop" aria-label="Retour en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
   <script>
-    document.querySelectorAll('.team-grid img').forEach(img => {
-      img.addEventListener('error', function() {
-        if (this.alt && this.alt.toLowerCase().includes('femme')) {
-          this.src = 'images/equipe de recherches/icon femme.png';
-        } else {
-          this.src = 'images/equipe de recherches/icon homme.png';
-        }
-      });
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      const btn = document.querySelector('.hamburger');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+    }
+    document.addEventListener('click', e => {
+      const navbar = document.querySelector('.navbar');
+      if (!navbar.contains(e.target)) {
+        document.getElementById('navMenu').classList.remove('open');
+        document.querySelector('.hamburger').classList.remove('open');
+      }
+    });
+    window.addEventListener('scroll', () => {
+      document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 300);
     });
   </script>
-
 </body>
 </html>
