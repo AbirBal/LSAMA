@@ -7,17 +7,46 @@
   </div>
   <div class="topbar-right">
     <a href="mailto:lsama@fst.utm.tn" class="topbar-email"><i class="fas fa-envelope"></i> lsama@fst.utm.tn</a>
-    <a href="contact.html"><i class="fas fa-phone-alt"></i> <span data-i18n="nav-contact">Contact</span></a>
+    <a href="contact.html" class="topbar-link"><i class="fas fa-phone-alt"></i> <span data-i18n="nav-contact">Contact</span></a>
     <div class="topbar-social">
       <a href="https://www.facebook.com/lsama.fst" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
       <a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
       <a href="mailto:lsama@fst.utm.tn" aria-label="Email"><i class="fas fa-envelope"></i></a>
     </div>
-    <div class="lang-switcher">
-      <button class="lang-btn" id="langBtnFR" onclick="setLang('fr')" aria-label="Français">FR</button>
-      <span class="lang-sep">|</span>
-      <button class="lang-btn" id="langBtnEN" onclick="setLang('en')" aria-label="English">EN</button>
+
+    <!-- ===== LANG FLAG SWITCHER ===== -->
+    <div class="lang-flags" role="group" aria-label="Langue / Language">
+      <button class="lang-flag-btn" id="langBtnEN" onclick="setLang('en')" aria-label="English" title="English">
+        <span class="flag-icon">
+          <!-- UK flag SVG inline -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="22" height="14">
+            <clipPath id="uk-s"><path d="M0 0v30h60V0z"/></clipPath>
+            <clipPath id="uk-t"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath>
+            <g clip-path="url(#uk-s)">
+              <path d="M0 0v30h60V0z" fill="#012169"/>
+              <path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/>
+              <path d="M0 0l60 30m0-30L0 30" clip-path="url(#uk-t)" stroke="#C8102E" stroke-width="4"/>
+              <path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/>
+              <path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>
+            </g>
+          </svg>
+        </span>
+        <span class="flag-label">EN</span>
+      </button>
+
+      <button class="lang-flag-btn" id="langBtnFR" onclick="setLang('fr')" aria-label="Français" title="Français">
+        <span class="flag-icon">
+          <!-- French flag SVG inline -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2" width="22" height="14">
+            <rect width="3" height="2" fill="#ED2939"/>
+            <rect width="2" height="2" fill="#fff"/>
+            <rect width="1" height="2" fill="#002395"/>
+          </svg>
+        </span>
+        <span class="flag-label">FR</span>
+      </button>
     </div>
+
   </div>
 </div>
 
