@@ -392,8 +392,10 @@ function setLang(lang) {
 function updateLangButtons() {
   const btnFR = document.getElementById('langBtnFR');
   const btnEN = document.getElementById('langBtnEN');
-  if (btnFR) { btnFR.classList.toggle('active', currentLang === 'fr'); btnFR.setAttribute('aria-pressed', currentLang === 'fr'); }
-  if (btnEN) { btnEN.classList.toggle('active', currentLang === 'en'); btnEN.setAttribute('aria-pressed', currentLang === 'en'); }
+  if (btnFR && btnEN) {
+    btnFR.classList.toggle('active', currentLang === 'fr');
+    btnEN.classList.toggle('active', currentLang === 'en');
+  }
 }
 
 function applyLang(lang) {
