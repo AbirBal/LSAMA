@@ -450,6 +450,11 @@ function toggleLang() {
             a.classList.remove('active');
             if (a.getAttribute('data-page') === page) a.classList.add('active');
           });
+          // Apply saved language to freshly-injected navbar
+          if (typeof applyLang === 'function') { applyLang(currentLang); updateLangButtons(); }
+        }
+        if (id === 'footer-placeholder') {
+          if (typeof applyLang === 'function') applyLang(currentLang);
         }
       } catch(e) { console.warn('Could not load', file, e); }
     }
