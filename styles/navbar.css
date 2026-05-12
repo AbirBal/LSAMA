@@ -385,3 +385,15 @@
   user-select: none;
   pointer-events: none;
 }
+
+/* ============================================================
+   RESPONSIVE — navbar.css additional (small screens)
+   ============================================================ */
+@media (max-width: 640px) {
+  .topbar { padding: 6px 12px; }
+  .topbar-social { display: none; }
+  .navbar { height: 60px; }
+  .nav-logo img { height: 38px; }
+  .nav-logo-text .acronym { font-size: 1.2rem; }
+  .lang-switcher .lang-btn { padding: 3px 9px; font-size: 11px; }
+}

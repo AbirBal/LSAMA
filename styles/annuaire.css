@@ -263,3 +263,24 @@
     }
     .empty-state i { font-size: 3rem; color: var(--border); margin-bottom: 16px; display: block; }
     .empty-state p { font-size: 15px; }
+/* ============================================================
+   RESPONSIVE — annuaire.css
+   ============================================================ */
+@media (max-width: 900px) {
+  .page-hero { padding: 48px 24px 40px; }
+  .page-hero h1 { font-size: 2rem; }
+  main { padding: 40px 20px; }
+  .toolbar { flex-direction: column; align-items: stretch; }
+  .search-wrapper { max-width: 100%; }
+  .sort-btns { justify-content: flex-start; }
+  .cards-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+}
+
+@media (max-width: 640px) {
+  .page-hero { padding: 36px 16px 30px; }
+  .page-hero h1 { font-size: 1.6rem; }
+  main { padding: 32px 16px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .sort-btns { flex-wrap: wrap; }
+  .sort-btn { flex: 1; justify-content: center; }
+}

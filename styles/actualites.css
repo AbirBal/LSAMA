@@ -116,3 +116,26 @@
     }
     .no-results i { font-size: 48px; margin-bottom: 16px; color: var(--border); display: block; }
     .no-results p { font-size: 15px; }
+/* ============================================================
+   RESPONSIVE — actualites.css
+   ============================================================ */
+@media (max-width: 900px) {
+  .page-hero { padding: 48px 24px 40px; }
+  .page-hero h1 { font-size: 2rem; }
+  .controls-section { padding: 24px 20px; }
+  .controls-inner { flex-direction: column; align-items: stretch; gap: 12px; }
+  .search-box { min-width: 0; width: 100%; }
+  .filter-btns { flex-wrap: wrap; gap: 8px; }
+  .news-section { padding: 40px 20px 60px; }
+  .news-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+}
+
+@media (max-width: 640px) {
+  .page-hero { padding: 36px 16px 32px; }
+  .page-hero h1 { font-size: 1.6rem; }
+  .page-hero p { font-size: 0.9rem; }
+  .filter-btns { gap: 6px; }
+  .filter-btn { padding: 7px 14px; font-size: 12px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .news-card-body h3 { font-size: 1rem; }
+}

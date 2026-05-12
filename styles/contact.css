@@ -192,3 +192,27 @@
     .form-success i { font-size: 3rem; color: var(--teal); margin-bottom: 16px; display: block; }
     .form-success h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 8px; }
     .form-success p { color: var(--text-light); font-size: 14px; }
+/* ============================================================
+   RESPONSIVE — contact.css
+   ============================================================ */
+@media (max-width: 900px) {
+  .page-hero { padding: 48px 24px 40px; }
+  .page-hero h1 { font-size: 2rem; }
+  .page-hero-icon { display: none; }
+  main { padding: 40px 20px; }
+  .contact-layout { grid-template-columns: 1fr; gap: 32px; }
+  .form-card { position: static; padding: 28px 24px; }
+}
+
+@media (max-width: 640px) {
+  .page-hero { padding: 36px 16px 30px; }
+  .page-hero h1 { font-size: 1.6rem; }
+  .page-hero p { font-size: 0.9rem; }
+  main { padding: 28px 16px; }
+  .info-card { padding: 20px; }
+  .form-card { padding: 20px; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .social-card-links { flex-direction: column; }
+  .social-pill { justify-content: center; }
+  .map-card iframe { height: 200px; }
+}
