@@ -50,7 +50,7 @@
             <i class="fas fa-university"></i>
             <div class="info-row-content">
               <div class="info-row-label" data-i18n="contact-addr-lbl">Adresse</div>
-              <div class="info-row-value">Faculté des Sciences de Tunis<br>Département de Physique, Bureau 212<br>2092 Manar II, Tunis, Tunisie</div>
+              <div class="info-row-value" data-i18n="contact-addr-val">Faculté des Sciences de Tunis<br>Département de Physique, Bureau 212<br>2092 Manar II, Tunis, Tunisie</div>
             </div>
           </div>
           <div class="info-row">
@@ -100,7 +100,7 @@
             <i class="fas fa-tag"></i>
             <div class="info-row-content">
               <div class="info-row-label" data-i18n="contact-ref-lbl">Référence nationale</div>
-              <div class="info-row-value">LR01ES09 — Université de Tunis El Manar</div>
+              <div class="info-row-value" data-i18n="contact-ref-val">LR01ES09 — Université de Tunis El Manar</div>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@
         <div class="info-card">
           <div class="info-card-header">
             <div class="info-card-icon"><i class="fas fa-share-alt"></i></div>
-            <h3>Réseaux sociaux</h3>
+            <h3 data-i18n="contact-social-h3">Réseaux sociaux</h3>
           </div>
           <div class="social-card-links">
             <a href="https://www.facebook.com/lsama.fst" target="_blank" rel="noopener" class="social-pill fb">
@@ -133,9 +133,9 @@
           </iframe>
           <div class="map-card-footer">
             <i class="fas fa-map-marker-alt"></i>
-            <span>Faculté des Sciences de Tunis — 2092 Manar II</span>
+            <span data-i18n="contact-map-label">Faculté des Sciences de Tunis — 2092 Manar II</span>
             <a href="https://maps.google.com/?q=Faculté+des+Sciences+de+Tunis" target="_blank" rel="noopener">
-              <i class="fas fa-external-link-alt"></i> Ouvrir
+              <i class="fas fa-external-link-alt"></i> <span data-i18n="contact-map-open">Ouvrir</span>
             </a>
           </div>
         </div>
@@ -144,62 +144,62 @@
 
       <!-- RIGHT: Contact form -->
       <div class="form-card">
-        <h2>Envoyer un message</h2>
-        <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans les meilleurs délais.</p>
+        <h2 data-i18n="contact-form-h2">Envoyer un message</h2>
+        <p data-i18n="contact-form-p">Remplissez le formulaire ci-dessous et nous vous répondrons dans les meilleurs délais.</p>
 
         <div id="contactForm">
           <div class="form-row">
             <div class="form-group">
-              <label>Prénom <span>*</span></label>
-              <input type="text" class="form-control" id="firstName" placeholder="Votre prénom" required>
+              <label><span data-i18n="contact-lbl-firstname">Prénom</span> <span>*</span></label>
+              <input type="text" class="form-control" id="firstName" placeholder="Votre prénom" data-i18n-ph="contact-ph-firstname" required>
             </div>
             <div class="form-group">
-              <label>Nom <span>*</span></label>
-              <input type="text" class="form-control" id="lastName" placeholder="Votre nom" required>
+              <label><span data-i18n="contact-lbl-lastname">Nom</span> <span>*</span></label>
+              <input type="text" class="form-control" id="lastName" placeholder="Votre nom" data-i18n-ph="contact-ph-lastname" required>
             </div>
           </div>
 
           <div class="form-group">
-            <label>Email <span>*</span></label>
-            <input type="email" class="form-control" id="emailInput" placeholder="votre@email.com" required>
+            <label><span data-i18n="contact-lbl-email">Email</span> <span>*</span></label>
+            <input type="email" class="form-control" id="emailInput" placeholder="votre@email.com" data-i18n-ph="contact-ph-email" required>
           </div>
 
           <div class="form-group">
-            <label>Téléphone</label>
-            <input type="tel" class="form-control" id="phoneInput" placeholder="+216 XX XXX XXX">
+            <label data-i18n="contact-lbl-phone">Téléphone</label>
+            <input type="tel" class="form-control" id="phoneInput" placeholder="+216 XX XXX XXX" data-i18n-ph="contact-ph-phone">
           </div>
 
           <div class="form-group">
-            <label>Objet <span>*</span></label>
+            <label><span data-i18n="contact-lbl-subject">Objet</span> <span>*</span></label>
             <select class="form-control" id="subjectSelect" required>
-              <option value="">Sélectionner un objet…</option>
-              <option value="collaboration">Collaboration scientifique</option>
-              <option value="these">Candidature doctorat</option>
-              <option value="stage">Demande de stage</option>
-              <option value="information">Demande d'information</option>
-              <option value="presse">Presse / Médias</option>
-              <option value="autre">Autre</option>
+              <option value="" data-i18n="contact-select-default">Sélectionner un objet…</option>
+              <option value="collaboration" data-i18n="contact-opt-collab">Collaboration scientifique</option>
+              <option value="these" data-i18n="contact-opt-these">Candidature doctorat</option>
+              <option value="stage" data-i18n="contact-opt-stage">Demande de stage</option>
+              <option value="information" data-i18n="contact-opt-info">Demande d'information</option>
+              <option value="presse" data-i18n="contact-opt-presse">Presse / Médias</option>
+              <option value="autre" data-i18n="contact-opt-autre">Autre</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label>Message <span>*</span></label>
-            <textarea class="form-control" id="messageInput" placeholder="Décrivez votre demande…" required></textarea>
+            <label><span data-i18n="contact-lbl-message">Message</span> <span>*</span></label>
+            <textarea class="form-control" id="messageInput" placeholder="Décrivez votre demande…" data-i18n-ph="contact-ph-message" required></textarea>
           </div>
 
           <div class="form-footer">
             <button class="btn-send" onclick="submitForm()">
-              <i class="fas fa-paper-plane"></i> Envoyer le message
+              <i class="fas fa-paper-plane"></i> <span data-i18n="contact-btn-send">Envoyer le message</span>
             </button>
-            <p class="form-note"><i class="fas fa-lock" style="color:var(--teal);margin-right:4px;"></i>Vos informations sont confidentielles et ne seront pas partagées.</p>
+            <p class="form-note"><i class="fas fa-lock" style="color:var(--teal);margin-right:4px;"></i><span data-i18n="contact-form-note">Vos informations sont confidentielles et ne seront pas partagées.</span></p>
           </div>
         </div>
 
         <!-- Success -->
         <div class="form-success" id="formSuccess">
           <i class="fas fa-check-circle"></i>
-          <h3>Message envoyé !</h3>
-          <p>Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.</p>
+          <h3 data-i18n="contact-success-h3">Message envoyé !</h3>
+          <p data-i18n="contact-success-p">Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.</p>
         </div>
       </div>
 
@@ -257,7 +257,7 @@
       );
 
       const btn = document.querySelector('.btn-send');
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours…';
+      const _t = (typeof translations!=='undefined' && translations[currentLang]) ? translations[currentLang] : {}; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>' + (_t['contact-sending'] || 'Envoi en cours…') + '</span>';
       btn.disabled = true;
 
       window.location.href = 'mailto:lsamalaboratoire@gmail.com?subject=' + mailSubject + '&body=' + mailBody;
