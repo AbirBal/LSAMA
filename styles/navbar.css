@@ -128,6 +128,8 @@
   z-index:       200;
   border-bottom: 0.5px solid var(--lsama-border);
   box-shadow:    0 1px 8px rgba(0,0,0,.05);
+  /* Needed so the mobile menu positions relative to the navbar */
+  overflow:      visible;
 }
 
 .navbar-inner {
@@ -323,12 +325,17 @@
   .topbar-logos { display: none; }
   .nav-mobile-btn { display: block; }
 
+  /* navbar-inner as position context for the dropdown */
+  .navbar-inner { position: relative; }
+
   .nav-links {
     display:        none;
     position:       absolute;
-    top:            var(--nav-h);
-    left:           0; right: 0;
+    top:            100%;          /* directly under navbar-inner */
+    left:           -20px;         /* extend beyond navbar-inner padding */
+    right:          -20px;
     background:     #fff;
+    border-top:     2px solid var(--lsama-blue);
     border-bottom:  0.5px solid var(--lsama-border);
     flex-direction: column;
     align-items:    flex-start;
@@ -336,14 +343,18 @@
     box-shadow:     0 8px 24px rgba(0,0,0,.1);
     height:         auto;
     gap:            0;
-    z-index:        200;
+    z-index:        500;
+    list-style:     none;
+    margin:         0;
   }
 
   .nav-links.open { display: flex; }
 
   .nav-item { width: 100%; height: auto; flex-direction: column; align-items: flex-start; }
 
-  .nav-link { width: 100%; border-radius: 0; padding: 11px 24px; font-size: 13px; }
+  .nav-link { width: 100%; border-radius: 0; padding: 13px 24px; font-size: 13.5px; justify-content: space-between; border-bottom: 1px solid var(--lsama-border); }
+
+  .nav-has-dropdown > .nav-link { border-bottom: none; }
 
   .nav-dropdown {
     position:      static;
@@ -352,16 +363,18 @@
     transform:     none;
     box-shadow:    none;
     border:        none;
-    border-left:   2px solid var(--lsama-light);
+    border-left:   3px solid var(--lsama-blue);
     border-radius: 0;
-    margin-left:   24px;
+    margin-left:   20px;
     min-width:     auto;
-    width:         calc(100% - 24px);
+    width:         calc(100% - 20px);
     display:       none;
-    padding:       0;
+    padding:       4px 0;
   }
 
   .nav-has-dropdown.open .nav-dropdown { display: block; }
+
+  .nav-dropdown-item { padding: 11px 20px; font-size: 13px; }
 }
 
 /* ===== LANG SWITCHER FR/EN ===== */
