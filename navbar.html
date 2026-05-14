@@ -1,4 +1,4 @@
-<!-- ===== TOP BAR ===== -->
+<!-- ===== TOPBAR ===== -->
 <div class="topbar">
   <div class="topbar-logos">
     <a href="https://utm.rnu.tn" target="_blank" rel="noopener"><img src="images/Logo_UTM.png" alt="UTM"></a>
@@ -6,12 +6,25 @@
     <a href="https://fst.rnu.tn" target="_blank" rel="noopener"><img src="images/Logo_FST.png" alt="FST"></a>
   </div>
   <div class="topbar-right">
-    <a href="mailto:lsamalaboratoire@gmail.com" class="topbar-email"><i class="fas fa-envelope"></i> lsamalaboratoire@gmail.com</a>
+    <a href="mailto:lsama@fst.utm.tn" class="topbar-email">
+      <i class="fas fa-envelope"></i> lsama@fst.utm.tn
+    </a>
+    <a href="contact.html" class="topbar-contact">
+      <i class="fas fa-phone-alt"></i> <span data-i18n="nav-contact">Contact</span>
+    </a>
+    <div class="topbar-vsep"></div>
     <div class="topbar-socials">
-      <a href="https://www.facebook.com/lsama.fst" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="mailto:lsamalaboratoire@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.facebook.com/lsama.fst" target="_blank" rel="noopener" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/lsama-fst-615b3b251" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="mailto:lsama@fst.utm.tn" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
     </div>
+    <div class="topbar-vsep"></div>
     <div class="lang-switcher">
       <button class="lang-btn" id="langBtnFR" onclick="setLang('fr')" aria-label="Français">FR</button>
       <span class="lang-sep">|</span>
@@ -21,22 +34,24 @@
 </div>
 
 <!-- ===== NAVBAR ===== -->
-<nav class="navbar" role="navigation">
+<nav class="navbar" role="navigation" aria-label="Navigation principale">
   <div class="navbar-inner">
 
-    <div class="nav-logo">
-      <a href="index.html"><img src="images/logoLSAMA.png" alt="Logo LSAMA"></a>
+    <!-- Logo -->
+    <a href="index.html" class="nav-logo">
+      <img src="images/logoLSAMA.png" alt="Logo LSAMA">
       <div class="nav-logo-text">
         <span class="nav-logo-title">LSAMA</span>
         <span class="nav-logo-sub" data-i18n="lab-fullname">Laboratoire de Spectroscopie Atomique Moléculaire &amp; Applications</span>
       </div>
-    </div>
+    </a>
 
-    <!-- Bouton hamburger — doit avoir class="nav-mobile-btn" pour correspondre au navbar.css -->
-    <button class="nav-mobile-btn" onclick="toggleNavMenu()" aria-label="Ouvrir le menu">
+    <!-- Hamburger mobile -->
+    <button class="nav-mobile-btn" onclick="toggleNavMenu()" aria-label="Ouvrir le menu" id="hamburgerBtn">
       <i class="fas fa-bars"></i>
     </button>
 
+    <!-- Liens -->
     <ul class="nav-links" id="navMenu">
 
       <li class="nav-item">
@@ -95,5 +110,5 @@
       </li>
 
     </ul>
-  </div><!-- /navbar-inner -->
+  </div>
 </nav>
